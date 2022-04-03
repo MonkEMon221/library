@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BobbleButton">
+        <attr name="buttonColor" format="color" />
+        <attr name="circle_radius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="BobbleImage">
+        <attr name="padding" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="BobbleFab">
+        <attr name="FabBorderColor" format="color" />
+        <attr name="FabIcon" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="BobbleCardView">
+        <attr name="cardCornerRadius" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="BobbleEditText">
+        <attr name="corner_radius" format="dimension" />
+        <attr name="textBoxColor" format="color"/>
+        <attr name="borderColor" format="color"/>
+        <attr name="borderWidth" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="BobbleImageButton">
+        <attr name="buttonBackGround" format="reference|color"/>
+    </declare-styleable>
+
+    <declare-styleable name="BobbleImageEditText">
+        <attr name="text" format="string" />
+        <attr name="rightIcon" format="reference" />
+        <attr name="leftIcon" format="reference" />
+        <attr name="editTextHint" format="string" />
+        <attr name="inputType" format="string" />
+        <attr name="maxLength" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="BobbleTabLayout">
+        <attr name="tabTextColor" format="color"/>
+        <attr name="tabSelectedTextColor" format="color"/>
+    </declare-styleable>
+
+</resources>
