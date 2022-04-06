@@ -40,8 +40,8 @@ Libraries -:
 5. BobbleRoundCornerEditText
 | Attribute Name  | Default Value | Example Value | Description |
 | ------------- | ------------- | ------------ | ------------- |
-| app:textBoxColor  | #FFFFFF(Light) #636363(Dark) | @color/colorAccent | background Color of RoundCorner Edittext |
-| app:corner_radius  | 30dp  | 35dp | adjust radius of RoundCorner EditText |
+| app:textBoxColor | #FFFFFF(Light) #636363(Dark) | @color/colorAccent | background Color of RoundCorner Edittext |
+| app:corner_radius| 30dp  | 35dp | adjust radius of RoundCorner EditText |
 | app:borderColor  | #000000(Light) #FFFFFF(Dark) | @color/colorAccent | border color of RoundCorner Edittext |
 | app:borderWidth  | 3dp  | 5dp | set borderWidth for RoundCorner Edittext |
 | app:isDarkTheme  | false  | true | set theme for RoundCorner Edittext |
