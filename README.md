@@ -62,7 +62,7 @@ Libraries -:
 | Attribute Name  | Default Value | Example Value | Description |
 | ------------- | ------------- | ------------ | ------------- |
 | app:text  |  | @string/Hello_World! | pre written text in the Edittext |
-| app:editTextHint  |   | @string/Email | set hint for the edittext box |
+| app:editTextHint  |   | email | set hint for the edittext box |
 | app:inputType  |  | email | set input type for the EditText |
 | app:maxLength  |50 | 100 | set max inputlength for the EditText |
 | app:rightIcon  |   | @drawable/image | set right icon in the edittext box |
