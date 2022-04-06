@@ -7,7 +7,7 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
-    <com.vishesh.mylibrary.BobbleButton
+    <com.uiLibrary.bobbleLibrary.BobbleButton
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,51 +16,56 @@
         android:paddingStart="16dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:paddingEnd="16dp"
-        android:textSize="18sp"
-        app:buttonColor="#E3F2FD"/>
+        app:isDarkTheme="true"
+        android:paddingEnd="16dp"/>
 
-    <com.vishesh.mylibrary.BobbleImage
+    <com.uiLibrary.bobbleLibrary.BobbleImage
         android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src ="@drawable/add_cam"
-        android:background="@color/black"/>
+        app:isDarkTheme="true"
+        android:layout_marginTop="16dp"
+        android:src ="@drawable/add_cam"/>
 
-    <com.vishesh.mylibrary.BobbleFab
+    <com.uiLibrary.bobbleLibrary.BobbleFab
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:backgroundTint="@color/teal_700"
-        app:FabIcon="@drawable/add_cam"
-        app:borderWidth="3dp"/>
+        app:fabSize="mini"
+        android:scaleType="centerCrop"
+        app:borderWidth="5dp"/>
 
-    <com.vishesh.mylibrary.BobbleCardView
+    <com.uiLibrary.bobbleLibrary.BobbleCardView
         android:id="@+id/card"
         android:layout_margin="16dp"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:backgroundTint="@color/white" />
+        app:isDarkTheme="true"/>
 
-    <com.vishesh.mylibrary.BobbleEditText
+    <com.uiLibrary.bobbleLibrary.BobbleRoundCornerEditText
         android:id="@+id/edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/type_your_message_here"
         android:padding="16dp"
         android:textSize="12sp"
+        app:isDarkTheme="true"
         android:typeface="serif"
-        app:corner_radius="35dp" />
+        app:corner_radius="30dp" />
 
-    <com.vishesh.mylibrary.BobbleImageButton
+    <com.uiLibrary.bobbleLibrary.BobbleImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/add_cam"/>
-    <com.vishesh.mylibrary.BobbleImageEditText
+        android:src="@drawable/add_cam"
+        app:isDarkTheme="true"/>
+
+    <com.uiLibrary.bobbleLibrary.BobbleImageEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:editTextHint="@string/email"
-        app:leftIcon="@color/teal_700"
+        app:leftIcon="@drawable/ic_search"
         app:inputType="email"/>
+
 </LinearLayout>

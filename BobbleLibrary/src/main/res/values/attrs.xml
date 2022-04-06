@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="isDarkTheme" format="boolean" />
+
+    <declare-styleable name="BobbleButton">
+        <attr name="buttonColor" format="color" />
+        <attr name="circle_radius" format="dimension" />
+        <attr name="isDarkTheme" />
+        <attr name="android:textColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="BobbleImage">
+        <attr name="padding" format="dimension" />
+        <attr name="isDarkTheme" />
+        <attr name="backgroundColor" format="reference|color" />
+    </declare-styleable>
+
+    <declare-styleable name="BobbleFab">
+        <attr name="backgroundTint" format="color" />
+        <attr name="android:src" format="reference|color" />
+        <attr name="maxImageSize" format="dimension"/>
+        <attr name="fabCustomSize" format="dimension"/>
+        <attr name="isDarkTheme"/>
+    </declare-styleable>
+
+    <declare-styleable name="BobbleCardView">
+        <attr name="cardCornerRadius" format="dimension" />
+        <attr name="cardBackgroundColor" format="color"/>
+        <attr name="isDarkTheme"/>
+    </declare-styleable>
+
+    <declare-styleable name="BobbleEditText">
+        <attr name="corner_radius" format="dimension" />
+        <attr name="textBoxColor" format="color" />
+        <attr name="borderColor" format="color" />
+        <attr name="borderWidth" format="dimension" />
+        <attr name="isDarkTheme"/>
+    </declare-styleable>
+
+    <declare-styleable name="BobbleImageButton">
+        <attr name="isDarkTheme"/>
+        <attr name="buttonBackGround" format="reference|color"/>
+    </declare-styleable>
+
+    <declare-styleable name="BobbleImageEditText">
+        <attr name="text" format="string" />
+        <attr name="isDarkTheme"/>
+        <attr name="rightIcon" format="reference" />
+        <attr name="leftIcon" format="reference" />
+        <attr name="editTextHint" format="string" />
+        <attr name="inputType" format="string" />
+        <attr name="maxLength" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="BobbleTabLayout">
+        <attr name="isDarkTheme"/>
+        <attr name="tabTextColor" format="color" />
+        <attr name="tabSelectedTextColor" format="color" />
+        <attr name="tabIndicatorColor" format="color" />
+        <attr name="boldText" format="boolean" />
+        <attr name="android:textSize" format="dimension" />
+        <attr name="selectedTabBoldText" format="boolean" />
+        <attr name="android:paddingTop" format="dimension" />
+        <attr name="android:paddingBottom" format="dimension" />
+        <attr name="android:paddingLeft" format="dimension" />
+        <attr name="android:paddingRight" format="dimension" />
+        <attr name="android:padding" format="dimension" />
+    </declare-styleable>
+
+</resources>
