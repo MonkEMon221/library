@@ -16,7 +16,6 @@
         android:paddingStart="16dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        app:isDarkTheme="true"
         android:paddingEnd="16dp"/>
 
     <com.uiLibrary.bobbleLibrary.BobbleImage
@@ -67,5 +66,6 @@
         app:editTextHint="@string/email"
         app:leftIcon="@drawable/ic_search"
         app:inputType="email"/>
+
 
 </LinearLayout>

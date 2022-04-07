@@ -1,5 +1,6 @@
 package com.uiLibrary.bobbleLibrary
 
+import android.app.ActionBar
 import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.TypedArray
@@ -41,16 +42,16 @@ class BobbleButton @JvmOverloads constructor
     private val paint = Paint()
 
     //    attrs
-    private val buttonCornerRadius: Float
+    private var buttonCornerRadius: Float
     private var buttonBackgroundColor: Int
-    private val isDarkTheme: Boolean
+    private var isDarkTheme: Boolean
     private val textColor: Int
     private val typedArray: TypedArray =
         context.theme.obtainStyledAttributes(attrs, R.styleable.BobbleButton, 0, 0)
 
     init {
         buttonCornerRadius =
-            typedArray.getDimension(R.styleable.BobbleButton_circle_radius, dpToPx(context, 45f))
+            typedArray.getDimension(R.styleable.BobbleButton_circle_radius, dpToPx(context, 0f))
 
         isDarkTheme =
             typedArray.getBoolean(R.styleable.BobbleButton_isDarkTheme, false)
@@ -85,13 +86,13 @@ class BobbleButton @JvmOverloads constructor
                         ContextCompat.getColor(getContext(), R.color.dark_grey)
                     )
             }
-        initPaint()
         typedArray.recycle()
     }
 
     //draw button with adjustable radius
     override fun onDraw(canvas: Canvas?) {
         canvas ?: return
+        initPaint()
         val offset = 0f
         val radius = buttonCornerRadius
         rectF.set(offset, offset, width.toFloat() - offset, height.toFloat() - offset)
@@ -103,6 +104,26 @@ class BobbleButton @JvmOverloads constructor
         paint.style = Paint.Style.FILL
         paint.color = buttonBackgroundColor
         paint.isAntiAlias = true
+    }
+
+    fun setRadius(radius: Float) {
+        if (buttonCornerRadius != radius) {
+            buttonCornerRadius = radius
+            invalidate()
+        }
+    }
+
+    fun isDarkTheme(enable: Boolean) {
+        if (this.isDarkTheme != enable) {
+            this.isDarkTheme = enable
+            invalidate()
+            requestLayout()
+        }
+    }
+
+    fun buttonBackgroundColor(color: Int) {
+        this.buttonBackgroundColor = color
+        invalidate()
     }
 }
 

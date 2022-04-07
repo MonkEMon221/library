@@ -1,8 +1,9 @@
 package com.uiLibrary.bobblelib
 
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.uiLibrary.bobblelib.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -15,5 +16,7 @@ class MainActivity : AppCompatActivity() {
         binding.fab.setOnClickListener {
             Toast.makeText(this,"This is a fab",Toast.LENGTH_SHORT).show()
         }
+        binding.button.setRadius(20f)
+        binding.button.isDarkTheme(true)
     }
 }
