@@ -1,5 +1,6 @@
 package com.uiLibrary.bobblelib
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
@@ -32,6 +33,12 @@ class MainActivity2 : AppCompatActivity() {
                     tab.text = "NEW ARRIVALS"
                 }
             }
+//            binding.tabLayout.setTextColor(Color.parseColor("#FFA726"))
+//            binding.tabLayout.setSelectedTabTextColor(Color.parseColor("#FFA726"))
+//            binding.tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#FFA726"))
+//            binding.tabLayout.setTabTextBold(true)
+            binding.tabLayout.setSelectedTabTextBold(true)
+            binding.tabLayout.isDarkTheme(true)
             binding.viewPager2.currentItem = 1
         }.attach()
     }
