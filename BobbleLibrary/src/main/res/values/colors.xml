@@ -13,9 +13,10 @@
     <color name="blue_Gray">#ECEFF1</color>
     <color name="dark_grey">#636363</color>
     <color name="blue_50">#E3F2FD</color>
+    <color name="bobble">#E0F7FA</color>
 
 
-    <color name="imageBackground">@color/blue_50</color>
+    <color name="imageBackground">@color/bobble</color>
     <color name="borderBackground">@color/white</color>
 
     <color name="textBoxColor">@color/white</color>

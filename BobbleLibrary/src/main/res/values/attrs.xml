@@ -2,17 +2,15 @@
 <resources>
 
     <attr name="customTheme" format="string" />
-    <attr name="corner_radius" format="dimension"/>
+    <attr name="corner_radius" format="dimension" />
     <attr name="borderColor" format="color|reference" />
     <attr name="borderWidth" format="dimension" />
 
     <declare-styleable name="BobbleButton">
         <attr name="customTheme" />
-        <attr name="android:backgroundTint"/>
-        <attr name="android:radius" format="integer"/>
-        <attr name="android:textColor"/>
-        <attr name="borderColor"/>
-        <attr name="borderWidth"/>
+        <attr name="android:backgroundTint" />
+        <attr name="cornerRadius"/>
+        <attr name="android:textColor" />
         <attr name="android:paddingTop" format="dimension" />
         <attr name="android:paddingBottom" format="dimension" />
         <attr name="android:paddingLeft" format="dimension" />
@@ -21,50 +19,49 @@
     </declare-styleable>
 
     <declare-styleable name="BobbleImage">
-        <attr name="padding" format="dimension" />
+        <attr name="android:padding" format="dimension" />
         <attr name="customTheme" />
         <attr name="backgroundColor" format="reference|color" />
     </declare-styleable>
 
     <declare-styleable name="BobbleFab">
-        <attr name="backgroundTint"/>
-        <attr name="android:backgroundTint"/>
+        <attr name="backgroundTint" />
+        <attr name="android:backgroundTint" />
         <attr name="android:src" format="reference|color" />
-        <attr name="maxImageSize" format="dimension"/>
-        <attr name="fabCustomSize" format="dimension"/>
-        <attr name="customTheme"/>
+        <attr name="maxImageSize" format="dimension" />
+        <attr name="fabCustomSize" format="dimension" />
+        <attr name="customTheme" />
     </declare-styleable>
 
     <declare-styleable name="BobbleCardView">
         <attr name="cardCornerRadius" format="dimension" />
-        <attr name="cardBackgroundColor" format="color"/>
-        <attr name="customTheme"/>
+        <attr name="cardBackgroundColor" format="color" />
+        <attr name="customTheme" />
     </declare-styleable>
 
     <declare-styleable name="BobbleEditText">
-        <attr name="corner_radius"/>
+        <attr name="corner_radius" />
         <attr name="textBoxColor" format="color" />
-        <attr name="borderColor"/>
-        <attr name="android:textColor"/>
-        <attr name="borderWidth"/>
-        <attr name="customTheme"/>
+        <attr name="borderColor" />
+        <attr name="android:textColor" />
+        <attr name="borderWidth" />
+        <attr name="customTheme" />
     </declare-styleable>
 
     <declare-styleable name="BobbleImageButton">
-        <attr name="customTheme"/>
-        <attr name="android:backgroundTint"/>
+        <attr name="customTheme" />
+        <attr name="android:backgroundTint" />
     </declare-styleable>
 
-
     <declare-styleable name="BobbleTabLayout">
-        <attr name="customTheme"/>
+        <attr name="customTheme" />
         <attr name="tabTextColor" format="color" />
         <attr name="tabSelectedTextColor" format="color" />
         <attr name="tabIndicatorColor" format="color" />
         <attr name="boldText" format="boolean" />
         <attr name="android:textSize" format="dimension" />
         <attr name="selectedTabBoldText" format="boolean" />
-        <attr name="android:background"/>
+        <attr name="android:background" />
     </declare-styleable>
 
 </resources>
