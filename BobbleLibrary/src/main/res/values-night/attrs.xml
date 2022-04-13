@@ -45,7 +45,6 @@
         <attr name="corner_radius"/>
         <attr name="textBoxColor" format="color" />
         <attr name="borderColor"/>
-        <attr name="android:textColor"/>
         <attr name="borderWidth"/>
         <attr name="customTheme"/>
     </declare-styleable>
@@ -55,6 +54,15 @@
         <attr name="android:backgroundTint"/>
     </declare-styleable>
 
+    <declare-styleable name="BobbleImageEditText">
+        <attr name="text" format="string" />
+        <attr name="customTheme"/>
+        <attr name="rightIcon" format="reference" />
+        <attr name="leftIcon" format="reference" />
+        <attr name="editTextHint" format="string" />
+        <attr name="inputType" format="string" />
+        <attr name="maxLength" format="integer" />
+    </declare-styleable>
 
     <declare-styleable name="BobbleTabLayout">
         <attr name="customTheme"/>
@@ -64,7 +72,11 @@
         <attr name="boldText" format="boolean" />
         <attr name="android:textSize" format="dimension" />
         <attr name="selectedTabBoldText" format="boolean" />
-        <attr name="android:background"/>
+        <attr name="android:paddingTop" format="dimension" />
+        <attr name="android:paddingBottom" format="dimension" />
+        <attr name="android:paddingLeft" format="dimension" />
+        <attr name="android:paddingRight" format="dimension" />
+        <attr name="android:padding" format="dimension" />
     </declare-styleable>
 
 </resources>

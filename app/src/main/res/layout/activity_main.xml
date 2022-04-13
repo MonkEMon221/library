@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
     android:orientation="vertical">
@@ -11,12 +12,8 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/vishesh"
-        android:textStyle="bold"
-        android:paddingStart="16dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:paddingEnd="16dp"/>
+        android:gravity="center"
+        android:text="@string/vishesh" />
 
     <com.uiLibrary.bobbleLibrary.BobbleImage
         android:id="@+id/image"
@@ -30,10 +27,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:backgroundTint="@color/teal_700"
-        app:fabSize="mini"
+        android:backgroundTint="@color/teal_200"
+        app:fabSize="normal"
         android:scaleType="centerCrop"
-        app:borderWidth="5dp"/>
+        app:borderWidth="2dp"/>
 
     <com.uiLibrary.bobbleLibrary.BobbleCardView
         android:id="@+id/card"
@@ -57,13 +54,6 @@
         android:layout_height="wrap_content"
         android:src="@drawable/add_cam"/>
 
-    <com.uiLibrary.bobbleLibrary.BobbleImageEditText
-        android:id="@+id/edit2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:editTextHint="@string/email"
-        app:leftIcon="@drawable/ic_search"
-        app:inputType="email"/>
 
 
 </LinearLayout>

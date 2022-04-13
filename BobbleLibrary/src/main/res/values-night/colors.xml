@@ -15,15 +15,15 @@
     <color name="blue_50">#E3F2FD</color>
 
 
-    <color name="imageBackground">@color/blue_50</color>
+    <color name="imageBackground">@color/grey</color>
     <color name="borderBackground">@color/white</color>
 
-    <color name="textBoxColor">@color/white</color>
-    <color name="borderColor">@color/black</color>
-    <color name="textColor">@color/lightGrey</color>
+    <color name="textBoxColor">@color/dark_grey</color>
+    <color name="borderColor">@color/white</color>
+    <color name="textColor">@color/white</color>
 
-    <color name="tabTextColor">@color/lightGrey</color>
-    <color name="tabSelectedTextColor">@color/black</color>
-    <color name="indicatorColor">@color/teal_200</color>
-    <color name="tabBackground">@color/white</color>
+    <color name="tabTextColor">@color/dark_grey</color>
+    <color name="tabSelectedTextColor">@color/white</color>
+    <color name="indicatorColor">@color/teal_700</color>
+    <color name="tabBackground">@color/lightGrey</color>
 </resources>

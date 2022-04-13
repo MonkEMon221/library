@@ -15,14 +15,14 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
-import androidx.core.view.children
 import androidx.core.view.setPadding
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 
@@ -32,148 +32,140 @@ fun dpToPx(context: Context, dp: Float): Float {
             context.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
 }
 
+//theme
+private const val lightMode = "light"
+private const val darkMode = "dark"
+private const val default = "default"
+
+fun applyTheme(theme: String?) {
+    when (theme) {
+        lightMode -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        darkMode -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        default -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+
+    }
+}
 
 //Button Library
 class BobbleButton @JvmOverloads constructor
-    (context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
-    AppCompatButton(context, attrs, defStyle) {
-
-    private val rectF = RectF()
-    private val paint = Paint()
+    (context: Context, attrs: AttributeSet? = null) :
+    MaterialButton(context, attrs) {
 
     //    attrs
-    private var buttonCornerRadius: Float
-    private var buttonBackgroundColor: Int
-    private var isDarkTheme: Boolean
-    private val textColor: Int
+    private var backgroundTint: ColorStateList?
+    private var radius: Int
+    private var color: ColorStateList?
+
+    private var customTheme: String?
+    private val padding: Float
+    private val paddingTop: Float
+    private val paddingBottom: Float
+    private val paddingLeft: Float
+    private val paddingRight: Float
     private val typedArray: TypedArray =
         context.theme.obtainStyledAttributes(attrs, R.styleable.BobbleButton, 0, 0)
 
     init {
-        buttonCornerRadius =
-            typedArray.getDimension(R.styleable.BobbleButton_circle_radius, dpToPx(context, 0f))
+        customTheme = typedArray.getString(R.styleable.BobbleButton_customTheme)
 
-        isDarkTheme =
-            typedArray.getBoolean(R.styleable.BobbleButton_isDarkTheme, false)
+        backgroundTint =
+            typedArray.getColorStateList(R.styleable.BobbleButton_android_backgroundTint)
 
-        //set different text color for different theme
-        textColor = if (!isDarkTheme) {
-            typedArray.getColor(
-                R.styleable.BobbleButton_android_textColor,
-                ContextCompat.getColor(getContext(), R.color.black)
+        backgroundTint = ContextCompat.getColorStateList(context, R.color.button_background)
+        backgroundTintList = backgroundTint
+
+        color = typedArray.getColorStateList(
+            R.styleable.BobbleButton_android_textColor
+        )
+        color = ContextCompat.getColorStateList(context, R.color.text_color)
+        textColor(color)
+
+        radius = typedArray.getInt(R.styleable.BobbleButton_android_radius, 100)
+        cornerRadius = radius
+
+        padding =
+            typedArray.getDimension(R.styleable.BobbleButton_android_padding, 0f)
+
+        paddingTop =
+            typedArray.getDimension(
+                R.styleable.BobbleButton_android_paddingTop,
+                dpToPx(context, 8f)
             )
+        paddingBottom =
+            typedArray.getDimension(
+                R.styleable.BobbleButton_android_paddingBottom,
+                dpToPx(context, 8f)
+            )
+        paddingLeft =
+            typedArray.getDimension(
+                R.styleable.BobbleButton_android_paddingLeft,
+                dpToPx(context, 24f)
+            )
+        paddingRight =
+            typedArray.getDimension(
+                R.styleable.BobbleButton_android_paddingRight,
+                dpToPx(context, 24f)
+            )
+
+        //preDefined padding
+        if (padding > 0f) {
+            setPadding(padding.toInt())
         } else {
-            typedArray
-                .getColor(
-                    R.styleable.BobbleButton_android_textColor,
-                    ContextCompat.getColor(getContext(), R.color.white)
-                )
+            setPadding(
+                paddingLeft.toInt(),
+                paddingTop.toInt(),
+                paddingRight.toInt(),
+                paddingBottom.toInt()
+            )
         }
-        setTextColor(textColor)
-
-        //set different background colors for different theme
-        buttonBackgroundColor =
-            if (!isDarkTheme) {
-                typedArray
-                    .getColor(
-                        R.styleable.BobbleButton_buttonColor,
-                        ContextCompat.getColor(getContext(), R.color.teal_200)
-                    )
-            } else {
-                typedArray
-                    .getColor(
-                        R.styleable.BobbleButton_buttonColor,
-                        ContextCompat.getColor(getContext(), R.color.dark_grey)
-                    )
-            }
         typedArray.recycle()
+        getTheme(customTheme)
     }
 
-    //draw button with adjustable radius
-    override fun onDraw(canvas: Canvas?) {
-        canvas ?: return
-        initPaint()
-        val offset = 0f
-        val radius = buttonCornerRadius
-        rectF.set(offset, offset, width.toFloat() - offset, height.toFloat() - offset)
-        canvas.drawRoundRect(rectF, radius, radius, paint)
-        super.onDraw(canvas)
+    fun textColor(color: ColorStateList?) {
+        setTextColor(color)
+    }
+    fun getTheme(theme: String?){
+        return applyTheme(theme)
     }
 
-    private fun initPaint() {
-        paint.style = Paint.Style.FILL
-        paint.color = buttonBackgroundColor
-        paint.isAntiAlias = true
-    }
-
-    fun setRadius(radius: Float) {
-        if (buttonCornerRadius != radius) {
-            buttonCornerRadius = radius
-            invalidate()
-        }
-    }
-
-    fun isDarkTheme(enable: Boolean) {
-        if (this.isDarkTheme != enable) {
-            this.isDarkTheme = enable
-            invalidate()
-            requestLayout()
-        }
-    }
-
-    fun buttonBackgroundColor(color: Int) {
-        this.buttonBackgroundColor = color
-        invalidate()
-    }
 }
 
 //Image Library
 class BobbleImage @JvmOverloads constructor
-    (context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
-    AppCompatImageView(context, attrs, defStyle) {
+    (context: Context, attrs: AttributeSet? = null) :
+    AppCompatImageView(context, attrs) {
 
     //attrs
     private val padding: Float
     private var background: Int
-    private var isDarkTheme: Boolean
+    private var customTheme: String?
     private val typedArray =
         context.theme.obtainStyledAttributes(attrs, R.styleable.BobbleImage, 0, 0)
 
     init {
-        isDarkTheme = typedArray.getBoolean(R.styleable.BobbleImage_isDarkTheme, false)
 
         //set different background colors for different theme
-        background = if (!isDarkTheme) {
+        customTheme = typedArray.getString(R.styleable.BobbleImage_customTheme)
+        background =
             typedArray.getColor(
                 R.styleable.BobbleImage_backgroundColor,
-                ContextCompat.getColor(getContext(), R.color.white)
+                ContextCompat.getColor(getContext(), R.color.imageBackground)
             )
-        } else {
-            typedArray.getColor(
-                R.styleable.BobbleImage_backgroundColor,
-                ContextCompat.getColor(getContext(), R.color.dark_grey)
-            )
-        }
-
         imageBackgroundColor(background)
+        getTheme(customTheme)
 
         //setting up predefined padding for the image view
         padding = typedArray.getDimension(R.styleable.BobbleImage_padding, dpToPx(context, 16f))
         setPadding(padding.toInt(), padding.toInt(), padding.toInt(), padding.toInt())
-
     }
 
     fun imageBackgroundColor(color: Int) {
         setBackgroundColor(color)
         invalidate()
     }
-
-    fun isDarkTheme(enable: Boolean) {
-        if (this.isDarkTheme != enable) {
-            this.isDarkTheme = enable
-            invalidate()
-            requestLayout()
-        }
+    fun getTheme(theme: String?){
+        return applyTheme(theme)
     }
 }
 
@@ -183,10 +175,10 @@ class BobbleFab @JvmOverloads constructor
     FloatingActionButton(context, attrs, defStyle) {
     //attrs
     private val fabCustomSize: Float
-    private val mazImageSize: Float
-    private var isDarkTheme: Boolean
-    private val borderBackgroundColor: Int
+    private val maxImageSize: Float
+    private var borderBackgroundColor: ColorStateList?
     private var fabIcon: Drawable?
+    private var customTheme: String?
     private val typedArray: TypedArray =
         context.obtainStyledAttributes(attrs, R.styleable.BobbleFab, 0, 0)
 
@@ -200,33 +192,22 @@ class BobbleFab @JvmOverloads constructor
         fabCustomSize(fabCustomSize)
 
         //preDefined fab image size
-        mazImageSize = typedArray.getDimension(R.styleable.BobbleFab_maxImageSize, iconSize)
-        maxImageSize(mazImageSize)
+        maxImageSize = typedArray.getDimension(R.styleable.BobbleFab_maxImageSize, iconSize)
+        maxImageSize(maxImageSize)
 
         //setting up different border color for different theme
-        isDarkTheme = typedArray.getBoolean(R.styleable.BobbleFab_isDarkTheme, false)
-        borderBackgroundColor = if (!isDarkTheme) {
-            typedArray.getColor(
-                R.styleable.BobbleFab_backgroundTint,
-                ContextCompat.getColor(getContext(), R.color.blue_Gray)
-            )
-        } else {
-            typedArray.getColor(
-                R.styleable.BobbleFab_backgroundTint,
-                ContextCompat.getColor(getContext(), R.color.grey)
-            )
-        }
-        fabBorderColor(borderBackgroundColor)
+        customTheme = typedArray.getString(R.styleable.BobbleFab_customTheme)
+
+        borderBackgroundColor = typedArray.getColorStateList(R.styleable.BobbleFab_backgroundTint)
+        borderBackgroundColor = ContextCompat.getColorStateList(context, R.color.borderBackground)
+        backgroundTintList = borderBackgroundColor
 
         //preDefined fab image
         fabIcon = typedArray.getDrawable(R.styleable.BobbleFab_android_src)
         fabIcon = ContextCompat.getDrawable(getContext(), R.drawable.add_cam)
         setImageDrawable(fabIcon)
+        getTheme(customTheme)
         typedArray.recycle()
-    }
-
-    fun fabBorderColor(color: Int) {
-        backgroundTintList = ColorStateList.valueOf(color)
     }
 
     fun maxImageSize(size: Float) {
@@ -236,13 +217,8 @@ class BobbleFab @JvmOverloads constructor
     fun fabCustomSize(size: Float) {
         customSize = size.toInt()
     }
-
-    fun isDarkTheme(enable: Boolean) {
-        if (this.isDarkTheme != enable) {
-            this.isDarkTheme = enable
-            invalidate()
-            requestLayout()
-        }
+    fun getTheme(theme: String?){
+        return applyTheme(theme)
     }
 }
 
@@ -252,7 +228,7 @@ class BobbleCardView @JvmOverloads constructor
     CardView(context, attrs, defStyle) {
     //attrs
     private val cardBackgroundColor: Int
-    private var isDarkTheme: Boolean
+    private var customTheme: String?
     private val cardRadius: Float
     private val typedArray: TypedArray =
         context.obtainStyledAttributes(attrs, R.styleable.BobbleCardView, 0, 0)
@@ -262,27 +238,22 @@ class BobbleCardView @JvmOverloads constructor
         //preDefined cardView Radius
         cardRadius = typedArray.getDimension(
             R.styleable.BobbleCardView_cardCornerRadius,
-            dpToPx(context, 30f)
+            dpToPx(context, 10f)
         )
         cardCornerRadius(cardRadius)
 
-        isDarkTheme = typedArray.getBoolean(R.styleable.BobbleCardView_isDarkTheme, false)
+        customTheme = typedArray.getString(R.styleable.BobbleCardView_customTheme)
 
         //card background color based on different theme.
-        cardBackgroundColor = if (!isDarkTheme) {
+        cardBackgroundColor =
             typedArray.getColor(
                 R.styleable.BobbleCardView_cardBackgroundColor,
-                ContextCompat.getColor(getContext(), R.color.white)
+                ContextCompat.getColor(getContext(), R.color.imageBackground)
             )
-        } else {
-            typedArray.getColor(
-                R.styleable.BobbleCardView_cardBackgroundColor,
-                ContextCompat.getColor(getContext(), R.color.dark_grey)
-            )
-        }
         cardBackGroundColor(cardBackgroundColor)
         backgroundTintList = null
 
+        getTheme(customTheme)
         typedArray.recycle()
     }
 
@@ -293,13 +264,8 @@ class BobbleCardView @JvmOverloads constructor
     fun cardCornerRadius(radius: Float) {
         setRadius(radius)
     }
-
-    fun isDarkTheme(enable: Boolean) {
-        if (this.isDarkTheme != enable) {
-            this.isDarkTheme = enable
-            invalidate()
-            requestLayout()
-        }
+    fun getTheme(theme: String?){
+        return applyTheme(theme)
     }
 }
 
@@ -309,7 +275,7 @@ class BobbleRoundCornerEditText @JvmOverloads constructor
     AppCompatEditText(context, attrs) {
 
     companion object {
-        private const val BORDER_OFFSET = 1F
+        private const val BORDER_OFFSET = 4f
     }
 
     private val rectF = RectF()
@@ -317,50 +283,46 @@ class BobbleRoundCornerEditText @JvmOverloads constructor
     private val borderPaint = Paint()
 
     //attrs
+    private var textColor: ColorStateList?
     private var cornerRadius: Float
     private var textBoxColor: Int
     private var borderColor: Int
     private var borderWidth: Float
-    private var isDarkTheme: Boolean
+    private var customTheme: String?
     private val typedArray =
         context.theme.obtainStyledAttributes(attrs, R.styleable.BobbleEditText, 0, 0)
 
     init {
+        isClickable = true
+        isFocusable = true
+
         cornerRadius =
             typedArray.getDimension(R.styleable.BobbleEditText_corner_radius, dpToPx(context, 30f))
 
-        isDarkTheme = typedArray.getBoolean(R.styleable.BobbleEditText_isDarkTheme, false)
+        customTheme = typedArray.getString(R.styleable.BobbleEditText_customTheme)
 
-        //text box color based on different themes
-        textBoxColor = if (!isDarkTheme) {
+        textColor = typedArray.getColorStateList(R.styleable.BobbleEditText_android_textColor)
+        textColor = ContextCompat.getColorStateList(context, R.color.textColor)
+
+        setTextColor(textColor)
+
+        textBoxColor =
             typedArray.getColor(
                 R.styleable.BobbleEditText_textBoxColor,
-                ContextCompat.getColor(getContext(), R.color.white)
+                ContextCompat.getColor(getContext(), R.color.textBoxColor)
             )
-        } else {
-            typedArray.getColor(
-                R.styleable.BobbleEditText_textBoxColor,
-                ContextCompat.getColor(getContext(), R.color.dark_grey)
-            )
-        }
         background = null
 
-        //border color based on different themes
-        borderColor = if (!isDarkTheme) {
+        borderColor =
             typedArray.getColor(
                 R.styleable.BobbleEditText_borderColor,
-                ContextCompat.getColor(getContext(), R.color.black)
+                ContextCompat.getColor(getContext(), R.color.borderColor)
             )
-        } else {
-            typedArray.getColor(
-                R.styleable.BobbleEditText_borderColor,
-                ContextCompat.getColor(getContext(), R.color.white)
-            )
-        }
 
         borderWidth =
-            typedArray.getDimension(R.styleable.BobbleEditText_borderWidth, dpToPx(context, 3f))
+            typedArray.getDimension(R.styleable.BobbleEditText_borderWidth, dpToPx(context, 1f))
 
+        getTheme(customTheme)
         typedArray.recycle()
     }
 
@@ -382,7 +344,7 @@ class BobbleRoundCornerEditText @JvmOverloads constructor
         paint.isAntiAlias = false
     }
 
-    //create border for edittext box
+    //   create border for edittext box
     private fun drawBorder(canvas: Canvas) {
         initBorderPaint()
         canvas.drawRoundRect(
@@ -400,7 +362,7 @@ class BobbleRoundCornerEditText @JvmOverloads constructor
         borderPaint.style = Paint.Style.STROKE
         borderPaint.strokeWidth = borderWidth
         borderPaint.color = borderColor
-        borderPaint.isAntiAlias = false
+        borderPaint.isAntiAlias = true
     }
 
     fun setRadius(radius: Float) {
@@ -431,12 +393,11 @@ class BobbleRoundCornerEditText @JvmOverloads constructor
         }
     }
 
-    fun isDarkTheme(enable: Boolean) {
-        if (this.isDarkTheme != enable) {
-            this.isDarkTheme = enable
-            invalidate()
-            requestLayout()
-        }
+    override fun setTextColor(colors: ColorStateList?) {
+        super.setTextColor(colors)
+    }
+    fun getTheme(theme: String?){
+        return applyTheme(theme)
     }
 }
 
@@ -446,135 +407,25 @@ class BobbleImageButton @JvmOverloads constructor(
 ) :
     AppCompatImageButton(context, attrs) {
     //attrs
-    private var isDarkTheme: Boolean
-    private val background: Int
+    private var customTheme: String?
+    private var background: ColorStateList?
     private val typedArray =
         context.theme.obtainStyledAttributes(attrs, R.styleable.BobbleImageButton, 0, 0)
 
     init {
-        isDarkTheme = typedArray.getBoolean(R.styleable.BobbleImageButton_isDarkTheme, false)
-
+        customTheme = typedArray.getString(R.styleable.BobbleImageButton_customTheme)
         //imageButton background color based on different themes
-        background = if (!isDarkTheme) {
-            typedArray.getColor(
-                R.styleable.BobbleImageButton_buttonBackGround,
-                ContextCompat.getColor(getContext(), R.color.white)
-            )
-        } else {
-            typedArray.getColor(
-                R.styleable.BobbleImageButton_buttonBackGround,
-                ContextCompat.getColor(getContext(), R.color.dark_grey)
-            )
-        }
-        setBackGroundColor(background)
+        background =
 
+            typedArray.getColorStateList(R.styleable.BobbleImageButton_android_backgroundTint)
+        background = ContextCompat.getColorStateList(context, R.color.button_background)
+        backgroundTintList = background
+        getTheme(customTheme)
         typedArray.recycle()
     }
-
-    fun setBackGroundColor(color: Int) {
-        backgroundTintList = ColorStateList.valueOf(color)
+    fun getTheme(theme: String?){
+        return applyTheme(theme)
     }
-
-    fun isDarkTheme(enable: Boolean) {
-        if (this.isDarkTheme != enable) {
-            this.isDarkTheme = enable
-            invalidate()
-            requestLayout()
-        }
-    }
-}
-
-//ImageEdittext Library
-class BobbleImageEditText @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
-) :
-    RelativeLayout(context, attrs, defStyleAttr) {
-    private var editText: EditText
-    private var leftIcon: ImageView
-    private var rightIcon: ImageView
-    private var layout: RelativeLayout
-
-    init {
-        inflate(context, R.layout.layout, this)
-        editText = findViewById(R.id.edit_text)
-        leftIcon = findViewById(R.id.image_view)
-        rightIcon = findViewById(R.id.error_image_view)
-        layout = findViewById(R.id.layout)
-        if (attrs != null) {
-            val typedArray =
-                context.theme.obtainStyledAttributes(attrs, R.styleable.BobbleImageEditText, 0, 0)
-
-            val text: String? = typedArray.getString(R.styleable.BobbleImageEditText_text)
-            val leftIcon: Drawable? =
-                typedArray.getDrawable(R.styleable.BobbleImageEditText_leftIcon)
-            val rightIcon: Drawable? =
-                typedArray.getDrawable(R.styleable.BobbleImageEditText_rightIcon)
-            val maxLength: Int = typedArray.getInt(R.styleable.BobbleImageEditText_maxLength, 50)
-            val hint: String? = typedArray.getString(R.styleable.BobbleImageEditText_editTextHint)
-            val inputType: String? = typedArray.getString(R.styleable.BobbleImageEditText_inputType)
-
-            setBackgroundColor(
-                Color.TRANSPARENT
-            )
-            typedArray.recycle()
-            setLeftIcon(leftIcon)
-            setHint(hint)
-            setRightIcon(rightIcon)
-            setMaxLength(maxLength)
-            setInputType(inputType)
-            setText(text)
-
-        }
-    }
-
-    fun setText(text: String?) {
-        editText.setText(text)
-    }
-
-    fun setMaxLength(maxLength: Int) {
-        val filterArray = arrayOfNulls<InputFilter>(1)
-        filterArray[0] = LengthFilter(maxLength)
-        editText.filters = filterArray
-    }
-
-    fun setInputType(input: String?) {
-        when (input) {
-            "email" -> editText.inputType =
-                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS or InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
-            "password" -> {
-                editText.inputType =
-                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-                editText.typeface = editText.typeface
-            }
-            "phone" -> editText.inputType = InputType.TYPE_CLASS_PHONE
-            "name" -> editText.inputType =
-                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_SENTENCES
-        }
-    }
-
-    fun setRightIcon(icon: Drawable?) {
-        if (icon == null) {
-            rightIcon.visibility = GONE
-        } else {
-            rightIcon.visibility = VISIBLE
-            rightIcon.setImageDrawable(icon)
-        }
-    }
-
-    fun setHint(hint: String?) {
-        editText.hint = hint
-    }
-
-    fun setLeftIcon(image: Drawable?) {
-        if (image == null) {
-            leftIcon.visibility = GONE
-        } else {
-            leftIcon.setImageDrawable(image)
-        }
-    }
-
 }
 
 // TabLayout Library
@@ -584,18 +435,15 @@ class BobbleTabLayout @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) :
     TabLayout(context, attrs, defStyleAttr), TabLayout.OnTabSelectedListener {
-    private var isDarkTheme: Boolean
+    private var customTheme: String?
     private var tabText: Int
     private var tabSelectedText: Int
     private var tabIndicatorColor: Int
     private var boldText: Boolean
     private var selectedTabBold: Boolean
     private val textSize: Float
-    private val padding: Float
-    private val paddingTop: Float
-    private val paddingBottom: Float
-    private val paddingLeft: Float
-    private val paddingRight: Float
+    private var background: Int
+
     private val typedArray =
         context.theme.obtainStyledAttributes(
             attrs, R.styleable.BobbleTabLayout, 0, 0
@@ -603,43 +451,27 @@ class BobbleTabLayout @JvmOverloads constructor(
 
     init {
 
-        isDarkTheme =
-            typedArray.getBoolean(R.styleable.BobbleTabLayout_isDarkTheme, false)
+        customTheme =
+            typedArray.getString(R.styleable.BobbleTabLayout_customTheme)
 
         //different tabText color/selected tab text color based on different themes.
-        if (isDarkTheme) {
-            tabText =
-                typedArray.getColor(
-                    R.styleable.BobbleTabLayout_tabTextColor,
-                    ContextCompat.getColor(getContext(), R.color.lightGrey)
-                )
+        tabText =
+            typedArray.getColor(
+                R.styleable.BobbleTabLayout_tabTextColor,
+                ContextCompat.getColor(getContext(), R.color.tabTextColor)
+            )
 
-            tabSelectedText =
-                typedArray.getColor(
-                    R.styleable.BobbleTabLayout_tabSelectedTextColor,
-                    ContextCompat.getColor(getContext(), R.color.white)
-                )
-
-        } else {
-            tabText =
-                typedArray.getColor(
-                    R.styleable.BobbleTabLayout_tabTextColor,
-                    ContextCompat.getColor(getContext(), R.color.lightGrey)
-                )
-
-            tabSelectedText =
-                typedArray.getColor(
-                    R.styleable.BobbleTabLayout_tabSelectedTextColor,
-                    ContextCompat.getColor(getContext(), R.color.black)
-                )
-
-        }
+        tabSelectedText =
+            typedArray.getColor(
+                R.styleable.BobbleTabLayout_tabSelectedTextColor,
+                ContextCompat.getColor(getContext(), R.color.tabSelectedTextColor)
+            )
 
         //preDefined tab indicator color
         tabIndicatorColor =
             typedArray.getColor(
                 R.styleable.BobbleTabLayout_tabIndicatorColor,
-                ContextCompat.getColor(getContext(), R.color.teal_700)
+                ContextCompat.getColor(getContext(), R.color.indicatorColor)
             )
         setSelectedTabIndicatorColor(tabIndicatorColor)
 
@@ -658,44 +490,14 @@ class BobbleTabLayout @JvmOverloads constructor(
                 dpToPx(context, 5f)
             )
 
-        padding =
-            typedArray.getDimension(R.styleable.BobbleTabLayout_android_padding, 0f)
-
-        paddingTop =
-            typedArray.getDimension(
-                R.styleable.BobbleTabLayout_android_paddingTop,
-                dpToPx(context, 12f)
-            )
-        paddingBottom =
-            typedArray.getDimension(
-                R.styleable.BobbleTabLayout_android_paddingBottom,
-                dpToPx(context, 12f)
-            )
-        paddingLeft =
-            typedArray.getDimension(
-                R.styleable.BobbleTabLayout_android_paddingLeft,
-                dpToPx(context, 12f)
-            )
-        paddingRight =
-            typedArray.getDimension(
-                R.styleable.BobbleTabLayout_android_paddingRight,
-                dpToPx(context, 12f)
-            )
-
-        //preDefined padding
-        if (padding > 0f) {
-            setPadding(padding.toInt())
-        } else {
-            setPadding(
-                paddingLeft.toInt(),
-                paddingTop.toInt(),
-                paddingRight.toInt(),
-                paddingBottom.toInt()
-            )
-        }
+        background = typedArray.getColor(
+            R.styleable.BobbleTabLayout_android_background,
+            ContextCompat.getColor(getContext(), R.color.tabBackground)
+        )
+        setBackgroundColor(background)
 
         typedArray.recycle()
-
+        getTheme(customTheme)
         addOnTabSelectedListener(this)
     }
 
@@ -732,11 +534,6 @@ class BobbleTabLayout @JvmOverloads constructor(
     override fun onTabReselected(tab: Tab?) {
     }
 
-    fun isDarkTheme(boolean: Boolean) {
-        if (isDarkTheme != boolean) {
-            isDarkTheme = boolean
-        }
-    }
 
     fun setTextColor(color: Int) {
         if (tabText != color) {
@@ -767,6 +564,9 @@ class BobbleTabLayout @JvmOverloads constructor(
         if (selectedTabBold != boolean) {
             selectedTabBold = boolean
         }
+    }
+    fun getTheme(theme: String?){
+        return applyTheme(theme)
     }
 }
 

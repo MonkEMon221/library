@@ -38,7 +38,6 @@ class MainActivity2 : AppCompatActivity() {
 //            binding.tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#FFA726"))
 //            binding.tabLayout.setTabTextBold(true)
             binding.tabLayout.setSelectedTabTextBold(true)
-            binding.tabLayout.isDarkTheme(true)
             binding.viewPager2.currentItem = 1
         }.attach()
     }
