@@ -23,6 +23,7 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.view.setPadding
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 
@@ -153,19 +154,15 @@ class BobbleImage @JvmOverloads constructor
                 R.styleable.BobbleImage_backgroundColor,
                 ContextCompat.getColor(getContext(), R.color.imageBackground)
             )
-        imageBackgroundColor(background)
+        setBackgroundColor(background)
         getTheme(customTheme)
 
         //setting up predefined padding for the image view
-        padding = typedArray.getDimension(R.styleable.BobbleImage_android_padding, dpToPx(context, 16f))
+        padding =
+            typedArray.getDimension(R.styleable.BobbleImage_android_padding, dpToPx(context, 16f))
         setPadding(padding.toInt(), padding.toInt(), padding.toInt(), padding.toInt())
     }
 
-
-    fun imageBackgroundColor(color: Int) {
-        setBackgroundColor(color)
-        invalidate()
-    }
 
     fun getTheme(theme: String?) {
         return applyTheme(theme)
@@ -179,7 +176,7 @@ class BobbleFab @JvmOverloads constructor
     //attrs
     private val fabCustomSize: Float
     private val maxImageSize: Float
-    private var borderBackgroundColor: ColorStateList?
+    private var borderBackgroundColor: Int
     private var fabIcon: Drawable?
     private var customTheme: String?
     private val typedArray: TypedArray =
@@ -200,10 +197,12 @@ class BobbleFab @JvmOverloads constructor
 
         //setting up different border color for different theme
         customTheme = typedArray.getString(R.styleable.BobbleFab_customTheme)
-
-        borderBackgroundColor = typedArray.getColorStateList(R.styleable.BobbleFab_backgroundTint)
-        borderBackgroundColor = ContextCompat.getColorStateList(context, R.color.borderBackground)
-        backgroundTintList = borderBackgroundColor
+        setBackgroundColor(R.color.purple_200)
+        borderBackgroundColor = typedArray.getColor(
+            R.styleable.BobbleFab_backgroundTint,
+            ContextCompat.getColor(context, R.color.borderBackground)
+        )
+        backgroundTintList = ColorStateList.valueOf(borderBackgroundColor)
 
         //preDefined fab image
         fabIcon = typedArray.getDrawable(R.styleable.BobbleFab_android_src)
@@ -228,8 +227,8 @@ class BobbleFab @JvmOverloads constructor
 
 //CardView Library
 class BobbleCardView @JvmOverloads constructor
-    (context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
-    CardView(context, attrs, defStyle) {
+    (context: Context, attrs: AttributeSet? = null) :
+    MaterialCardView(context, attrs) {
     //attrs
     private val cardBackgroundColor: Int
     private var customTheme: String?
@@ -264,12 +263,15 @@ class BobbleCardView @JvmOverloads constructor
     fun cardBackGroundColor(color: Int) {
         setCardBackgroundColor(color)
     }
+
     fun cardCornerRadius(radius: Float) {
         setRadius(radius)
     }
+
     fun getTheme(theme: String?) {
         return applyTheme(theme)
     }
+
 }
 
 //EditText Library
@@ -286,7 +288,7 @@ class BobbleRoundCornerEditText @JvmOverloads constructor
     private val borderPaint = Paint()
 
     //attrs
-    private var textColor:Int
+    private var textColor: Int
     private var cornerRadius: Float
     private var textBoxColor: Int
     private var borderColor: Int
@@ -304,8 +306,10 @@ class BobbleRoundCornerEditText @JvmOverloads constructor
 
         customTheme = typedArray.getString(R.styleable.BobbleEditText_customTheme)
 
-        textColor = typedArray.getColor(R.styleable.BobbleEditText_android_textColor,
-        ContextCompat.getColor(context,R.color.textColor))
+        textColor = typedArray.getColor(
+            R.styleable.BobbleEditText_android_textColor,
+            ContextCompat.getColor(context, R.color.textColor)
+        )
 
         setTextColor(textColor)
 
@@ -396,7 +400,7 @@ class BobbleRoundCornerEditText @JvmOverloads constructor
         }
     }
 
-    override fun setTextColor(colors:Int) {
+    override fun setTextColor(colors: Int) {
         super.setTextColor(colors)
     }
 
@@ -491,7 +495,7 @@ class BobbleTabLayout @JvmOverloads constructor(
         textSize =
             typedArray.getDimension(
                 R.styleable.BobbleTabLayout_android_textSize,
-                dpToPx(context, 5f)
+                12f
             )
 
         background = typedArray.getColor(
