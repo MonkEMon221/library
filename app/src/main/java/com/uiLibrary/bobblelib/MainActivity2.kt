@@ -27,7 +27,7 @@ class MainActivity2 : AppCompatActivity() {
         TabLayoutMediator(binding.tabLayout, binding.viewPager2) { tab, position ->
             when (position) {
                 0 -> {
-                    tab.text = "MY STORIES"
+                    tab.setIcon(R.drawable.ic_search)
                 }
                 1 -> {
                     tab.text = "NEW ARRIVALS"

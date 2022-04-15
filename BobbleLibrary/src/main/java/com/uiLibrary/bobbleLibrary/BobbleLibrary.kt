@@ -5,23 +5,20 @@ import android.content.res.ColorStateList
 import android.content.res.TypedArray
 import android.graphics.*
 import android.graphics.drawable.Drawable
-import android.text.InputFilter
-import android.text.InputFilter.LengthFilter
-import android.text.InputType
 import android.util.AttributeSet
 import android.util.DisplayMetrics
 import android.view.LayoutInflater
-import android.widget.EditText
+import android.view.View
 import android.widget.ImageView
-import android.widget.RelativeLayout
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.view.setPadding
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -451,7 +448,6 @@ class BobbleTabLayout @JvmOverloads constructor(
     private var selectedTabBold: Boolean
     private val textSize: Float
     private var background: Int
-
     private val typedArray =
         context.theme.obtainStyledAttributes(
             attrs, R.styleable.BobbleTabLayout, 0, 0
@@ -512,30 +508,34 @@ class BobbleTabLayout @JvmOverloads constructor(
     override fun addTab(tab: Tab, position: Int, setSelected: Boolean) {
         super.addTab(tab, position, setSelected)
 
-        val textView = LayoutInflater.from(context).inflate(R.layout.custom_tab, null) as TextView
-        textView.text = tab.text
-
-        textView.setTextColor(tabText)
-        textView.textSize = textSize
+        val layout = LayoutInflater.from(context).inflate(R.layout.tab_custom, null) as View
+        val text = layout.findViewById<TextView>(R.id.text1)
+        val image = layout.findViewById<ImageView>(R.id.imageLeft)
+        image.setImageDrawable(tab.icon)
+        text.text = tab.text
+        text.setTextColor(tabText)
+        text.textSize = textSize
         if (boldText)
-            textView.setTypeface(textView.typeface, Typeface.BOLD)
-
-        tab.customView = textView
+            text.setTypeface(text.typeface, Typeface.BOLD)
+        tab.customView = layout
     }
 
+
     override fun onTabSelected(tab: Tab?) {
-        val textView = tab!!.customView as TextView?
-        textView?.setTextColor(tabSelectedText)
+        val textView = tab!!.customView as LinearLayout
+        val text = textView.findViewById<TextView>(R.id.text1)
+        text.setTextColor(tabSelectedText)
         if (selectedTabBold) {
-            textView?.setTypeface(null, Typeface.BOLD)
+            text?.setTypeface(null, Typeface.BOLD)
         }
     }
 
     override fun onTabUnselected(tab: Tab?) {
-        val textView = tab!!.customView as TextView?
-        textView?.setTextColor(tabText)
+        val textView = tab!!.customView as LinearLayout
+        val text = textView.findViewById<TextView>(R.id.text1)
+        text.setTextColor(tabText)
         if (selectedTabBold) {
-            textView?.setTypeface(null, Typeface.NORMAL)
+            text?.setTypeface(null, Typeface.NORMAL)
         }
     }
 
@@ -548,6 +548,7 @@ class BobbleTabLayout @JvmOverloads constructor(
             tabText = color
         }
     }
+
 
     fun setSelectedTabTextColor(color: Int) {
         if (tabSelectedText != color) {
