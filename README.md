@@ -1,10 +1,10 @@
 
-## Bobble UI Library
+# Bobble UI Library
 
 Semi-customized libraries for Bobble ui application.
 
 
-## Customization And Attributes
+# Customization And Attributes
 
 Libraries -:
 
@@ -71,7 +71,7 @@ Libraries -:
 | app:customTheme  | "default"  | "dark"/"light" | set theme for BobbleTabLayout |
 
 
-## Initialising Programatically
+# Initializing Programatically
 
 
 Button
@@ -135,7 +135,7 @@ TabLayout
 ```
 
 
-## Installation
+# Installation
 
 Step 1. Add the JitPack repository to your build file
 
