@@ -71,6 +71,70 @@ Libraries -:
 | app:customTheme  | "default"  | "dark"/"light" | set theme for BobbleTabLayout |
 
 
+<h4>Initialization Programatically<h4>
+
+
+Button
+```bash
+        binding.button.cornerRadius  = 22   //Change Button Radius
+        binding.button.backgroundColor(ColorStateList.valueOf(Color.CYAN))   //Change Button Color
+        binding.button.buttonTextColor(ColorStateList.valueOf(Color.BLACK))  //Change Button Text Color
+        binding.button.getTheme("dark")     //Set Dark Theme
+        binding.button,isEnabled = false    //Disable Button
+```
+ImageView
+```bash
+        binding.image.setBackgroundColor(Color.parseColor("#FFA726"))   //Change Image Background
+        binding.image.getTheme("dark")   //Set Dark Theme
+```
+Floating Action Button
+```bash
+        binding.fab.backgroundTintList = ColorStateList.valueOf(Color.BLUE) //Create border Color
+        binding.fab.getTheme("dark")    //Set Dark Theme
+        binding.fab.maxImageSize(40f)   //Set Fab icon Size
+        binding.fab.fabCustomSize(90f)  //Set Fab Size
+```
+CardView
+```bash
+        binding.card.cardBackGroundColor(Color.parseColor("#FFA726"))   //Set Card Background Color
+        binding.card.cardCornerRadius(0f)   //Set Card Corner Radius
+        binding.card.getTheme("dark")   //Set Dark Theme
+```
+EditText
+```bash
+        binding.edit.setRadius(0f)   //set EditText box radius
+        binding.edit.setBorderWidth(2f)  //set box width
+        binding.edit.borderColor(Color.parseColor("#E05021"))   //set edit box border color
+        binding.edit.textBoxColor(Color.parseColor("#FFA726"))  //set edit box color
+        binding.edit.getTheme("dark")   //Set Dark Theme
+```
+ImageButton
+```bash
+        binding.imgButton.imageButtonBackgroundColor(ColorStateList.valueOf(Color.BLUE))  //set image button background color
+        binding.imgButton.getTheme("dark")   //Set Dark Theme
+        binding.imgButton.isEnabled = false  //Disable image button
+```
+TabLayout  
+```bash
+         TabLayoutMediator(binding.tabLayout, binding.viewPager2) { tab, position ->
+            when (position) {
+                0 -> {
+                    tab.setIcon(R.drawable.ic_search)   //set tab icon
+                }
+                1 -> {
+                    tab.text = "TAB"  //set tab text
+                }
+            }
+            binding.tabLayout.setTextColor(Color.parseColor("#FFA726"))   //set tab text color
+            binding.tabLayout.setSelectedTabTextColor(Color.parseColor("#FFA726"))   //set selected tab text color
+            binding.tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#FFA726"))   //set tab indicator color
+            binding.tabLayout.setTabTextBold(true)   //set tab text as bold
+            binding.tabLayout.setSelectedTabTextBold(true)    //set selected tab text as bold
+            binding.tabLayout.getTheme("dark")   //Set Dark Theme
+        }.attach()
+```
+
+
 ## Installation
 
 Step 1. Add the JitPack repository to your build file
