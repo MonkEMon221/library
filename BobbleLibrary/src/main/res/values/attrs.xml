@@ -8,7 +8,7 @@
 
     <declare-styleable name="BobbleButton">
         <attr name="customTheme" />
-        <attr name="android:backgroundTint" />
+        <attr name="backgroundTint" />
         <attr name="cornerRadius"/>
         <attr name="android:textColor" />
         <attr name="android:paddingTop" format="dimension" />

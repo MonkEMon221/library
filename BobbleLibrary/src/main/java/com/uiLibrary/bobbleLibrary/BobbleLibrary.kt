@@ -52,7 +52,7 @@ class BobbleButton @JvmOverloads constructor
     //    attrs
     private var backgroundTint: ColorStateList?
     private var radius: Float
-    private var textColor: ColorStateList?
+    private var text: ColorStateList?
 
     private var customTheme: String?
     private val padding: Float
@@ -67,18 +67,18 @@ class BobbleButton @JvmOverloads constructor
         customTheme = typedArray.getString(R.styleable.BobbleButton_customTheme)
 
         backgroundTint =
-            typedArray.getColorStateList(R.styleable.BobbleButton_android_backgroundTint)
+            typedArray.getColorStateList(
+                R.styleable.BobbleButton_backgroundTint
+            )
+        backgroundColor(backgroundTint)
 
-        backgroundTint = ContextCompat.getColorStateList(context, R.color.button_background)
-        backgroundTintList = backgroundTint
-
-        textColor = typedArray.getColorStateList(
+        text = typedArray.getColorStateList(
             R.styleable.BobbleButton_android_textColor
         )
-        textColor = ContextCompat.getColorStateList(context, R.color.text_color)
-        setTextColor(textColor)
+        buttonTextColor(text)
 
-        radius = typedArray.getDimension(R.styleable.BobbleButton_cornerRadius, 100f)
+        radius =
+            typedArray.getDimension(R.styleable.BobbleButton_cornerRadius, dpToPx(context, 30f))
         cornerRadius = radius.toInt()
 
         padding =
@@ -120,14 +120,29 @@ class BobbleButton @JvmOverloads constructor
         getTheme(customTheme)
     }
 
-    override fun setTextColor(colors: ColorStateList?) {
-        super.setTextColor(colors)
-    }
-
     fun getTheme(theme: String?) {
         return applyTheme(theme)
     }
 
+    fun buttonTextColor(tint: ColorStateList?){
+        if (tint == null) {
+            text = ContextCompat.getColorStateList(context, R.color.text_color)
+        }
+        else{
+            text = tint
+        }
+        setTextColor(text)
+    }
+
+    fun backgroundColor(tintList: ColorStateList?) {
+        if (tintList == null) {
+            backgroundTint = ContextCompat.getColorStateList(context, R.color.button_background)
+        }
+        else{
+            backgroundTint = tintList
+        }
+        backgroundTintList = backgroundTint
+    }
 }
 
 //Image Library
@@ -203,7 +218,6 @@ class BobbleFab @JvmOverloads constructor
 
         //preDefined fab image
         fabIcon = typedArray.getDrawable(R.styleable.BobbleFab_android_src)
-        fabIcon = ContextCompat.getDrawable(getContext(), R.drawable.add_cam)
         setImageDrawable(fabIcon)
         getTheme(customTheme)
         typedArray.recycle()
@@ -421,15 +435,27 @@ class BobbleImageButton @JvmOverloads constructor(
         customTheme = typedArray.getString(R.styleable.BobbleImageButton_customTheme)
         //imageButton background color based on different themes
         background =
-            typedArray.getColorStateList(R.styleable.BobbleImageButton_android_backgroundTint)
-        background = ContextCompat.getColorStateList(context, R.color.button_background)
-        backgroundTintList = background
+            typedArray.getColorStateList(
+                R.styleable.BobbleImageButton_android_backgroundTint
+            )
+        imageButtonBackgroundColor(background)
+
         getTheme(customTheme)
         typedArray.recycle()
     }
 
     fun getTheme(theme: String?) {
         return applyTheme(theme)
+    }
+
+    fun imageButtonBackgroundColor(tint: ColorStateList?) {
+        if (tint == null) {
+            background = ContextCompat.getColorStateList(context, R.color.button_background)
+        }
+        else{
+            background = tint
+        }
+        backgroundTintList = background
     }
 }
 
@@ -541,7 +567,6 @@ class BobbleTabLayout @JvmOverloads constructor(
 
     override fun onTabReselected(tab: Tab?) {
     }
-
 
     fun setTextColor(color: Int) {
         if (tabText != color) {
