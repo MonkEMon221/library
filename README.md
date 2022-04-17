@@ -12,9 +12,10 @@ Libraries -:
 
 | Attribute Name  | Default Value | Example Value | Description |
 | ------------- | ------------- | ------------ | ------------- |
-| app:buttonColor  | #03DAC5(Light) #636363(Dark) | @color/colorAccent | Color of Button |
-| app:circle_radius  | 45dp  | 35dp | adjust radius of button |
-| app:isDarkTheme  | false  | true | set theme for button |
+| app:backgroundTint  | #018786(Light) #E0E0E0(Dark) | @color/colorAccent | Color of Button |
+| android:textColor  | #FFFFFF(Light) #636363(Dark) | @color/colorAccent | Color of Button Text |
+| app:cornerRadius  | 30dp  | 35dp | adjust radius of button |
+| app:customTheme  | "default"  | "dark"/"light" | set theme for button |
 
 2. BobbleImage
 
