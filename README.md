@@ -71,7 +71,7 @@ Libraries -:
 | app:customTheme  | "default"  | "dark"/"light" | set theme for BobbleTabLayout |
 
 
-## Initialization Programatically
+## Initialising Programatically
 
 
 Button
