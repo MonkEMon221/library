@@ -80,7 +80,7 @@ Button
         binding.button.backgroundColor(ColorStateList.valueOf(Color.CYAN))   //Change Button Color
         binding.button.buttonTextColor(ColorStateList.valueOf(Color.BLACK))  //Change Button Text Color
         binding.button.getTheme("dark")     //Set Dark Theme
-        binding.button,isEnabled = false    //Disable Button
+        binding.button.isEnabled = false    //Disable Button
 ```
 ImageView
 ```bash
@@ -110,7 +110,7 @@ EditText
 ```
 ImageButton
 ```bash
-        binding.imgButton.imageButtonBackgroundColor(ColorStateList.valueOf(Color.BLUE))  //set image button background color
+        binding.imgButton.backgroundColor(ColorStateList.valueOf(Color.BLUE))  //set image button background color
         binding.imgButton.getTheme("dark")   //Set Dark Theme
         binding.imgButton.isEnabled = false  //Disable image button
 ```
@@ -127,7 +127,7 @@ TabLayout
             }
             binding.tabLayout.setTextColor(Color.parseColor("#FFA726"))   //set tab text color
             binding.tabLayout.setSelectedTabTextColor(Color.parseColor("#FFA726"))   //set selected tab text color
-            binding.tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#FFA726"))   //set tab indicator color
+            binding.tabLayout.setIndicatorColor(Color.parseColor("#FFA726"))   //set tab indicator color
             binding.tabLayout.setTabTextBold(true)   //set tab text as bold
             binding.tabLayout.setSelectedTabTextBold(true)    //set selected tab text as bold
             binding.tabLayout.getTheme("dark")   //Set Dark Theme
