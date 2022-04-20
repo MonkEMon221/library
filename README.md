@@ -12,7 +12,7 @@ Libraries -:
 
 | Attribute Name  | Default Value | Example Value | Description |
 | ------------- | ------------- | ------------ | ------------- |
-| app:backgroundTint  |Enabled :- #018786(Light) #E0E0E0(Dark) <br /> On Pressed :- #636363(Light) #636363(Dark) <br /> Disabled :- #E0E0E0(Light) #9E9E9E(Dark)  | @color/colorAccent | Color of Button |
+| app:backgroundTint  |Enabled :- #018786(Light) #E0E0E0(Dark) <br />  <br /> On Pressed :- #636363(Light) #636363(Dark) <br />  <br />  Disabled :- #E0E0E0(Light) #9E9E9E(Dark)  | @color/colorAccent | Color of Button |
 | android:textColor  | Enabled :- #FFFFFF(Light) #636363(Dark) <br /> On Pressed :- #FFFFFF(Light) #FFFFFF(Dark) <br /> Disabled :- #636363(Light) #9E9E9E(Dark)  | @color/colorAccent | Color of Button Text |
 | app:cornerRadius  | 30dp  | 35dp | adjust radius of button |
 | app:customTheme  | "default"  | "dark"/"light" | set theme for button |
