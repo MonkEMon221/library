@@ -76,7 +76,7 @@ Libraries -:
 
 Button
 ```bash
-        binding.button.cornerRadius  = 22   //Change Button Radius
+        binding.button.buttonCornerRadius(22f)   //Change Button Radius
         binding.button.backgroundColor(ColorStateList.valueOf(Color.CYAN))   //Change Button Color
         binding.button.buttonTextColor(ColorStateList.valueOf(Color.BLACK))  //Change Button Text Color
         binding.button.getTheme("dark")     //Set Dark Theme
