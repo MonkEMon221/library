@@ -80,7 +80,7 @@ Button
         binding.button.backgroundColor(ColorStateList.valueOf(Color.CYAN))   //Change Button Color
         binding.button.buttonTextColor(ColorStateList.valueOf(Color.BLACK))  //Change Button Text Color
         binding.button.setTheme("dark")     //Set Dark Theme
-        binding.button.isEnabled = false    //Disable Button
+        binding.button.setEnable(false)   //Disable Button
 ```
 ImageView
 ```bash
@@ -112,7 +112,7 @@ ImageButton
 ```bash
         binding.imgButton.backgroundColor(ColorStateList.valueOf(Color.BLUE))  //set image button background color
         binding.imgButton.setTheme("dark")   //Set Dark Theme
-        binding.imgButton.isEnabled = false  //Disable image button
+        binding.imgButton.setEnable(false)  //Disable image button
 ```
 TabLayout  
 ```bash
