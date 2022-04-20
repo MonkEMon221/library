@@ -79,18 +79,18 @@ Button
         binding.button.buttonCornerRadius(22f)   //Change Button Radius
         binding.button.backgroundColor(ColorStateList.valueOf(Color.CYAN))   //Change Button Color
         binding.button.buttonTextColor(ColorStateList.valueOf(Color.BLACK))  //Change Button Text Color
-        binding.button.getTheme("dark")     //Set Dark Theme
+        binding.button.setTheme("dark")     //Set Dark Theme
         binding.button.isEnabled = false    //Disable Button
 ```
 ImageView
 ```bash
         binding.image.setBackgroundColor(Color.parseColor("#FFA726"))   //Change Image Background
-        binding.image.getTheme("dark")   //Set Dark Theme
+        binding.image.setTheme("dark")   //Set Dark Theme
 ```
 Floating Action Button
 ```bash
         binding.fab.backgroundTintList = ColorStateList.valueOf(Color.BLUE) //Create border Color
-        binding.fab.getTheme("dark")    //Set Dark Theme
+        binding.fab.setTheme("dark")    //Set Dark Theme
         binding.fab.maxImageSize(40f)   //Set Fab icon Size
         binding.fab.fabCustomSize(90f)  //Set Fab Size
 ```
@@ -98,7 +98,7 @@ CardView
 ```bash
         binding.card.cardBackGroundColor(Color.parseColor("#FFA726"))   //Set Card Background Color
         binding.card.cardCornerRadius(0f)   //Set Card Corner Radius
-        binding.card.getTheme("dark")   //Set Dark Theme
+        binding.card.setTheme("dark")   //Set Dark Theme
 ```
 EditText
 ```bash
@@ -106,12 +106,12 @@ EditText
         binding.edit.setBorderWidth(2f)  //set box width
         binding.edit.borderColor(Color.parseColor("#E05021"))   //set edit box border color
         binding.edit.textBoxColor(Color.parseColor("#FFA726"))  //set edit box color
-        binding.edit.getTheme("dark")   //Set Dark Theme
+        binding.edit.setTheme("dark")   //Set Dark Theme
 ```
 ImageButton
 ```bash
         binding.imgButton.backgroundColor(ColorStateList.valueOf(Color.BLUE))  //set image button background color
-        binding.imgButton.getTheme("dark")   //Set Dark Theme
+        binding.imgButton.setTheme("dark")   //Set Dark Theme
         binding.imgButton.isEnabled = false  //Disable image button
 ```
 TabLayout  
@@ -130,7 +130,7 @@ TabLayout
             binding.tabLayout.setIndicatorColor(Color.parseColor("#FFA726"))   //set tab indicator color
             binding.tabLayout.setTabTextBold(true)   //set tab text as bold
             binding.tabLayout.setSelectedTabTextBold(true)    //set selected tab text as bold
-            binding.tabLayout.getTheme("dark")   //Set Dark Theme
+            binding.tabLayout.setTheme("dark")   //Set Dark Theme
         }.attach()
 ```
 
