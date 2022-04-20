@@ -22,6 +22,7 @@ Libraries -:
 | Attribute Name  | Default Value | Example Value | Description |
 | ------------- | ------------- | ------------ | ------------- |
 | app:backgroundColor  |#E0F7FA(Light) #212121(Dark) | @color/colorAccent | background color of ImageView
+| app:imageColor  |#000000(Light) #FFFFFF(Dark) | @color/colorAccent |set Color of image in imageView
 | app:customTheme  | "default"  | "dark"/"light" | set theme for ImageView |
 
 3. BobbleFab
@@ -85,6 +86,7 @@ Button
 ImageView
 ```bash
         binding.image.setBackgroundColor(Color.parseColor("#FFA726"))   //Change Image Background
+	binding.image.setImageColor(R.color.gray)    //Change Color of a Svg Image
         binding.image.setTheme("dark")   //Set Dark Theme
 ```
 Floating Action Button
