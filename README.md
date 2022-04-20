@@ -41,7 +41,7 @@ Libraries -:
 | app:cardCornerRadius  | 30dp  | 35dp | adjust radius of CardView |
 | app:customTheme  | "default"  | "dark"/"light" | set theme for CardView |
 
-5. BobbleRoundCornerEditText
+5. BobbleEditText
 
 | Attribute Name  | Default Value | Example Value | Description |
 | ------------- | ------------- | ------------ | ------------- |
