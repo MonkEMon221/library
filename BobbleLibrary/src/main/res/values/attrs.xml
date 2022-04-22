@@ -75,6 +75,7 @@
 
         <attr name="backgroundColor1" format="reference|color" />
         <attr name="imageColor1" format="color" />
+        <attr name="colorFilter1" format="boolean"/>
         <attr name="src1" format="color|reference"/>
         <attr name="paddingTopImage1" format="dimension" />
         <attr name="paddingBottomImage1" format="dimension" />
@@ -91,6 +92,7 @@
 
         <attr name="backgroundColor2" format="reference|color" />
         <attr name="imageColor2" format="color" />
+        <attr name="colorFilter2" format="boolean"/>
         <attr name="src2" format="color|reference"/>
         <attr name="paddingTopImage2" format="dimension" />
         <attr name="paddingBottomImage2" format="dimension" />

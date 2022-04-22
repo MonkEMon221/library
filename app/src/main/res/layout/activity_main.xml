@@ -31,8 +31,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:scaleType="centerCrop"
         android:backgroundTint="@color/grey"
+        android:scaleType="centerCrop"
         app:fabSize="normal" />
 
     <com.uiLibrary.bobbleLibrary.BobbleCardView
@@ -56,6 +56,6 @@
         android:id="@+id/imgButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/add_cam"/>
+        android:src="@drawable/add_cam" />
 
 </LinearLayout>

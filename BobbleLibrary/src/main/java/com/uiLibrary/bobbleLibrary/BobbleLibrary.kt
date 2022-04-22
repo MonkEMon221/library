@@ -6,6 +6,8 @@ import android.content.res.ColorStateList
 import android.content.res.TypedArray
 import android.graphics.*
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.VectorDrawable
+import android.media.Image
 import android.util.AttributeSet
 import android.util.DisplayMetrics
 import android.view.Gravity
@@ -27,6 +29,8 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
+import java.lang.reflect.Type
+import java.util.*
 
 //dp value to pixel value function
 fun dpToPx(context: Context, dp: Float): Float {
@@ -671,6 +675,7 @@ class BobbleImage @JvmOverloads constructor(
     private var src1: Drawable?
     private var backgroundColor1: Int
     private var imageColor1: Int
+    private var image1HasColorFilter: Boolean = true
     private var translationZImage1: Float
     private var gravityImage1: String?
     private var paddingImage1: Float
@@ -686,6 +691,7 @@ class BobbleImage @JvmOverloads constructor(
 
     private var src2: Drawable?
     private var backgroundColor2: Int
+    private var image2HasColorFilter: Boolean = true
     private var imageColor2: Int
     private var translationZImage2: Float
     private var gravityImage2: String?
@@ -767,14 +773,21 @@ class BobbleImage @JvmOverloads constructor(
         )
         backgroundColorImage1(backgroundColor1)
 
+        src1 = typedArray.getDrawable(R.styleable.BobbleImage_src1)
+        setImage1Drawable(src1)
+
+        image1HasColorFilter =
+            typedArray.getBoolean(R.styleable.BobbleImage_colorFilter1, image1HasColorFilter)
+
         imageColor1 = typedArray.getColor(
             R.styleable.BobbleImage_imageColor1,
             ContextCompat.getColor(getContext(), R.color.imageColor)
         )
-        image1.setColorFilter(imageColor1)
-
-        src1 = typedArray.getDrawable(R.styleable.BobbleImage_src1)
-        setImage1Drawable(src1)
+        if (image1HasColorFilter) {
+            image1.setColorFilter(imageColor1, PorterDuff.Mode.SRC_ATOP)
+        } else {
+            image1.setColorFilter(null)
+        }
 
         translationZImage1 = typedArray.getDimension(R.styleable.BobbleImage_translationZImage1, 0f)
         setTranslationZImage1(translationZImage1)
@@ -865,11 +878,18 @@ class BobbleImage @JvmOverloads constructor(
         src2 = typedArray.getDrawable(R.styleable.BobbleImage_src2)
         setImage2Drawable(src2)
 
+        image2HasColorFilter =
+            typedArray.getBoolean(R.styleable.BobbleImage_colorFilter2, image2HasColorFilter)
         imageColor2 = typedArray.getColor(
             R.styleable.BobbleImage_imageColor2,
             ContextCompat.getColor(getContext(), R.color.imageColor)
         )
-        image2.setColorFilter(imageColor2)
+        if (image2HasColorFilter){
+            image2.setColorFilter(imageColor2, PorterDuff.Mode.SRC_ATOP)
+        }
+        else{
+            image2.setColorFilter(null)
+        }
 
         translationZImage2 = typedArray.getDimension(R.styleable.BobbleImage_translationZImage2, 0f)
         setTranslationZImage2(translationZImage2)
@@ -964,8 +984,8 @@ class BobbleImage @JvmOverloads constructor(
         image1.setBackgroundColor(color)
     }
 
-    fun setImage1Color(color: Int) {
-        image1.setColorFilter(ContextCompat.getColor(context, color), PorterDuff.Mode.SRC_IN)
+    fun setImage1Color(color: Int, mode: PorterDuff.Mode) {
+        image1.setColorFilter(ContextCompat.getColor(context, color), mode)
     }
 
     fun setImage1Drawable(id: Drawable?) {
@@ -997,8 +1017,8 @@ class BobbleImage @JvmOverloads constructor(
         image2.setBackgroundColor(color)
     }
 
-    fun setImage2Color(color: Int) {
-        image2.setColorFilter(ContextCompat.getColor(context, color), PorterDuff.Mode.SRC_IN)
+    fun setImage2Color(color: Int, mode: PorterDuff.Mode) {
+        image2.setColorFilter(ContextCompat.getColor(context, color), mode)
     }
 
     fun setImage2Drawable(id: Drawable?) {
