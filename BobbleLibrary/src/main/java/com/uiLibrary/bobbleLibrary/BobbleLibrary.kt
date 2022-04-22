@@ -857,7 +857,7 @@ class BobbleImage @JvmOverloads constructor(
         backgroundColor2 = typedArray.getColor(
             R.styleable.BobbleImage_backgroundColor2,
             ContextCompat.getColor(
-                getContext(), R.color.bobble
+                getContext(), R.color.imageBackground
             )
         )
         backgroundColorImage2(backgroundColor2)
