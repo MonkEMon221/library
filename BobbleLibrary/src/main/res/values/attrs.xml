@@ -17,13 +17,6 @@
         <attr name="android:padding" format="dimension" />
     </declare-styleable>
 
-    <!--    <declare-styleable name="BobbleImage">-->
-    <!--        <attr name="android:padding" format="dimension" />-->
-    <!--        <attr name="customTheme" />-->
-    <!--        <attr name="backgroundColor" format="reference|color" />-->
-    <!--        <attr name="imageColor" format="color"/>-->
-    <!--    </declare-styleable>-->
-
     <declare-styleable name="BobbleFab">
         <attr name="backgroundTint" />
         <attr name="android:backgroundTint" />

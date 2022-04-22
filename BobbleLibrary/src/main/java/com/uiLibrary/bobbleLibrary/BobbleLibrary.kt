@@ -183,55 +183,6 @@ class BobbleButton @JvmOverloads constructor
     }
 }
 
-//Image Library
-//class BobbleImage @JvmOverloads constructor
-//    (context: Context, attrs: AttributeSet? = null) :
-//    AppCompatImageView(context, attrs) {
-//
-//    //attrs
-//    private val padding: Float
-//    private var background: Int
-//    private var imageColor: Int
-//    private var customTheme: String?
-//    private val typedArray =
-//        context.theme.obtainStyledAttributes(attrs, R.styleable.BobbleImage, 0, 0)
-//
-//    init {
-//
-//        //set different background colors for different theme
-//        customTheme = typedArray.getString(R.styleable.BobbleImage_customTheme)
-//        background =
-//            typedArray.getColor(
-//                R.styleable.BobbleImage_backgroundColor,
-//                ContextCompat.getColor(getContext(), R.color.imageBackground)
-//            )
-//        setBackgroundColor(background)
-//
-//        imageColor = typedArray.getColor(
-//            R.styleable.BobbleImage_imageColor,
-//            ContextCompat.getColor(getContext(), R.color.imageColor)
-//        )
-//
-//        setColorFilter(imageColor, PorterDuff.Mode.SRC_IN)
-//
-//        setTheme(customTheme)
-//
-//        //setting up predefined padding for the image view
-//        padding =
-//            typedArray.getDimension(R.styleable.BobbleImage_android_padding, dpToPx(context, 16f))
-//        setPadding(padding.toInt(), padding.toInt(), padding.toInt(), padding.toInt())
-//    }
-//
-//
-//    fun setTheme(theme: String?) {
-//        return applyTheme(theme)
-//    }
-//
-//    fun setImageColor(color: Int) {
-//        setColorFilter(ContextCompat.getColor(context, color), PorterDuff.Mode.SRC_IN)
-//    }
-//}
-
 //Fab Library
 class BobbleFab @JvmOverloads constructor
     (context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
