@@ -1,8 +1,11 @@
 package com.uiLibrary.bobblelib
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.uiLibrary.bobblelib.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -14,38 +17,33 @@ class MainActivity : AppCompatActivity() {
         binding.fab.setOnClickListener {
             Toast.makeText(this, "This is a fab", Toast.LENGTH_SHORT).show()
         }
-//        binding.button.setRadius(20f)
-//        binding.button.buttonBackgroundColor(Color.TRANSPARENT)
+//        binding.button.buttonCornerRadius(0f)
+//        binding.button.backgroundColor(ColorStateList.valueOf(Color.CYAN))
+//        binding.button.buttonTextColor(ColorStateList.valueOf(Color.BLACK))
+//        binding.button.setTheme("dark")
+        binding.button.setEnable(false)
 
-//        binding.image.imageBackgroundColor(Color.parseColor("#FFA726"))
+//        binding.image.setBackgroundColor(Color.parseColor("#FFA726"))
+//        binding.image.setTheme("dark")
 //
-//        binding.fab.fabBorderColor(Color.parseColor("#FFA726"))
-//        binding.fab.maxImageSize(40f)
-//        binding.fab.fabCustomSize(90f)
+        binding.fab.backgroundTintList = ColorStateList.valueOf(Color.BLUE)
+        binding.fab.maxImageSize(40f)
+        binding.fab.fabCustomSize(90f)
+//        binding.fab.setTheme("dark")
 
-//        binding.card.cardBackGroundColor(Color.parseColor("#FFA726"))
-//        binding.card.cardCornerRadius(0f)
+        binding.card.cardBackGroundColor(Color.parseColor("#FFA726"))
+        binding.card.cardCornerRadius(0f)
+//        binding.card.setTheme("dark")
 
-//        binding.edit.setRadius(0f)
-//        binding.edit.setBorderWidth(2f)
-//        binding.edit.borderColor(Color.parseColor("#E05021"))
-//        binding.edit.textBoxColor(Color.parseColor("#FFA726"))
-//        binding.edit.setCompoundDrawablesWithIntrinsicBounds(
-//            ContextCompat.getDrawable(this, R.drawable.ic_search),
-//            null,
-//            null,
-//            null
-//        )
+        binding.edit.setRadius(0f)
+        binding.edit.setBorderWidth(2f)
+        binding.edit.borderColor(Color.parseColor("#E05021"))
+        binding.edit.textBoxColor(Color.parseColor("#FFA726"))
+//        binding.edit.setTheme("dark")
 
-//        binding.imgButton.setBackGroundColor(Color.parseColor("#FFA726"))
-//
-//        binding.edit2.setText("Random")
-//        binding.edit2.setHint("Phone")
-//        binding.edit2.setInputType("password")
-//        binding.edit2.setLeftIcon(ContextCompat.getDrawable(this, R.drawable.save))
-//        binding.edit2.setRightIcon(ContextCompat.getDrawable(this, R.drawable.save))
+        binding.imgButton.backgroundColor(ColorStateList.valueOf(Color.GRAY))
+//        binding.imgButton.setTheme("dark")
 
-//        binding.edit2.setLeftIcon(ContextCompat.getDrawable(this,R.drawable.save))
 
     }
 }

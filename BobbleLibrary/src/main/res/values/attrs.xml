@@ -4,7 +4,6 @@
     <attr name="customTheme" format="string" />
     <attr name="corner_radius" format="dimension" />
     <attr name="borderColor" format="color|reference" />
-    <attr name="borderWidth" format="dimension" />
 
     <declare-styleable name="BobbleButton">
         <attr name="customTheme" />
@@ -18,11 +17,12 @@
         <attr name="android:padding" format="dimension" />
     </declare-styleable>
 
-    <declare-styleable name="BobbleImage">
-        <attr name="android:padding" format="dimension" />
-        <attr name="customTheme" />
-        <attr name="backgroundColor" format="reference|color" />
-    </declare-styleable>
+<!--    <declare-styleable name="BobbleImage">-->
+<!--        <attr name="android:padding" format="dimension" />-->
+<!--        <attr name="customTheme" />-->
+<!--        <attr name="backgroundColor" format="reference|color" />-->
+<!--        <attr name="imageColor" format="color"/>-->
+<!--    </declare-styleable>-->
 
     <declare-styleable name="BobbleFab">
         <attr name="backgroundTint" />
@@ -62,6 +62,48 @@
         <attr name="android:textSize" format="dimension" />
         <attr name="selectedTabBoldText" format="boolean" />
         <attr name="android:background" />
+    </declare-styleable>
+
+    <declare-styleable name="BobbleImage">
+        <attr name="backgroundColor" format="color|reference" />
+        <attr name="android:paddingTop" format="dimension" />
+        <attr name="android:paddingBottom" format="dimension" />
+        <attr name="android:paddingLeft" format="dimension" />
+        <attr name="android:paddingRight" format="dimension" />
+        <attr name="android:padding" format="dimension" />
+        <attr name="customTheme" />
+
+        <attr name="backgroundColor1" format="reference|color" />
+        <attr name="imageColor1" format="color" />
+        <attr name="src1" format="color|reference"/>
+        <attr name="paddingTopImage1" format="dimension" />
+        <attr name="paddingBottomImage1" format="dimension" />
+        <attr name="paddingLeftImage1" format="dimension" />
+        <attr name="paddingRightImage1" format="dimension" />
+        <attr name="paddingImage1" format="dimension" />
+        <attr name="marginImage1" format="dimension" />
+        <attr name="marginTopImage1" format="dimension" />
+        <attr name="marginBottomImage1" format="dimension" />
+        <attr name="marginLeftImage1" format="dimension" />
+        <attr name="marginRightImage1" format="dimension" />
+        <attr name="translationZImage1" format="dimension"/>
+        <attr name="gravityImage1" format="string"/>
+
+        <attr name="backgroundColor2" format="reference|color" />
+        <attr name="imageColor2" format="color" />
+        <attr name="src2" format="color|reference"/>
+        <attr name="paddingTopImage2" format="dimension" />
+        <attr name="paddingBottomImage2" format="dimension" />
+        <attr name="paddingLeftImage2" format="dimension" />
+        <attr name="paddingRightImage2" format="dimension" />
+        <attr name="paddingImage2" format="dimension" />
+        <attr name="marginImage2" format="dimension" />
+        <attr name="marginTopImage2" format="dimension" />
+        <attr name="marginBottomImage2" format="dimension" />
+        <attr name="marginLeftImage2" format="dimension" />
+        <attr name="marginRightImage2" format="dimension" />
+        <attr name="translationZImage2" format="dimension"/>
+        <attr name="gravityImage2" format="string"/>
     </declare-styleable>
 
 </resources>

@@ -16,11 +16,15 @@
         android:text="@string/vishesh" />
 
     <com.uiLibrary.bobbleLibrary.BobbleImage
-        android:id="@+id/image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/add_cam" />
+        android:id="@+id/image3"
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        app:gravityImage2="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:src1="@drawable/animal"
+        app:src2="@drawable/animal2" />
 
     <com.uiLibrary.bobbleLibrary.BobbleFab
         android:id="@+id/fab"
@@ -28,8 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:scaleType="centerCrop"
-        app:backgroundTint="@color/black"
-        app:borderWidth="2dp"
+        android:backgroundTint="@color/grey"
         app:fabSize="normal" />
 
     <com.uiLibrary.bobbleLibrary.BobbleCardView
@@ -39,7 +42,7 @@
         android:layout_margin="16dp"
         android:focusable="true" />
 
-    <com.uiLibrary.bobbleLibrary.BobbleRoundCornerEditText
+    <com.uiLibrary.bobbleLibrary.BobbleEditText
         android:id="@+id/edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

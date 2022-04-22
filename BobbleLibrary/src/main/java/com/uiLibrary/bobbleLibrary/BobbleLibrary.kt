@@ -1,5 +1,6 @@
 package com.uiLibrary.bobbleLibrary
 
+import android.app.ActionBar
 import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.TypedArray
@@ -7,8 +8,10 @@ import android.graphics.*
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.util.DisplayMetrics
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -17,6 +20,7 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
+import androidx.core.view.setMargins
 import androidx.core.view.setPadding
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.button.MaterialButton
@@ -43,6 +47,28 @@ fun applyTheme(theme: String?) {
 
     }
 }
+
+private const val CENTER = "center"
+private const val CENTER_HORIZONTAL = "center_horizontal"
+private const val CENTER_VERTICAL = "center_vertical"
+private const val BOTTOM = "bottom"
+private const val LEFT = "left"
+private const val RIGHT = "right"
+private const val TOP = "top"
+private const val FILL = "fill"
+private const val FILL_VERTICAL = "fill vertical"
+private const val FILL_HORIZONTAL = "fill horizontal"
+private const val NO_GRAVITY = "no gravity"
+
+private val lp1 = FrameLayout.LayoutParams(
+    FrameLayout.LayoutParams.WRAP_CONTENT,
+    FrameLayout.LayoutParams.WRAP_CONTENT
+)
+
+private val lp2 = FrameLayout.LayoutParams(
+    FrameLayout.LayoutParams.WRAP_CONTENT,
+    FrameLayout.LayoutParams.WRAP_CONTENT
+)
 
 //Button Library
 class BobbleButton @JvmOverloads constructor
@@ -79,7 +105,7 @@ class BobbleButton @JvmOverloads constructor
 
         radius =
             typedArray.getDimension(R.styleable.BobbleButton_cornerRadius, dpToPx(context, 30f))
-        cornerRadius = radius.toInt()
+        buttonCornerRadius(radius)
 
         padding =
             typedArray.getDimension(R.styleable.BobbleButton_android_padding, 0f)
@@ -116,19 +142,22 @@ class BobbleButton @JvmOverloads constructor
                 paddingBottom.toInt()
             )
         }
+        setTheme(customTheme)
         typedArray.recycle()
-        getTheme(customTheme)
     }
 
-    fun getTheme(theme: String?) {
+    fun setTheme(theme: String?) {
         return applyTheme(theme)
     }
 
-    fun buttonTextColor(tint: ColorStateList?){
+    fun buttonCornerRadius(radius: Float) {
+        cornerRadius = radius.toInt()
+    }
+
+    fun buttonTextColor(tint: ColorStateList?) {
         if (tint == null) {
             text = ContextCompat.getColorStateList(context, R.color.text_color)
-        }
-        else{
+        } else {
             text = tint
         }
         setTextColor(text)
@@ -137,49 +166,67 @@ class BobbleButton @JvmOverloads constructor
     fun backgroundColor(tintList: ColorStateList?) {
         if (tintList == null) {
             backgroundTint = ContextCompat.getColorStateList(context, R.color.button_background)
-        }
-        else{
+        } else {
             backgroundTint = tintList
         }
         backgroundTintList = backgroundTint
     }
+
+    fun setEnable(enable: Boolean) {
+        if (isEnabled != enable) {
+            isEnabled = enable
+        }
+    }
 }
 
 //Image Library
-class BobbleImage @JvmOverloads constructor
-    (context: Context, attrs: AttributeSet? = null) :
-    AppCompatImageView(context, attrs) {
-
-    //attrs
-    private val padding: Float
-    private var background: Int
-    private var customTheme: String?
-    private val typedArray =
-        context.theme.obtainStyledAttributes(attrs, R.styleable.BobbleImage, 0, 0)
-
-    init {
-
-        //set different background colors for different theme
-        customTheme = typedArray.getString(R.styleable.BobbleImage_customTheme)
-        background =
-            typedArray.getColor(
-                R.styleable.BobbleImage_backgroundColor,
-                ContextCompat.getColor(getContext(), R.color.imageBackground)
-            )
-        setBackgroundColor(background)
-        getTheme(customTheme)
-
-        //setting up predefined padding for the image view
-        padding =
-            typedArray.getDimension(R.styleable.BobbleImage_android_padding, dpToPx(context, 16f))
-        setPadding(padding.toInt(), padding.toInt(), padding.toInt(), padding.toInt())
-    }
-
-
-    fun getTheme(theme: String?) {
-        return applyTheme(theme)
-    }
-}
+//class BobbleImage @JvmOverloads constructor
+//    (context: Context, attrs: AttributeSet? = null) :
+//    AppCompatImageView(context, attrs) {
+//
+//    //attrs
+//    private val padding: Float
+//    private var background: Int
+//    private var imageColor: Int
+//    private var customTheme: String?
+//    private val typedArray =
+//        context.theme.obtainStyledAttributes(attrs, R.styleable.BobbleImage, 0, 0)
+//
+//    init {
+//
+//        //set different background colors for different theme
+//        customTheme = typedArray.getString(R.styleable.BobbleImage_customTheme)
+//        background =
+//            typedArray.getColor(
+//                R.styleable.BobbleImage_backgroundColor,
+//                ContextCompat.getColor(getContext(), R.color.imageBackground)
+//            )
+//        setBackgroundColor(background)
+//
+//        imageColor = typedArray.getColor(
+//            R.styleable.BobbleImage_imageColor,
+//            ContextCompat.getColor(getContext(), R.color.imageColor)
+//        )
+//
+//        setColorFilter(imageColor, PorterDuff.Mode.SRC_IN)
+//
+//        setTheme(customTheme)
+//
+//        //setting up predefined padding for the image view
+//        padding =
+//            typedArray.getDimension(R.styleable.BobbleImage_android_padding, dpToPx(context, 16f))
+//        setPadding(padding.toInt(), padding.toInt(), padding.toInt(), padding.toInt())
+//    }
+//
+//
+//    fun setTheme(theme: String?) {
+//        return applyTheme(theme)
+//    }
+//
+//    fun setImageColor(color: Int) {
+//        setColorFilter(ContextCompat.getColor(context, color), PorterDuff.Mode.SRC_IN)
+//    }
+//}
 
 //Fab Library
 class BobbleFab @JvmOverloads constructor
@@ -219,7 +266,7 @@ class BobbleFab @JvmOverloads constructor
         //preDefined fab image
         fabIcon = typedArray.getDrawable(R.styleable.BobbleFab_android_src)
         setImageDrawable(fabIcon)
-        getTheme(customTheme)
+        setTheme(customTheme)
         typedArray.recycle()
     }
 
@@ -231,7 +278,7 @@ class BobbleFab @JvmOverloads constructor
         customSize = size.toInt()
     }
 
-    fun getTheme(theme: String?) {
+    fun setTheme(theme: String?) {
         return applyTheme(theme)
     }
 }
@@ -267,7 +314,7 @@ class BobbleCardView @JvmOverloads constructor
         cardBackGroundColor(cardBackgroundColor)
         backgroundTintList = null
 
-        getTheme(customTheme)
+        setTheme(customTheme)
         typedArray.recycle()
     }
 
@@ -279,14 +326,14 @@ class BobbleCardView @JvmOverloads constructor
         setRadius(radius)
     }
 
-    fun getTheme(theme: String?) {
+    fun setTheme(theme: String?) {
         return applyTheme(theme)
     }
 
 }
 
 //EditText Library
-class BobbleRoundCornerEditText @JvmOverloads constructor
+class BobbleEditText @JvmOverloads constructor
     (context: Context, attrs: AttributeSet? = null) :
     AppCompatEditText(context, attrs) {
 
@@ -340,7 +387,7 @@ class BobbleRoundCornerEditText @JvmOverloads constructor
         borderWidth =
             typedArray.getDimension(R.styleable.BobbleEditText_borderWidth, dpToPx(context, 1f))
 
-        getTheme(customTheme)
+        setTheme(customTheme)
         typedArray.recycle()
     }
 
@@ -415,7 +462,7 @@ class BobbleRoundCornerEditText @JvmOverloads constructor
         super.setTextColor(colors)
     }
 
-    fun getTheme(theme: String?) {
+    fun setTheme(theme: String?) {
         return applyTheme(theme)
     }
 }
@@ -438,24 +485,29 @@ class BobbleImageButton @JvmOverloads constructor(
             typedArray.getColorStateList(
                 R.styleable.BobbleImageButton_android_backgroundTint
             )
-        imageButtonBackgroundColor(background)
+        backgroundColor(background)
 
-        getTheme(customTheme)
+        setTheme(customTheme)
         typedArray.recycle()
     }
 
-    fun getTheme(theme: String?) {
+    fun setTheme(theme: String?) {
         return applyTheme(theme)
     }
 
-    fun imageButtonBackgroundColor(tint: ColorStateList?) {
+    fun backgroundColor(tint: ColorStateList?) {
         if (tint == null) {
             background = ContextCompat.getColorStateList(context, R.color.button_background)
-        }
-        else{
+        } else {
             background = tint
         }
         backgroundTintList = background
+    }
+
+    fun setEnable(enable: Boolean) {
+        if (isEnabled != enable) {
+            isEnabled = enable
+        }
     }
 }
 
@@ -527,13 +579,12 @@ class BobbleTabLayout @JvmOverloads constructor(
         setBackgroundColor(background)
 
         typedArray.recycle()
-        getTheme(customTheme)
+        setTheme(customTheme)
         addOnTabSelectedListener(this)
     }
 
     override fun addTab(tab: Tab, position: Int, setSelected: Boolean) {
         super.addTab(tab, position, setSelected)
-
         val layout = LayoutInflater.from(context).inflate(R.layout.tab_custom, null) as View
         val text = layout.findViewById<TextView>(R.id.text1)
         val image = layout.findViewById<ImageView>(R.id.imageLeft)
@@ -545,7 +596,6 @@ class BobbleTabLayout @JvmOverloads constructor(
             text.setTypeface(text.typeface, Typeface.BOLD)
         tab.customView = layout
     }
-
 
     override fun onTabSelected(tab: Tab?) {
         val textView = tab!!.customView as LinearLayout
@@ -566,6 +616,7 @@ class BobbleTabLayout @JvmOverloads constructor(
     }
 
     override fun onTabReselected(tab: Tab?) {
+
     }
 
     fun setTextColor(color: Int) {
@@ -574,14 +625,13 @@ class BobbleTabLayout @JvmOverloads constructor(
         }
     }
 
-
     fun setSelectedTabTextColor(color: Int) {
         if (tabSelectedText != color) {
             tabSelectedText = color
         }
     }
 
-    override fun setSelectedTabIndicatorColor(color: Int) {
+    fun setIndicatorColor(color: Int) {
         if (tabIndicatorColor != color) {
             tabIndicatorColor = color
         }
@@ -600,9 +650,381 @@ class BobbleTabLayout @JvmOverloads constructor(
         }
     }
 
-    fun getTheme(theme: String?) {
+    fun setTheme(theme: String?) {
         return applyTheme(theme)
     }
+}
+
+//Image Library
+class BobbleImage @JvmOverloads constructor(
+    context: Context, attrs: AttributeSet? = null
+) : FrameLayout(context, attrs) {
+
+    private var background: Int
+    private val padding: Float
+    private val paddingTop: Float
+    private val paddingBottom: Float
+    private val paddingLeft: Float
+    private val paddingRight: Float
+    private val customTheme: String?
+
+    private var src1: Drawable?
+    private var backgroundColor1: Int
+    private var imageColor1: Int
+    private var translationZImage1: Float
+    private var gravityImage1: String?
+    private var paddingImage1: Float
+    private var paddingTopImage1: Float
+    private var paddingBottomImage1: Float
+    private var paddingLeftImage1: Float
+    private var paddingRightImage1: Float
+    private var marginImage1: Float
+    private var marginTopImage1: Float
+    private var marginBottomImage1: Float
+    private var marginLeftImage1: Float
+    private var marginRightImage1: Float
+
+    private var src2: Drawable?
+    private var backgroundColor2: Int
+    private var imageColor2: Int
+    private var translationZImage2: Float
+    private var gravityImage2: String?
+    private var paddingImage2: Float
+    private var paddingTopImage2: Float
+    private var paddingBottomImage2: Float
+    private var paddingLeftImage2: Float
+    private var paddingRightImage2: Float
+    private var marginImage2: Float
+    private var marginTopImage2: Float
+    private var marginBottomImage2: Float
+    private var marginLeftImage2: Float
+    private var marginRightImage2: Float
+
+    private val typedArray =
+        context.theme.obtainStyledAttributes(attrs, R.styleable.BobbleImage, 0, 0)
+    private var image1: ImageView
+    private var image2: ImageView
+    private var layout: FrameLayout
+
+    init {
+        inflate(context, R.layout.image, this)
+        layout = findViewById(R.id.layout)
+        image1 = findViewById(R.id.image)
+        image2 = findViewById(R.id.image1)
+
+        customTheme = typedArray.getString(R.styleable.BobbleImage_customTheme)
+
+        background = typedArray.getColor(
+            R.styleable.BobbleImage_backgroundColor,
+            ContextCompat.getColor(getContext(), R.color.backgroundImage)
+        )
+        backgroundColor(background)
+
+        padding =
+            typedArray.getDimension(R.styleable.BobbleImage_android_padding, 0f)
+
+        paddingTop =
+            typedArray.getDimension(
+                R.styleable.BobbleImage_android_paddingTop, 0f
+            )
+
+        paddingBottom =
+            typedArray.getDimension(
+                R.styleable.BobbleImage_android_paddingBottom, 0f
+            )
+
+        paddingLeft =
+            typedArray.getDimension(
+                R.styleable.BobbleImage_android_paddingLeft, 0f
+            )
+
+        paddingRight =
+            typedArray.getDimension(
+                R.styleable.BobbleImage_android_paddingRight, 0f
+            )
+
+
+        //preDefined padding
+        if (padding > 0f) {
+            layout.setPadding(padding.toInt())
+        } else {
+            layout.setPadding(
+                paddingLeft.toInt(),
+                paddingTop.toInt(),
+                paddingRight.toInt(),
+                paddingBottom.toInt()
+            )
+        }
+        setTheme(customTheme)
+
+        /**set Attributes for 1st image*/
+
+        backgroundColor1 = typedArray.getColor(
+            R.styleable.BobbleImage_backgroundColor1,
+            ContextCompat.getColor(
+                getContext(), R.color.imageBackground
+            )
+        )
+        backgroundColorImage1(backgroundColor1)
+
+        imageColor1 = typedArray.getColor(
+            R.styleable.BobbleImage_imageColor1,
+            ContextCompat.getColor(getContext(), R.color.imageColor)
+        )
+        image1.setColorFilter(imageColor1)
+
+        src1 = typedArray.getDrawable(R.styleable.BobbleImage_src1)
+        setImage1Drawable(src1)
+
+        translationZImage1 = typedArray.getDimension(R.styleable.BobbleImage_translationZImage1, 0f)
+        setTranslationZImage1(translationZImage1)
+
+        paddingImage1 =
+            typedArray.getDimension(R.styleable.BobbleImage_paddingImage1, 0f)
+
+        paddingTopImage1 =
+            typedArray.getDimension(
+                R.styleable.BobbleImage_paddingTopImage1, 8f
+            )
+
+        paddingBottomImage1 =
+            typedArray.getDimension(
+                R.styleable.BobbleImage_paddingBottomImage1, 8f
+            )
+
+        paddingLeftImage1 =
+            typedArray.getDimension(
+                R.styleable.BobbleImage_paddingLeftImage1, 8f
+            )
+
+        paddingRightImage1 =
+            typedArray.getDimension(
+                R.styleable.BobbleImage_paddingRightImage1, 8f
+            )
+
+        //preDefined padding
+        if (paddingImage1 > 0f) {
+            image1.setPadding(paddingImage1.toInt())
+        } else {
+            image1.setPadding(
+                paddingLeftImage1.toInt(),
+                paddingTopImage1.toInt(),
+                paddingRightImage1.toInt(),
+                paddingBottomImage1.toInt()
+            )
+        }
+
+        gravityImage1 = typedArray.getString(R.styleable.BobbleImage_gravityImage1)
+        setGravityImage1(gravityImage1)
+
+        marginImage1 =
+            typedArray.getDimension(R.styleable.BobbleImage_marginImage1, 0f)
+
+        marginTopImage1 =
+            typedArray.getDimension(
+                R.styleable.BobbleImage_marginTopImage1, 0f
+            )
+
+        marginBottomImage1 =
+            typedArray.getDimension(
+                R.styleable.BobbleImage_marginBottomImage1, 0f
+            )
+
+        marginLeftImage1 =
+            typedArray.getDimension(
+                R.styleable.BobbleImage_marginLeftImage1, 0f
+            )
+
+        marginRightImage1 =
+            typedArray.getDimension(
+                R.styleable.BobbleImage_marginRightImage1, 0f
+            )
+
+        if (marginImage1 > 0) {
+            lp1.setMargins(marginImage1.toInt())
+        } else {
+            lp1.setMargins(
+                marginLeftImage1.toInt(),
+                marginTopImage1.toInt(),
+                marginRightImage1.toInt(),
+                marginBottomImage1.toInt()
+            )
+        }
+        image1.layoutParams = lp1
+
+
+        /**set Attributes for 2nd image*/
+        backgroundColor2 = typedArray.getColor(
+            R.styleable.BobbleImage_backgroundColor2,
+            ContextCompat.getColor(
+                getContext(), R.color.bobble
+            )
+        )
+        backgroundColorImage2(backgroundColor2)
+
+        src2 = typedArray.getDrawable(R.styleable.BobbleImage_src2)
+        setImage2Drawable(src2)
+
+        imageColor2 = typedArray.getColor(
+            R.styleable.BobbleImage_imageColor2,
+            ContextCompat.getColor(getContext(), R.color.imageColor)
+        )
+        image2.setColorFilter(imageColor2)
+
+        translationZImage2 = typedArray.getDimension(R.styleable.BobbleImage_translationZImage2, 0f)
+        setTranslationZImage2(translationZImage2)
+
+        paddingImage2 =
+            typedArray.getDimension(R.styleable.BobbleImage_paddingImage2, 0f)
+
+        paddingTopImage2 =
+            typedArray.getDimension(
+                R.styleable.BobbleImage_paddingTopImage2, 8f
+            )
+
+        paddingBottomImage2 =
+            typedArray.getDimension(
+                R.styleable.BobbleImage_paddingBottomImage2, 8f
+            )
+
+        paddingLeftImage2 =
+            typedArray.getDimension(
+                R.styleable.BobbleImage_paddingLeftImage2, 8f
+            )
+
+        paddingRightImage2 =
+            typedArray.getDimension(
+                R.styleable.BobbleImage_paddingRightImage2, 8f
+            )
+
+        //preDefined padding
+        if (paddingImage2 > 0f) {
+            image2.setPadding(paddingImage2.toInt())
+        } else {
+            image2.setPadding(
+                paddingLeftImage2.toInt(),
+                paddingTopImage2.toInt(),
+                paddingRightImage2.toInt(),
+                paddingBottomImage2.toInt()
+            )
+        }
+
+        gravityImage2 = typedArray.getString(R.styleable.BobbleImage_gravityImage2)
+        setGravityImage2(gravityImage2)
+
+        marginImage2 =
+            typedArray.getDimension(R.styleable.BobbleImage_marginImage2, 0f)
+
+        marginTopImage2 =
+            typedArray.getDimension(
+                R.styleable.BobbleImage_marginTopImage2, 0f
+            )
+
+        marginBottomImage2 =
+            typedArray.getDimension(
+                R.styleable.BobbleImage_marginBottomImage2, 0f
+            )
+
+        marginLeftImage2 =
+            typedArray.getDimension(
+                R.styleable.BobbleImage_marginLeftImage2, 0f
+            )
+
+        marginRightImage2 =
+            typedArray.getDimension(
+                R.styleable.BobbleImage_marginRightImage2, 0f
+            )
+
+        if (marginImage2 > 0) {
+            lp2.setMargins(marginImage2.toInt())
+        } else {
+            lp2.setMargins(
+                marginLeftImage2.toInt(),
+                marginTopImage2.toInt(),
+                marginRightImage2.toInt(),
+                marginBottomImage2.toInt()
+            )
+        }
+        image2.layoutParams = lp2
+
+        typedArray.recycle()
+    }
+
+    /** layout functions*/
+    fun backgroundColor(color: Int) {
+        layout.setBackgroundColor(color)
+    }
+
+    fun setTheme(theme: String?) {
+        return applyTheme(theme)
+    }
+
+    /** image1 functions*/
+    fun backgroundColorImage1(color: Int) {
+        image1.setBackgroundColor(color)
+    }
+
+    fun setImage1Color(color: Int) {
+        image1.setColorFilter(ContextCompat.getColor(context, color), PorterDuff.Mode.SRC_IN)
+    }
+
+    fun setImage1Drawable(id: Drawable?) {
+        image1.setImageDrawable(id)
+    }
+
+    fun setTranslationZImage1(value: Float) {
+        image1.translationZ = value
+    }
+
+    fun setGravityImage1(gravity: String?) {
+        when (gravity) {
+            CENTER -> lp1.gravity = Gravity.CENTER
+            CENTER_HORIZONTAL -> lp1.gravity = Gravity.CENTER_HORIZONTAL
+            CENTER_VERTICAL -> lp1.gravity = Gravity.CENTER_VERTICAL
+            BOTTOM -> lp1.gravity = Gravity.BOTTOM
+            TOP -> lp1.gravity = Gravity.TOP
+            RIGHT -> lp1.gravity = Gravity.RIGHT
+            LEFT -> lp1.gravity = Gravity.LEFT
+            FILL -> lp1.gravity = Gravity.FILL
+            FILL_HORIZONTAL -> lp1.gravity = Gravity.FILL_HORIZONTAL
+            FILL_VERTICAL -> lp1.gravity = Gravity.FILL_VERTICAL
+            NO_GRAVITY -> lp1.gravity = Gravity.NO_GRAVITY
+        }
+    }
+
+    /** image2 functions*/
+    fun backgroundColorImage2(color: Int) {
+        image2.setBackgroundColor(color)
+    }
+
+    fun setImage2Color(color: Int) {
+        image2.setColorFilter(ContextCompat.getColor(context, color), PorterDuff.Mode.SRC_IN)
+    }
+
+    fun setImage2Drawable(id: Drawable?) {
+        image2.setImageDrawable(id)
+    }
+
+    fun setTranslationZImage2(value: Float) {
+        image2.translationZ = value
+    }
+
+    fun setGravityImage2(gravity: String?) {
+        when (gravity) {
+            CENTER -> lp2.gravity = Gravity.CENTER
+            CENTER_HORIZONTAL -> lp2.gravity = Gravity.CENTER_HORIZONTAL
+            CENTER_VERTICAL -> lp2.gravity = Gravity.CENTER_VERTICAL
+            BOTTOM -> lp2.gravity = Gravity.BOTTOM
+            TOP -> lp2.gravity = Gravity.TOP
+            RIGHT -> lp2.gravity = Gravity.RIGHT
+            LEFT -> lp2.gravity = Gravity.LEFT
+            FILL -> lp2.gravity = Gravity.FILL
+            FILL_HORIZONTAL -> lp2.gravity = Gravity.FILL_HORIZONTAL
+            FILL_VERTICAL -> lp2.gravity = Gravity.FILL_VERTICAL
+            NO_GRAVITY -> lp2.gravity = Gravity.NO_GRAVITY
+        }
+    }
+
 }
 
 

@@ -15,7 +15,9 @@
     <color name="blue_50">#E3F2FD</color>
 
 
+    <color name="backgroundImage">@color/black</color>
     <color name="imageBackground">@color/grey</color>
+    <color name="imageColor">@color/teal_200</color>
     <color name="borderBackground">@color/white</color>
 
     <color name="textBoxColor">@color/dark_grey</color>

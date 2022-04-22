@@ -30,13 +30,13 @@ class MainActivity2 : AppCompatActivity() {
                     tab.setIcon(R.drawable.ic_search)
                 }
                 1 -> {
-                    tab.text = "NEW ARRIVALS"
+                    tab.text = "TAB"
                 }
             }
-//            binding.tabLayout.setTextColor(Color.parseColor("#FFA726"))
-//            binding.tabLayout.setSelectedTabTextColor(Color.parseColor("#FFA726"))
-//            binding.tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#FFA726"))
-//            binding.tabLayout.setTabTextBold(true)
+            binding.tabLayout.setTextColor(Color.parseColor("#FFA726"))
+            binding.tabLayout.setSelectedTabTextColor(Color.parseColor("#FFA726"))
+            binding.tabLayout.setIndicatorColor(Color.parseColor("#def56a"))
+            binding.tabLayout.setTabTextBold(true)
             binding.tabLayout.setSelectedTabTextBold(true)
             binding.viewPager2.currentItem = 1
         }.attach()
