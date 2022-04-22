@@ -673,16 +673,10 @@ class BobbleImage @JvmOverloads constructor(
     private val customTheme: String?
 
     private var src1: Drawable?
-    private var backgroundColor1: Int
     private var imageColor1: Int
     private var image1HasColorFilter: Boolean = true
     private var translationZImage1: Float
     private var gravityImage1: String?
-    private var paddingImage1: Float
-    private var paddingTopImage1: Float
-    private var paddingBottomImage1: Float
-    private var paddingLeftImage1: Float
-    private var paddingRightImage1: Float
     private var marginImage1: Float
     private var marginTopImage1: Float
     private var marginBottomImage1: Float
@@ -690,16 +684,10 @@ class BobbleImage @JvmOverloads constructor(
     private var marginRightImage1: Float
 
     private var src2: Drawable?
-    private var backgroundColor2: Int
     private var image2HasColorFilter: Boolean = true
     private var imageColor2: Int
     private var translationZImage2: Float
     private var gravityImage2: String?
-    private var paddingImage2: Float
-    private var paddingTopImage2: Float
-    private var paddingBottomImage2: Float
-    private var paddingLeftImage2: Float
-    private var paddingRightImage2: Float
     private var marginImage2: Float
     private var marginTopImage2: Float
     private var marginBottomImage2: Float
@@ -722,7 +710,7 @@ class BobbleImage @JvmOverloads constructor(
 
         background = typedArray.getColor(
             R.styleable.BobbleImage_backgroundColor,
-            ContextCompat.getColor(getContext(), R.color.backgroundImage)
+            ContextCompat.getColor(getContext(), R.color.imageBackground)
         )
         backgroundColor(background)
 
@@ -765,19 +753,11 @@ class BobbleImage @JvmOverloads constructor(
 
         /**set Attributes for 1st image*/
 
-        backgroundColor1 = typedArray.getColor(
-            R.styleable.BobbleImage_backgroundColor1,
-            ContextCompat.getColor(
-                getContext(), R.color.imageBackground
-            )
-        )
-        backgroundColorImage1(backgroundColor1)
-
         src1 = typedArray.getDrawable(R.styleable.BobbleImage_src1)
         setImage1Drawable(src1)
 
         image1HasColorFilter =
-            typedArray.getBoolean(R.styleable.BobbleImage_colorFilter1, image1HasColorFilter)
+            typedArray.getBoolean(R.styleable.BobbleImage_enableColorFilter1, image1HasColorFilter)
 
         imageColor1 = typedArray.getColor(
             R.styleable.BobbleImage_imageColor1,
@@ -791,41 +771,6 @@ class BobbleImage @JvmOverloads constructor(
 
         translationZImage1 = typedArray.getDimension(R.styleable.BobbleImage_translationZImage1, 0f)
         setTranslationZImage1(translationZImage1)
-
-        paddingImage1 =
-            typedArray.getDimension(R.styleable.BobbleImage_paddingImage1, 0f)
-
-        paddingTopImage1 =
-            typedArray.getDimension(
-                R.styleable.BobbleImage_paddingTopImage1, 8f
-            )
-
-        paddingBottomImage1 =
-            typedArray.getDimension(
-                R.styleable.BobbleImage_paddingBottomImage1, 8f
-            )
-
-        paddingLeftImage1 =
-            typedArray.getDimension(
-                R.styleable.BobbleImage_paddingLeftImage1, 8f
-            )
-
-        paddingRightImage1 =
-            typedArray.getDimension(
-                R.styleable.BobbleImage_paddingRightImage1, 8f
-            )
-
-        //preDefined padding
-        if (paddingImage1 > 0f) {
-            image1.setPadding(paddingImage1.toInt())
-        } else {
-            image1.setPadding(
-                paddingLeftImage1.toInt(),
-                paddingTopImage1.toInt(),
-                paddingRightImage1.toInt(),
-                paddingBottomImage1.toInt()
-            )
-        }
 
         gravityImage1 = typedArray.getString(R.styleable.BobbleImage_gravityImage1)
         setGravityImage1(gravityImage1)
@@ -867,67 +812,24 @@ class BobbleImage @JvmOverloads constructor(
 
 
         /**set Attributes for 2nd image*/
-        backgroundColor2 = typedArray.getColor(
-            R.styleable.BobbleImage_backgroundColor2,
-            ContextCompat.getColor(
-                getContext(), R.color.imageBackground
-            )
-        )
-        backgroundColorImage2(backgroundColor2)
 
         src2 = typedArray.getDrawable(R.styleable.BobbleImage_src2)
         setImage2Drawable(src2)
 
         image2HasColorFilter =
-            typedArray.getBoolean(R.styleable.BobbleImage_colorFilter2, image2HasColorFilter)
+            typedArray.getBoolean(R.styleable.BobbleImage_enableColorFilter2, image2HasColorFilter)
         imageColor2 = typedArray.getColor(
             R.styleable.BobbleImage_imageColor2,
             ContextCompat.getColor(getContext(), R.color.imageColor)
         )
-        if (image2HasColorFilter){
+        if (image2HasColorFilter) {
             image2.setColorFilter(imageColor2, PorterDuff.Mode.SRC_ATOP)
-        }
-        else{
+        } else {
             image2.setColorFilter(null)
         }
 
         translationZImage2 = typedArray.getDimension(R.styleable.BobbleImage_translationZImage2, 0f)
         setTranslationZImage2(translationZImage2)
-
-        paddingImage2 =
-            typedArray.getDimension(R.styleable.BobbleImage_paddingImage2, 0f)
-
-        paddingTopImage2 =
-            typedArray.getDimension(
-                R.styleable.BobbleImage_paddingTopImage2, 8f
-            )
-
-        paddingBottomImage2 =
-            typedArray.getDimension(
-                R.styleable.BobbleImage_paddingBottomImage2, 8f
-            )
-
-        paddingLeftImage2 =
-            typedArray.getDimension(
-                R.styleable.BobbleImage_paddingLeftImage2, 8f
-            )
-
-        paddingRightImage2 =
-            typedArray.getDimension(
-                R.styleable.BobbleImage_paddingRightImage2, 8f
-            )
-
-        //preDefined padding
-        if (paddingImage2 > 0f) {
-            image2.setPadding(paddingImage2.toInt())
-        } else {
-            image2.setPadding(
-                paddingLeftImage2.toInt(),
-                paddingTopImage2.toInt(),
-                paddingRightImage2.toInt(),
-                paddingBottomImage2.toInt()
-            )
-        }
 
         gravityImage2 = typedArray.getString(R.styleable.BobbleImage_gravityImage2)
         setGravityImage2(gravityImage2)
@@ -980,9 +882,6 @@ class BobbleImage @JvmOverloads constructor(
     }
 
     /** image1 functions*/
-    fun backgroundColorImage1(color: Int) {
-        image1.setBackgroundColor(color)
-    }
 
     fun setImage1Color(color: Int, mode: PorterDuff.Mode) {
         image1.setColorFilter(ContextCompat.getColor(context, color), mode)
@@ -994,6 +893,12 @@ class BobbleImage @JvmOverloads constructor(
 
     fun setTranslationZImage1(value: Float) {
         image1.translationZ = value
+    }
+
+    fun setColorFilter1(boolean: Boolean) {
+        if (image1HasColorFilter != boolean) {
+            image1HasColorFilter = boolean
+        }
     }
 
     fun setGravityImage1(gravity: String?) {
@@ -1013,9 +918,6 @@ class BobbleImage @JvmOverloads constructor(
     }
 
     /** image2 functions*/
-    fun backgroundColorImage2(color: Int) {
-        image2.setBackgroundColor(color)
-    }
 
     fun setImage2Color(color: Int, mode: PorterDuff.Mode) {
         image2.setColorFilter(ContextCompat.getColor(context, color), mode)
@@ -1027,6 +929,12 @@ class BobbleImage @JvmOverloads constructor(
 
     fun setTranslationZImage2(value: Float) {
         image2.translationZ = value
+    }
+
+    fun setColorFilter2(boolean: Boolean) {
+        if (image2HasColorFilter != boolean) {
+            image2HasColorFilter = boolean
+        }
     }
 
     fun setGravityImage2(gravity: String?) {
@@ -1046,8 +954,6 @@ class BobbleImage @JvmOverloads constructor(
     }
 
 }
-
-
 
 
 
