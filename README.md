@@ -1,10 +1,10 @@
 
-## Bobble UI Library
+# Bobble UI Library
 
 Semi-customized libraries for Bobble ui application.
 
 
-## Customization And Attributes
+# Customization And Attributes
 
 Libraries -:
 
@@ -12,76 +12,132 @@ Libraries -:
 
 | Attribute Name  | Default Value | Example Value | Description |
 | ------------- | ------------- | ------------ | ------------- |
-| app:buttonColor  | #03DAC5(Light) #636363(Dark) | @color/colorAccent | Color of Button |
-| app:circle_radius  | 45dp  | 35dp | adjust radius of button |
-| app:isDarkTheme  | false  | true | set theme for button |
+| app:backgroundTint  |Enabled :- #018786(Light) #E0E0E0(Dark) <br />  <br /> On Pressed :- #636363(Light) #636363(Dark) <br />  <br />  Disabled :- #E0E0E0(Light) #9E9E9E(Dark)  | @color/colorAccent | Color of Button |
+| android:textColor  | Enabled :- #FFFFFF(Light) #636363(Dark) <br /> <br />  On Pressed :- #FFFFFF(Light) #FFFFFF(Dark) <br /> <br />  Disabled :- #636363(Light) #9E9E9E(Dark)  | @color/colorAccent | Color of Button Text |
+| app:cornerRadius  | 30dp  | 35dp | adjust radius of button |
+| app:customTheme  | "default"  | "dark"/"light" | set theme for button |
 
 2. BobbleImage
 
 | Attribute Name  | Default Value | Example Value | Description |
 | ------------- | ------------- | ------------ | ------------- |
-| app:backgroundColor  | #FFFFFF(Light) #636363(Dark) | @color/colorAccent | background color of ImageView
-| app:isDarkTheme  | false  | true | set theme for button |
+| app:backgroundColor  |#E0F7FA(Light) #212121(Dark) | @color/colorAccent | background color of ImageView
+| app:imageColor  |#000000(Light) #FFFFFF(Dark) | @color/colorAccent |set Color of image in imageView
+| app:customTheme  | "default"  | "dark"/"light" | set theme for ImageView |
 
 3. BobbleFab
 
 | Attribute Name  | Default Value | Example Value | Description |
 | ------------- | ------------- | ------------ | ------------- |
-| app:backgroundTint  | #ECEFF1(Light) #636363(Dark) | @color/colorAccent | Color of fab |
+| app:backgroundTint  | #FFFFFF(Light) #636363(Dark) | @color/colorAccent | Color of fab |
 | app:maxImageSize | 40dp  | 35dp | set ImageSize of fab symbol |
 | app:fabCustomSize  | 75dp  | 35dp | set size of fab |
-| app:isDarkTheme  | false  | true | set theme for fab |
+| app:customTheme  | "default"  | "dark"/"light" | set theme for fab |
 
 4. BobbleCardView
 
 | Attribute Name  | Default Value | Example Value | Description |
 | ------------- | ------------- | ------------ | ------------- |
-| app:cardBackgroundColor  | #FFFFFF(Light) #636363(Dark) | @color/colorAccent | background Color of CardView |
+| app:cardBackgroundColor  | #E0F7FA(Light) #212121(Dark) | @color/colorAccent | background Color of CardView |
 | app:cardCornerRadius  | 30dp  | 35dp | adjust radius of CardView |
-| app:isDarkTheme  | false  | true | set theme for CardView |
+| app:customTheme  | "default"  | "dark"/"light" | set theme for CardView |
 
-5. BobbleRoundCornerEditText
+5. BobbleEditText
 
 | Attribute Name  | Default Value | Example Value | Description |
 | ------------- | ------------- | ------------ | ------------- |
+| android:textColor | #9E9E9E(Light) #FFFFFF(Dark) | @color/colorAccent | text Color of RoundCorner Edittext |
 | app:textBoxColor | #FFFFFF(Light) #636363(Dark) | @color/colorAccent | background Color of RoundCorner Edittext |
 | app:corner_radius| 30dp  | 35dp | adjust radius of RoundCorner EditText |
 | app:borderColor  | #000000(Light) #FFFFFF(Dark) | @color/colorAccent | border color of RoundCorner Edittext |
 | app:borderWidth  | 3dp  | 5dp | set borderWidth for RoundCorner Edittext |
-| app:isDarkTheme  | false  | true | set theme for RoundCorner Edittext |
+| app:customTheme  | "default"  | "dark"/"light" | set theme for RoundCorner Edittext |
 
 6. BobbleImageButton
 
 | Attribute Name  | Default Value | Example Value | Description |
 | ------------- | ------------- | ------------ | ------------- |
-| app:buttonBackGround  | #FFFFFF(Light) #636363(Dark) | @color/colorAccent | background color of ImageView Button |
-| app:isDarkTheme  | false  | true | set theme for ImageView Button |
+| app:buttonBackGround  |Enabled :- #018786(Light) #E0E0E0(Dark) <br /> <br />  On Pressed :- #636363(Light) #636363(Dark) <br /> <br />  Disabled :- #E0E0E0(Light) #9E9E9E(Dark) | @color/colorAccent | background color of ImageView Button |
+| app:customTheme | "default"  | "dark"/"light" | set theme for ImageView Button |
 
-7. BobbleImageEdittext
-
-| Attribute Name  | Default Value | Example Value | Description |
-| ------------- | ------------- | ------------ | ------------- |
-| app:text  |  | @string/Hello_World! | pre written text in the Edittext |
-| app:editTextHint  |   | @string/Enter_Email_ID | set hint for the edittext box |
-| app:inputType  |  | email | set input type for the EditText |
-| app:maxLength  |50 | 100 | set max inputlength for the EditText |
-| app:rightIcon  |   | @drawable/image | set right icon in the edittext box |
-| app:leftIcon  |   | @drawable/image | set left icon in the edittext box |
-| app:isDarkTheme  | false  | true | set theme for BobbleImageEdittext |
-
-8. BobbleTabLayout
+7. BobbleTabLayout
 
 | Attribute Name  | Default Value | Example Value | Description |
 | ------------- | ------------- | ------------ | ------------- |
-| app:tabTextColor  | #9E9E9E | @color/colorAccent | set text color of Tabs |
-| app:tabSelectedTextColor  | #000000(Light) #FFFFFF(Dark)  | @color/colorAccent | set text color of Selected tabs color |
-| app:tabIndicatorColor  | #018786 | @color/colorAccent | set color of selected tab indicator |
+| app:tabTextColor  | #9E9E9E(Light) #636363(Dark) | @color/colorAccent | set text color of Tabs |
+| app:tabSelectedTextColor  | #000000(Light) #FFFFFF(Dark)  | @color/colorAccent | set text color of Selected tabs |
+| app:tabIndicatorColor  | #03DAC5(Light) #018786(Dark) | @color/colorAccent | set color of selected tab indicator |
 | app:boldText  |false | true | set if tab text should be bold |
 | app:selectedTabBoldText  |  false | true | set if selected tab text should be bold |
-| app:isDarkTheme  | false  | true | set theme for BobbleTabLayout |
+| app:customTheme  | "default"  | "dark"/"light" | set theme for BobbleTabLayout |
 
 
-## Installation
+# Initializing Programatically
+
+
+Button
+```bash
+        binding.button.buttonCornerRadius(22f)   //Change Button Radius
+        binding.button.backgroundColor(ColorStateList.valueOf(Color.CYAN))   //Change Button Color
+        binding.button.buttonTextColor(ColorStateList.valueOf(Color.BLACK))  //Change Button Text Color
+        binding.button.setTheme("dark")     //Set Dark Theme
+        binding.button.setEnable(false)   //Disable Button
+```
+ImageView
+```bash
+        binding.image.setBackgroundColor(Color.parseColor("#FFA726"))   //Change Image Background
+	binding.image.setImageColor(R.color.gray)    //Change Color of a Svg Image
+        binding.image.setTheme("dark")   //Set Dark Theme
+```
+Floating Action Button
+```bash
+        binding.fab.backgroundTintList = ColorStateList.valueOf(Color.BLUE) //Create border Color
+        binding.fab.setTheme("dark")    //Set Dark Theme
+        binding.fab.maxImageSize(40f)   //Set Fab icon Size
+        binding.fab.fabCustomSize(90f)  //Set Fab Size
+```
+CardView
+```bash
+        binding.card.cardBackGroundColor(Color.parseColor("#FFA726"))   //Set Card Background Color
+        binding.card.cardCornerRadius(0f)   //Set Card Corner Radius
+        binding.card.setTheme("dark")   //Set Dark Theme
+```
+EditText
+```bash
+        binding.edit.setRadius(0f)   //set EditText box radius
+        binding.edit.setBorderWidth(2f)  //set box width
+        binding.edit.borderColor(Color.parseColor("#E05021"))   //set edit box border color
+        binding.edit.textBoxColor(Color.parseColor("#FFA726"))  //set edit box color
+        binding.edit.setTheme("dark")   //Set Dark Theme
+```
+ImageButton
+```bash
+        binding.imgButton.backgroundColor(ColorStateList.valueOf(Color.BLUE))  //set image button background color
+        binding.imgButton.setTheme("dark")   //Set Dark Theme
+        binding.imgButton.setEnable(false)  //Disable image button
+```
+TabLayout  
+```bash
+         TabLayoutMediator(binding.tabLayout, binding.viewPager2) { tab, position ->
+            when (position) {
+                0 -> {
+                    tab.setIcon(R.drawable.ic_search)   //set tab icon
+                }
+                1 -> {
+                    tab.text = "TAB"  //set tab text
+                }
+            }
+            binding.tabLayout.setTextColor(Color.parseColor("#FFA726"))   //set tab text color
+            binding.tabLayout.setSelectedTabTextColor(Color.parseColor("#FFA726"))   //set selected tab text color
+            binding.tabLayout.setIndicatorColor(Color.parseColor("#FFA726"))   //set tab indicator color
+            binding.tabLayout.setTabTextBold(true)   //set tab text as bold
+            binding.tabLayout.setSelectedTabTextBold(true)    //set selected tab text as bold
+            binding.tabLayout.setTheme("dark")   //Set Dark Theme
+        }.attach()
+```
+
+
+# Installation
 
 Step 1. Add the JitPack repository to your build file
 
