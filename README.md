@@ -22,7 +22,18 @@ Libraries -:
 | Attribute Name  | Default Value | Example Value | Description |
 | ------------- | ------------- | ------------ | ------------- |
 | app:backgroundColor  |#E0F7FA(Light) #212121(Dark) | @color/colorAccent | background color of ImageView
-| app:imageColor  |#000000(Light) #FFFFFF(Dark) | @color/colorAccent |set Color of image in imageView
+| app:imageColor1  |#000000(Light) #03DAC5(Dark) | @color/colorAccent |set Color of first image in imageView
+| app:imageColor2  |#000000(Light) #03DAC5(Dark) | @color/colorAccent |set Color of second image in imageView
+| app:src1  | | @drawable/your_image |set image resource of first image in imageView
+| app:src2  | | @drawable/your_image |set image resource of second image in imageView
+| app:gravityImage1  |"top"| "center" |set image gravity of first image in imageView
+| app:gravityImage2  |"top"| "center" |set image gravity of second image in imageView
+| app:translationZImage1  | "0dp" | "2dp" |set elevation to top for first image in imageView
+| app:translationZImage2  | "0dp" | "2dp" |set elevation to top for second image in imageView
+| app:marginImage1  | "0dp" | "8dp" |set margin of first image in imageView
+| app:marginImage2  | "0dp" | "8dp" |set margin of second image in imageView
+| app:enableColorFilter1  | true | false |enable/disable filling color for image 1 
+| app:enableColorFilter2  | true | false |enable/disable filling color for image 2 
 | app:customTheme  | "default"  | "dark"/"light" | set theme for ImageView |
 
 3. BobbleFab
@@ -86,7 +97,16 @@ Button
 ImageView
 ```bash
         binding.image.setBackgroundColor(Color.parseColor("#FFA726"))   //Change Image Background
-	binding.image.setImageColor(R.color.gray)    //Change Color of a Svg Image
+	binding.image.setColorImage1(R.color.gray,PorterDuff.Mode.SRC_ATOP)    //Change Color of first image
+	binding.image.setColorImage2(R.color.gray,PorterDuff.Mode.SRC_ATOP)    //Change Color of second image
+	binding.image.setImage1Drawable(ContextCompat.getDrawable(context, R.drawable.your_image))   //set first image resource
+	binding.image.setImage2Drawable(ContextCompat.getDrawable(context, R.drawable.your_image))   //set second image resource
+	binding.image.setGravityImage1("center")   //set gravity of first image 
+	binding.image.setGravityImage2("center")   //set gravity of second image
+	binding.image.settranslationZImage1(2f)    //set elevation to top for first image in imageView
+	binding.image.settranslationZImage2(2f)    //set elevation to top for second image in imageView
+	binding.enableColorFilter1(false)   //enable/disable filling color for image 1 
+	binding.enableColorFilter2(false)   //enable/disable filling color for image 2 
         binding.image.setTheme("dark")   //Set Dark Theme
 ```
 Floating Action Button
