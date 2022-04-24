@@ -66,7 +66,6 @@
         <attr name="android:padding" format="dimension" />
         <attr name="customTheme" />
 
-        <attr name="backgroundColor1" format="reference|color" />
         <attr name="imageColor1" format="color" />
         <attr name="enableColorFilter1" format="boolean" />
         <attr name="src1" format="color|reference" />
@@ -78,7 +77,6 @@
         <attr name="translationZImage1" format="dimension" />
         <attr name="gravityImage1" format="string" />
 
-        <attr name="backgroundColor2" format="reference|color" />
         <attr name="imageColor2" format="color" />
         <attr name="enableColorFilter2" format="boolean" />
         <attr name="src2" format="color|reference" />

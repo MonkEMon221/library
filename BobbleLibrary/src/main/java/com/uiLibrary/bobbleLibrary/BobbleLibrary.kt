@@ -834,7 +834,7 @@ class BobbleImage @JvmOverloads constructor(
 
     /** image1 functions*/
 
-    fun setImage1Color(color: Int, mode: PorterDuff.Mode) {
+    fun setColorImage1(color: Int, mode: PorterDuff.Mode) {
         image1.setColorFilter(ContextCompat.getColor(context, color), mode)
     }
 
@@ -846,7 +846,7 @@ class BobbleImage @JvmOverloads constructor(
         image1.translationZ = value
     }
 
-    fun setColorFilter1(boolean: Boolean) {
+    fun enableColorFilter1(boolean: Boolean) {
         if (image1HasColorFilter != boolean) {
             image1HasColorFilter = boolean
         }
@@ -870,7 +870,7 @@ class BobbleImage @JvmOverloads constructor(
 
     /** image2 functions*/
 
-    fun setImage2Color(color: Int, mode: PorterDuff.Mode) {
+    fun setColorImage2(color: Int, mode: PorterDuff.Mode) {
         image2.setColorFilter(ContextCompat.getColor(context, color), mode)
     }
 
@@ -882,7 +882,7 @@ class BobbleImage @JvmOverloads constructor(
         image2.translationZ = value
     }
 
-    fun setColorFilter2(boolean: Boolean) {
+    fun enableColorFilter2(boolean: Boolean) {
         if (image2HasColorFilter != boolean) {
             image2HasColorFilter = boolean
         }
@@ -903,7 +903,6 @@ class BobbleImage @JvmOverloads constructor(
             NO_GRAVITY -> lp2.gravity = Gravity.NO_GRAVITY
         }
     }
-
 }
 
 
