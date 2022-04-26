@@ -8,14 +8,15 @@
     android:padding="16dp"
     tools:context=".MainActivity">
 
-    <com.uiLibrary.bobbleLibrary.BobbleButton
+    <com.uiLibrary.bobbleUiLibrary.BobbleButton
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/vishesh" />
 
-    <com.uiLibrary.bobbleLibrary.BobbleImage
+
+    <com.uiLibrary.bobbleUiLibrary.BobbleImageView
         android:id="@+id/image3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,7 +27,7 @@
         app:src1="@drawable/animal"
         app:src2="@drawable/animal2" />
 
-    <com.uiLibrary.bobbleLibrary.BobbleFab
+    <com.uiLibrary.bobbleUiLibrary.BobbleFab
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,14 +36,14 @@
         android:scaleType="centerCrop"
         app:fabSize="normal" />
 
-    <com.uiLibrary.bobbleLibrary.BobbleCardView
+    <com.uiLibrary.bobbleUiLibrary.BobbleCardView
         android:id="@+id/card"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_margin="16dp"
         android:focusable="true" />
 
-    <com.uiLibrary.bobbleLibrary.BobbleEditText
+    <com.uiLibrary.bobbleUiLibrary.BobbleEditText
         android:id="@+id/edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,7 +53,7 @@
         android:typeface="serif"
         app:corner_radius="30dp" />
 
-    <com.uiLibrary.bobbleLibrary.BobbleImageButton
+    <com.uiLibrary.bobbleUiLibrary.BobbleImageButton
         android:id="@+id/imgButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

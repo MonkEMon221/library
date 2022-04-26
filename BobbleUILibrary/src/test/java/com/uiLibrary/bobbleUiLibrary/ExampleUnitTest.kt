@@ -1,4 +1,4 @@
-package com.uiLibrary.bobbleLibrary
+package com.uiLibrary.bobbleUiLibrary
 
 import org.junit.Test
 
