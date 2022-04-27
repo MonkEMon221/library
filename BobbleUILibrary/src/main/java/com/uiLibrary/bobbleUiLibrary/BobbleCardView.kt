@@ -5,7 +5,6 @@ import android.content.res.TypedArray
 import android.util.AttributeSet
 import androidx.core.content.ContextCompat
 import com.google.android.material.card.MaterialCardView
-import com.uiLibrary.bobbleUiLibrary.R
 
 //CardView Library
 class BobbleCardView @JvmOverloads constructor

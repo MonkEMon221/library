@@ -5,7 +5,6 @@ import android.content.res.ColorStateList
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.core.content.ContextCompat
-import com.uiLibrary.bobbleUiLibrary.R
 
 //ImageButton Library
 class BobbleImageButton @JvmOverloads constructor(
@@ -36,11 +35,7 @@ class BobbleImageButton @JvmOverloads constructor(
     }
 
     fun backgroundColor(tint: ColorStateList?) {
-        if (tint == null) {
-            background = ContextCompat.getColorStateList(context, R.color.button_background)
-        } else {
-            background = tint
-        }
+        background = tint ?: ContextCompat.getColorStateList(context, R.color.button_background)
         backgroundTintList = background
     }
 

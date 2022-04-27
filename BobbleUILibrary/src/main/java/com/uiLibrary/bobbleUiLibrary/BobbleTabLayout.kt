@@ -10,7 +10,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.google.android.material.tabs.TabLayout
-import com.uiLibrary.bobbleUiLibrary.R
 
 // TabLayout Library
 class BobbleTabLayout @JvmOverloads constructor(

@@ -11,7 +11,6 @@ import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.core.view.setMargins
 import androidx.core.view.setPadding
-import com.uiLibrary.bobbleUiLibrary.R
 
 private const val CENTER = "center"
 private const val CENTER_HORIZONTAL = "center_horizontal"
@@ -130,7 +129,7 @@ class BobbleImageView @JvmOverloads constructor(
         /**set Attributes for 1st image*/
 
         src1 = typedArray.getDrawable(R.styleable.BobbleImage_src1)
-        setImage1Drawable(src1)
+        setDrawableImage1(src1)
 
         image1HasColorFilter =
             typedArray.getBoolean(R.styleable.BobbleImage_enableColorFilter1, image1HasColorFilter)
@@ -190,7 +189,7 @@ class BobbleImageView @JvmOverloads constructor(
         /**set Attributes for 2nd image*/
 
         src2 = typedArray.getDrawable(R.styleable.BobbleImage_src2)
-        setImage2Drawable(src2)
+        setDrawableImage2(src2)
 
         image2HasColorFilter =
             typedArray.getBoolean(R.styleable.BobbleImage_enableColorFilter2, image2HasColorFilter)
@@ -263,7 +262,7 @@ class BobbleImageView @JvmOverloads constructor(
         image1.setColorFilter(ContextCompat.getColor(context, color), mode)
     }
 
-    fun setImage1Drawable(id: Drawable?) {
+    fun setDrawableImage1(id: Drawable?) {
         image1.setImageDrawable(id)
     }
 
@@ -284,8 +283,8 @@ class BobbleImageView @JvmOverloads constructor(
             CENTER_VERTICAL -> lp1.gravity = Gravity.CENTER_VERTICAL
             BOTTOM -> lp1.gravity = Gravity.BOTTOM
             TOP -> lp1.gravity = Gravity.TOP
-            RIGHT -> lp1.gravity = Gravity.RIGHT
-            LEFT -> lp1.gravity = Gravity.LEFT
+            RIGHT -> lp1.gravity = Gravity.END
+            LEFT -> lp1.gravity = Gravity.START
             FILL -> lp1.gravity = Gravity.FILL
             FILL_HORIZONTAL -> lp1.gravity = Gravity.FILL_HORIZONTAL
             FILL_VERTICAL -> lp1.gravity = Gravity.FILL_VERTICAL
@@ -299,7 +298,7 @@ class BobbleImageView @JvmOverloads constructor(
         image2.setColorFilter(ContextCompat.getColor(context, color), mode)
     }
 
-    fun setImage2Drawable(id: Drawable?) {
+    fun setDrawableImage2(id: Drawable?) {
         image2.setImageDrawable(id)
     }
 

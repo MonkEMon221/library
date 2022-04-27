@@ -7,7 +7,6 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import androidx.core.content.ContextCompat
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.uiLibrary.bobbleUiLibrary.R
 
 //Fab Library
 class BobbleFab @JvmOverloads constructor

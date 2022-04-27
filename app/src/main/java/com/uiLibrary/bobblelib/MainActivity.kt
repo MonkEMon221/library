@@ -2,9 +2,7 @@ package com.uiLibrary.bobblelib
 
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.graphics.PorterDuff
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.uiLibrary.bobblelib.databinding.ActivityMainBinding
@@ -15,9 +13,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.fab.setOnClickListener {
-            Toast.makeText(this, "This is a fab", Toast.LENGTH_SHORT).show()
-        }
+
+        binding.imgButton.backgroundColor(ColorStateList.valueOf(Color.CYAN))
+        binding.fab.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_search))
+
 //        binding.button.buttonCornerRadius(0f)
 //        binding.button.backgroundColor(ColorStateList.valueOf(Color.CYAN))
 //        binding.button.buttonTextColor(ColorStateList.valueOf(Color.BLACK))

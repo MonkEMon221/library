@@ -19,7 +19,7 @@
     <color name="backgroundImage">@color/white</color>
     <color name="imageBackground">@color/bobble</color>
     <color name="imageColor">@color/black</color>
-    <color name="borderBackground">@color/white</color>
+    <color name="borderBackground">@color/teal_200</color>
 
     <color name="textBoxColor">@color/white</color>
     <color name="borderColor">@color/black</color>

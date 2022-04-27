@@ -7,7 +7,6 @@ import android.graphics.RectF
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
-import com.uiLibrary.bobbleUiLibrary.R
 
 //EditText Library
 class BobbleEditText @JvmOverloads constructor
