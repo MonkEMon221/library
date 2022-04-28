@@ -24,7 +24,6 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
-import com.uiLibrary.bobbleLibrary.R
 import java.util.*
 
 ////dp value to pixel value function

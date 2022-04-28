@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
-import android.net.Uri
 import android.util.AttributeSet
 import android.view.Gravity
 import android.widget.FrameLayout
@@ -13,7 +12,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.setMargins
 import androidx.core.view.setPadding
 import com.bumptech.glide.Glide
-import java.net.URI
 
 private const val CENTER = "center"
 private const val CENTER_HORIZONTAL = "center_horizontal"
@@ -269,8 +267,8 @@ class BobbleImageView @JvmOverloads constructor(
         image1.setImageDrawable(id)
     }
 
-    fun setImage1WithGlide(context: Context, imagePath:String) {
-        Glide.with(context).load(imagePath).into(image1)
+    fun setImageWithGlide(context: Context, imagePath:String) {
+        Glide.with(context).load(imagePath).into(image2)
     }
 
     fun setTranslationZImage1(value: Float) {
