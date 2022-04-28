@@ -267,8 +267,8 @@ class BobbleImageView @JvmOverloads constructor(
         image1.setImageDrawable(id)
     }
 
-    fun setImage1WithGlide(context: Context, imagePath:String) {
-        Glide.with(context).load(imagePath).centerCrop().into(image1)
+    fun setImage1WithGlide(context: Context, imagePath: String) {
+        Glide.with(context).load(imagePath).centerCrop().skipMemoryCache(true).into(image1)
     }
 
     fun setTranslationZImage1(value: Float) {
@@ -307,8 +307,8 @@ class BobbleImageView @JvmOverloads constructor(
         image2.setImageDrawable(id)
     }
 
-    fun setImage2WithGlide(context: Context, imagePath:String) {
-        Glide.with(context).load(imagePath).centerCrop().into(image2)
+    fun setImage2WithGlide(context: Context, imagePath: String) {
+        Glide.with(context).load(imagePath).fitCenter().skipMemoryCache(true).into(image2)
     }
 
     fun setTranslationZImage2(value: Float) {
