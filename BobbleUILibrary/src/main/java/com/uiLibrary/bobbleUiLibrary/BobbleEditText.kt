@@ -76,6 +76,7 @@ class BobbleEditText @JvmOverloads constructor
         rectF.set(offset, offset, width.toFloat() - offset, height.toFloat() - offset)
         canvas.drawRoundRect(rectF, radius, radius, paint)
         drawBorder(canvas)
+        canvas.clipRect(rectF)
         super.onDraw(canvas)
     }
 

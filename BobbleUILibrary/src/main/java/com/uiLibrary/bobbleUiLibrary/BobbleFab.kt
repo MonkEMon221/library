@@ -23,6 +23,9 @@ class BobbleFab @JvmOverloads constructor
 
     init {
 
+        isClickable = true
+        isFocusable = true
+
         val size = dpToPx(context, 75f)
         val iconSize = dpToPx(context, 40f)
 
