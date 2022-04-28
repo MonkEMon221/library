@@ -267,8 +267,8 @@ class BobbleImageView @JvmOverloads constructor(
         image1.setImageDrawable(id)
     }
 
-    fun setImageWithGlide(context: Context, imagePath:String) {
-        Glide.with(context).load(imagePath).into(image2)
+    fun setImage1WithGlide(context: Context, imagePath:String) {
+        Glide.with(context).load(imagePath).into(image1)
     }
 
     fun setTranslationZImage1(value: Float) {
