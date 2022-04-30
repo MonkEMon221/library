@@ -39,6 +39,13 @@
         <attr name="android:textColor" />
         <attr name="borderWidth" />
         <attr name="customTheme" />
+
+        <attr name="android:paddingTop" format="dimension" />
+        <attr name="android:paddingBottom" format="dimension" />
+        <attr name="android:paddingLeft" format="dimension" />
+        <attr name="android:paddingRight" format="dimension" />
+        <attr name="android:padding" format="dimension" />
+
     </declare-styleable>
 
     <declare-styleable name="BobbleImageButton">

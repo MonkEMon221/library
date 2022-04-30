@@ -8,6 +8,15 @@
     android:padding="16dp"
     tools:context=".MainActivity">
 
+    <com.uiLibrary.bobbleUiLibrary.BobbleEditText
+        android:id="@+id/edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/type_your_message_here"
+        android:inputType="text"
+        android:typeface="serif"
+        app:corner_radius="30dp" />
+
     <com.uiLibrary.bobbleUiLibrary.BobbleButton
         android:id="@+id/button"
         android:layout_width="wrap_content"
@@ -41,20 +50,12 @@
         android:layout_margin="16dp"
         android:focusable="true" />
 
-    <com.uiLibrary.bobbleUiLibrary.BobbleEditText
-        android:id="@+id/edit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/type_your_message_here"
-        android:padding="16dp"
-        android:textSize="12sp"
-        android:typeface="serif"
-        app:corner_radius="30dp" />
-
     <com.uiLibrary.bobbleUiLibrary.BobbleImageButton
         android:id="@+id/imgButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/add_cam" />
+
+
 
 </LinearLayout>

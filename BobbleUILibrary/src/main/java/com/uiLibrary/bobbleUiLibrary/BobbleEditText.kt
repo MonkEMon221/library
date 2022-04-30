@@ -1,12 +1,13 @@
 package com.uiLibrary.bobbleUiLibrary
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.RectF
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
+import androidx.annotation.ColorInt
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
+import androidx.core.view.setPadding
 
 //EditText Library
 class BobbleEditText @JvmOverloads constructor
@@ -14,12 +15,10 @@ class BobbleEditText @JvmOverloads constructor
     AppCompatEditText(context, attrs) {
 
     companion object {
-        private const val BORDER_OFFSET = 4f
+        private const val DEFAULT_PADDING = 16f
     }
 
-    private val rectF = RectF()
-    private val paint = Paint()
-    private val borderPaint = Paint()
+
 
     //attrs
     private var textColor: Int
@@ -28,12 +27,36 @@ class BobbleEditText @JvmOverloads constructor
     private var borderColor: Int
     private var borderWidth: Float
     private var customTheme: String?
+
+    private var cPadding: Float
+    private var cPaddingLeft: Float
+    private var cPaddingTop: Float
+    private var cPaddingRight: Float
+    private var cPaddingBottom: Float
+
     private val typedArray =
         context.theme.obtainStyledAttributes(attrs, R.styleable.BobbleEditText, 0, 0)
 
     init {
-        isClickable = true
-        isFocusable = true
+
+        cPadding = typedArray.getDimension(R.styleable.BobbleEditText_android_padding, 0f)
+
+        cPaddingLeft = typedArray.getDimension(
+            R.styleable.BobbleEditText_android_paddingLeft,
+            dpToPx(context, DEFAULT_PADDING)
+        )
+        cPaddingTop = typedArray.getDimension(
+            R.styleable.BobbleEditText_android_paddingTop,
+            dpToPx(context, DEFAULT_PADDING)
+        )
+        cPaddingRight = typedArray.getDimension(
+            R.styleable.BobbleEditText_android_paddingRight,
+            dpToPx(context, DEFAULT_PADDING)
+        )
+        cPaddingBottom = typedArray.getDimension(
+            R.styleable.BobbleEditText_android_paddingBottom,
+            dpToPx(context, DEFAULT_PADDING)
+        )
 
         cornerRadius =
             typedArray.getDimension(R.styleable.BobbleEditText_corner_radius, dpToPx(context, 30f))
@@ -52,7 +75,7 @@ class BobbleEditText @JvmOverloads constructor
                 R.styleable.BobbleEditText_textBoxColor,
                 ContextCompat.getColor(getContext(), R.color.textBoxColor)
             )
-        background = null
+
 
         borderColor =
             typedArray.getColor(
@@ -64,74 +87,53 @@ class BobbleEditText @JvmOverloads constructor
             typedArray.getDimension(R.styleable.BobbleEditText_borderWidth, dpToPx(context, 1f))
 
         setTheme(customTheme)
+
+        background = getShapeBackground(borderColor)
+
         typedArray.recycle()
+
+    }
+    private fun getShapeBackground(@ColorInt color: Int): Drawable {
+        val shape = GradientDrawable()
+        if (cPadding > 0f) {
+            setPadding(cPadding.toInt())
+        } else {
+            setPadding(
+                cPaddingLeft.toInt(),
+                cPaddingTop.toInt(),
+                cPaddingRight.toInt(),
+                cPaddingBottom.toInt()
+            )
+        }
+        shape.shape = GradientDrawable.RECTANGLE
+        shape.cornerRadius = cornerRadius
+        shape.setColor(textBoxColor)
+        shape.setStroke(borderWidth.toInt(), color)
+        return shape
     }
 
-    //create editBox with adjustable border radius
-    override fun onDraw(canvas: Canvas?) {
-        canvas ?: return
-        initPaint()
-        val offset = 0f
-        val radius = cornerRadius
-        rectF.set(offset, offset, width.toFloat() - offset, height.toFloat() - offset)
-        canvas.drawRoundRect(rectF, radius, radius, paint)
-        drawBorder(canvas)
-        canvas.clipRect(rectF)
-        super.onDraw(canvas)
-    }
-
-    private fun initPaint() {
-        paint.style = Paint.Style.FILL
-        paint.color = textBoxColor
-        paint.isAntiAlias = false
-    }
-
-    //   create border for edittext box
-    private fun drawBorder(canvas: Canvas) {
-        initBorderPaint()
-        canvas.drawRoundRect(
-            BORDER_OFFSET,
-            BORDER_OFFSET,
-            width.toFloat() - BORDER_OFFSET,
-            height.toFloat() - BORDER_OFFSET,
-            cornerRadius,
-            cornerRadius,
-            borderPaint
-        )
-    }
-
-    private fun initBorderPaint() {
-        borderPaint.style = Paint.Style.STROKE
-        borderPaint.strokeWidth = borderWidth
-        borderPaint.color = borderColor
-        borderPaint.isAntiAlias = true
-    }
 
     fun setRadius(radius: Float) {
         if (cornerRadius != radius) {
             cornerRadius = radius
-            invalidate()
         }
     }
 
     fun setBorderWidth(radius: Float) {
         if (borderWidth != radius) {
             borderWidth = radius
-            invalidate()
         }
     }
 
     fun borderColor(color: Int) {
         if (borderColor != color) {
             borderColor = color
-            invalidate()
         }
     }
 
     fun textBoxColor(color: Int) {
         if (textBoxColor != color) {
             textBoxColor = color
-            invalidate()
         }
     }
 
