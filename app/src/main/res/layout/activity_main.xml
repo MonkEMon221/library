@@ -13,9 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/type_your_message_here"
-        android:inputType="text"
-        android:typeface="serif"
-        app:corner_radius="30dp" />
+        android:typeface="serif" />
 
     <com.uiLibrary.bobbleUiLibrary.BobbleButton
         android:id="@+id/button"

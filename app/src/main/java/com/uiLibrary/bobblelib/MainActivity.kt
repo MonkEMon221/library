@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         binding.imgButton.backgroundColor(ColorStateList.valueOf(Color.CYAN))
         binding.fab.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_search))
 
+
+
 //        binding.button.buttonCornerRadius(0f)
 //        binding.button.backgroundColor(ColorStateList.valueOf(Color.CYAN))
 //        binding.button.buttonTextColor(ColorStateList.valueOf(Color.BLACK))

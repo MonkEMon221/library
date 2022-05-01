@@ -18,8 +18,6 @@ class BobbleEditText @JvmOverloads constructor
         private const val DEFAULT_PADDING = 16f
     }
 
-
-
     //attrs
     private var textColor: Int
     private var cornerRadius: Float
@@ -61,6 +59,7 @@ class BobbleEditText @JvmOverloads constructor
         cornerRadius =
             typedArray.getDimension(R.styleable.BobbleEditText_corner_radius, dpToPx(context, 30f))
 
+
         customTheme = typedArray.getString(R.styleable.BobbleEditText_customTheme)
 
         textColor = typedArray.getColor(
@@ -76,7 +75,6 @@ class BobbleEditText @JvmOverloads constructor
                 ContextCompat.getColor(getContext(), R.color.textBoxColor)
             )
 
-
         borderColor =
             typedArray.getColor(
                 R.styleable.BobbleEditText_borderColor,
@@ -88,13 +86,6 @@ class BobbleEditText @JvmOverloads constructor
 
         setTheme(customTheme)
 
-        background = getShapeBackground(borderColor)
-
-        typedArray.recycle()
-
-    }
-    private fun getShapeBackground(@ColorInt color: Int): Drawable {
-        val shape = GradientDrawable()
         if (cPadding > 0f) {
             setPadding(cPadding.toInt())
         } else {
@@ -105,35 +96,42 @@ class BobbleEditText @JvmOverloads constructor
                 cPaddingBottom.toInt()
             )
         }
-        shape.shape = GradientDrawable.RECTANGLE
-        shape.cornerRadius = cornerRadius
-        shape.setColor(textBoxColor)
-        shape.setStroke(borderWidth.toInt(), color)
-        return shape
+        setTextBoxColor(textBoxColor)
+        setRadius(cornerRadius)
+        setBorderColor(borderColor)
+        setBorderWidth(borderWidth)
+
+        background = getShapeBackground(cornerRadius, textBoxColor, borderWidth, borderColor)
+        typedArray.recycle()
     }
 
-
     fun setRadius(radius: Float) {
-        if (cornerRadius != radius) {
+        if (cornerRadius!= radius){
             cornerRadius = radius
+            background = getShapeBackground(radius,textBoxColor,borderWidth,borderColor)
         }
+        invalidate()
     }
 
     fun setBorderWidth(radius: Float) {
         if (borderWidth != radius) {
             borderWidth = radius
+            background = getShapeBackground(cornerRadius,textBoxColor,radius,borderColor)
         }
+        invalidate()
     }
 
-    fun borderColor(color: Int) {
+    fun setBorderColor(color: Int) {
         if (borderColor != color) {
             borderColor = color
+            background = getShapeBackground(cornerRadius,textBoxColor,borderWidth,color)
         }
     }
 
-    fun textBoxColor(color: Int) {
+    fun setTextBoxColor(color: Int) {
         if (textBoxColor != color) {
             textBoxColor = color
+            background = getShapeBackground(cornerRadius,color,borderWidth,borderColor)
         }
     }
 
@@ -143,5 +141,20 @@ class BobbleEditText @JvmOverloads constructor
 
     fun setTheme(theme: String?) {
         return applyTheme(theme)
+    }
+
+    private fun getShapeBackground(
+        radius: Float,
+        boxColor: Int,
+        border: Float,
+        color: Int
+    ): Drawable {
+        val shape = GradientDrawable()
+
+        shape.shape = GradientDrawable.RECTANGLE
+        shape.cornerRadius = radius
+        shape.setColor(boxColor)
+        shape.setStroke(border.toInt(), color)
+        return shape
     }
 }

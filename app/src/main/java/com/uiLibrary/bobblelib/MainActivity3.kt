@@ -61,8 +61,8 @@ class MainActivity3 : AppCompatActivity() {
         edtxt.bobbleEditText.setRadius(30f)
         edtxt.bobbleEditText.setBorderWidth(50f)
         edtxt.bobbleEditText.setTextColor(Color.RED)
-        edtxt.bobbleEditText.borderColor(Color.parseColor("#E05021"))
-        edtxt.bobbleEditText.textBoxColor(Color.parseColor("#6200EE"))
+        edtxt.bobbleEditText.setBorderColor(Color.parseColor("#E05021"))
+        edtxt.bobbleEditText.setTextBoxColor(Color.parseColor("#6200EE"))
         edtxt.bobbleEditText.setTheme("default")
         ll.addView(edtxt.bobbleEditText)
     }
