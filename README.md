@@ -126,8 +126,8 @@ Libraries -:
 ```bash
         binding.edit.setRadius(0f)   //set EditText box radius
         binding.edit.setBorderWidth(2f)  //set box width
-        binding.edit.borderColor(Color.parseColor("#E05021"))   //set edit box border color
-        binding.edit.textBoxColor(Color.parseColor("#FFA726"))  //set edit box color
+        binding.edit.setBorderColor(Color.parseColor("#E05021"))   //set edit box border color
+        binding.edit.setTextBoxColor(Color.parseColor("#FFA726"))  //set edit box color
         binding.edit.setTheme("dark")   //Set Theme
 ```
 ## ImageButton
