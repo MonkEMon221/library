@@ -110,7 +110,7 @@ class BobbleEditText @JvmOverloads constructor
             cornerRadius = radius
             background = getShapeBackground(radius,textBoxColor,borderWidth,borderColor)
         }
-        invalidate()
+
     }
 
     fun setBorderWidth(radius: Float) {
@@ -118,7 +118,7 @@ class BobbleEditText @JvmOverloads constructor
             borderWidth = radius
             background = getShapeBackground(cornerRadius,textBoxColor,radius,borderColor)
         }
-        invalidate()
+
     }
 
     fun setBorderColor(color: Int) {
