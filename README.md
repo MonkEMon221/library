@@ -22,18 +22,18 @@ Libraries -:
 | Attribute Name  | Default Value | Example Value | Description |
 | ------------- | ------------- | ------------ | ------------- |
 | app:backgroundColor  |#E0F7FA(Light) #212121(Dark) | @color/colorAccent | background color of ImageView
-| app:imageColor1  |#000000(Light) #03DAC5(Dark) | @color/colorAccent |set Color of first image in imageView
-| app:imageColor2  |#000000(Light) #03DAC5(Dark) | @color/colorAccent |set Color of second image in imageView
-| app:src1  | | @drawable/your_image |set image resource of first image in imageView
-| app:src2  | | @drawable/your_image |set image resource of second image in imageView
-| app:gravityImage1  |"top"| "center" |set image gravity of first image in imageView
-| app:gravityImage2  |"top"| "center" |set image gravity of second image in imageView
-| app:translationZImage1  | "0dp" | "2dp" |set elevation to top for first image in imageView
-| app:translationZImage2  | "0dp" | "2dp" |set elevation to top for second image in imageView
-| app:marginImage1  | "0dp" | "8dp" |set margin of first image in imageView
-| app:marginImage2  | "0dp" | "8dp" |set margin of second image in imageView
-| app:enableColorFilter1  | true | false |enable/disable filling color for image 1 
-| app:enableColorFilter2  | true | false |enable/disable filling color for image 2 
+| app:imageColorPrimary  |#000000(Light) #03DAC5(Dark) | @color/colorAccent |set Color of first image in imageView
+| app:imageColorSecondary  |#000000(Light) #03DAC5(Dark) | @color/colorAccent |set Color of second image in imageView
+| app:srcPrimary  | | @drawable/your_image |set image resource of first image in imageView
+| app:srcSecondary  | | @drawable/your_image |set image resource of second image in imageView
+| app:gravityImagePrimary  |"top"| "center" |set image gravity of first image in imageView
+| app:gravityImageSecondary  |"top"| "center" |set image gravity of second image in imageView
+| app:translationZImagePrimary  | "0dp" | "2dp" |set elevation to top for first image in imageView
+| app:translationZImageSecondary  | "0dp" | "2dp" |set elevation to top for second image in imageView
+| app:marginImagePrimary  | "0dp" | "8dp" |set margin of first image in imageView
+| app:marginImageSecondary  | "0dp" | "8dp" |set margin of second image in imageView
+| app:enableColorFilterPrimary  | true | false |enable/disable filling color for image 1 
+| app:enableColorFilterSecondary  | true | false |enable/disable filling color for image 2 
 | app:customTheme  | "default"  | "dark"/"light" | set theme for ImageView |
 
 3. BobbleFab
