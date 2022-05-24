@@ -188,6 +188,12 @@ Libraries -:
         binding.img.setBorderWidth(5f)  //set border width
 ```
 
+## TextView
+```bash
+        binding.txt.setMinTextSize(15f)  //set min text size
+        binding.txt.setMaxTextSize(25f)   //Set max Text Size
+```
+
 # Creating Components Programatically
 
 ## Button
@@ -276,6 +282,13 @@ Libraries -:
         img.bobbleCircleImageView.setCircleBackgroundColor("#000000")  //set image background color
         img.bobbleCircleImageView.setBorderColor("#000000")   //Set border color
         img.bobbleCircleImageView.setBorderWidth(5f)  //set border width
+```
+
+## TextView
+```bash
+        val txt = BobbleUILibrary(this)
+        txt.bobbleTextView.setMinTextSize(15f)  //set min text size
+        txt.bobbleTextView.setMaxTextSize(25f)   //Set max Text Size
 ```
 
 
