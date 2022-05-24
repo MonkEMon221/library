@@ -155,9 +155,9 @@ Libraries -:
             binding.tabLayout.setIndicatorColor(Color.parseColor("#FFA726"))   //set tab indicator color
             binding.tabLayout.setTabTextBold(true)   //set tab text as bold
             binding.tabLayout.setSelectedTabTextBold(true)    //set selected tab text as bold
-	    binding.tabLayout.indicatorHeight(10dp)    //set indicator height
-	    binding.tabLayout.tabIndicatorRadius(10dp)   //set indicator radius
-	    binding.tabLayout.tabIndicatorMargin(10dp)  //set indicator margin
+	    binding.tabLayout.indicatorHeight(10f)    //set indicator height
+	    binding.tabLayout.tabIndicatorRadius(10f)   //set indicator radius
+	    binding.tabLayout.tabIndicatorMargin(10f)  //set indicator margin
             binding.tabLayout.setTheme("dark")   //Set Theme
         }.attach()
 ```
@@ -236,9 +236,9 @@ Libraries -:
         tab.bobbleTabLayout.setIndicatorColor(Color.parseColor("#def56a"))    //Set tab indicator color
         tab.bobbleTabLayout.setTabTextBold(true)   //Set tab text as bold
         tab.bobbleTabLayout.setSelectedTabTextBold(true)   //set selected tab text as bold
-	tab.bobbleTabLayout.indicatorHeight(10dp)    //set indicator height
-	tab.bobbleTabLayout.tabIndicatorRadius(10dp)   //set indicator radius
-	tab.bobbleTabLayout.tabIndicatorMargin(10dp)  //set indicator margin
+	tab.bobbleTabLayout.indicatorHeight(10f)    //set indicator height
+	tab.bobbleTabLayout.tabIndicatorRadius(10f)   //set indicator radius
+	tab.bobbleTabLayout.tabIndicatorMargin(10f)  //set indicator margin
         tab.bobbleTabLayout.setTheme("default")   //Set theme
 ```
 
