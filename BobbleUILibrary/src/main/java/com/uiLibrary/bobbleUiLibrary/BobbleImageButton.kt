@@ -2,11 +2,14 @@ package com.uiLibrary.bobbleUiLibrary
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.os.Build
 import android.util.AttributeSet
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.core.content.ContextCompat
 
 //ImageButton Library
+
 class BobbleImageButton @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) :
@@ -36,7 +39,9 @@ class BobbleImageButton @JvmOverloads constructor(
 
     fun backgroundColor(tint: ColorStateList?) {
         background = tint ?: ContextCompat.getColorStateList(context, R.color.button_background)
-        backgroundTintList = background
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            backgroundTintList = background
+        }
     }
 
     fun setEnable(enable: Boolean) {

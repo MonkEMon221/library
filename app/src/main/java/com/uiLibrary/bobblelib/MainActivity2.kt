@@ -4,6 +4,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat
 import com.google.android.material.tabs.TabLayoutMediator
 import com.uiLibrary.bobblelib.databinding.ActivityMain2Binding
 
@@ -27,17 +28,12 @@ class MainActivity2 : AppCompatActivity() {
         TabLayoutMediator(binding.tabLayout, binding.viewPager2) { tab, position ->
             when (position) {
                 0 -> {
-                    tab.setIcon(R.drawable.ic_search)
+                    tab.text = "TAB2"
                 }
                 1 -> {
                     tab.text = "TAB"
                 }
             }
-            binding.tabLayout.setTextColor(Color.parseColor("#FFA726"))
-            binding.tabLayout.setSelectedTabTextColor(Color.parseColor("#FFA726"))
-            binding.tabLayout.setIndicatorColor(Color.parseColor("#def56a"))
-            binding.tabLayout.setTabTextBold(true)
-            binding.tabLayout.setSelectedTabTextBold(true)
             binding.viewPager2.currentItem = 1
         }.attach()
     }

@@ -3,10 +3,12 @@ package com.uiLibrary.bobbleUiLibrary
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
+import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import com.google.android.material.card.MaterialCardView
 
 //CardView Library
+
 class BobbleCardView @JvmOverloads constructor
     (context: Context, attrs: AttributeSet? = null) :
     MaterialCardView(context, attrs) {
@@ -14,15 +16,19 @@ class BobbleCardView @JvmOverloads constructor
     private val cardBackgroundColor: Int
     private var customTheme: String?
     private val cardRadius: Float
+
     private val typedArray: TypedArray =
-        context.obtainStyledAttributes(attrs, R.styleable.BobbleCardView, 0, 0)
+        context.obtainStyledAttributes(
+            attrs,
+            R.styleable.BobbleCardView, 0, 0
+        )
 
     init {
 
         //preDefined cardView Radius
         cardRadius = typedArray.getDimension(
             R.styleable.BobbleCardView_cardCornerRadius,
-            dpToPx(context, 10f)
+            resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._10sdp).toFloat()
         )
         cardCornerRadius(cardRadius)
 
@@ -35,7 +41,8 @@ class BobbleCardView @JvmOverloads constructor
                 ContextCompat.getColor(getContext(), R.color.imageBackground)
             )
         cardBackGroundColor(cardBackgroundColor)
-        backgroundTintList = null
+
+
 
         setTheme(customTheme)
         typedArray.recycle()

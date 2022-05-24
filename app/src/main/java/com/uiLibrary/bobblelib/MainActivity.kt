@@ -3,8 +3,10 @@ package com.uiLibrary.bobblelib
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
+import com.uiLibrary.bobbleUiLibrary.BobbleButton
+import com.uiLibrary.bobbleUiLibrary.BobbleUILibrary
 import com.uiLibrary.bobblelib.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -14,9 +16,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.imgButton.backgroundColor(ColorStateList.valueOf(Color.CYAN))
-        binding.fab.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_search))
 
+//        binding.imgButton.backgroundColor(ColorStateList.valueOf(Color.CYAN))
+//        binding.fab.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_search))
 
 
 //        binding.button.buttonCornerRadius(0f)

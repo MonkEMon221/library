@@ -4,6 +4,7 @@
     <attr name="customTheme" format="string" />
     <attr name="corner_radius" format="dimension" />
     <attr name="borderColor" format="color|reference" />
+    <attr name="backgroundColor" format="reference|color"/>
 
     <declare-styleable name="BobbleButton">
         <attr name="customTheme" />
@@ -19,10 +20,9 @@
 
     <declare-styleable name="BobbleFab">
         <attr name="backgroundTint" />
-        <attr name="android:backgroundTint" />
-        <attr name="android:src" format="reference|color" />
         <attr name="maxImageSize" format="dimension" />
         <attr name="fabCustomSize" format="dimension" />
+        <attr name="android:src"/>
         <attr name="customTheme" />
     </declare-styleable>
 
@@ -58,6 +58,9 @@
         <attr name="tabTextColor" format="color" />
         <attr name="tabSelectedTextColor" format="color" />
         <attr name="tabIndicatorColor" format="color" />
+        <attr name="indicatorHeight" format="dimension"/>
+        <attr name="tabIndicatorRadius" format="dimension"/>
+        <attr name="tabIndicatorMargin" format="dimension"/>
         <attr name="boldText" format="boolean" />
         <attr name="android:textSize" format="dimension" />
         <attr name="selectedTabBoldText" format="boolean" />
@@ -65,7 +68,7 @@
     </declare-styleable>
 
     <declare-styleable name="BobbleImage">
-        <attr name="backgroundColor" format="color|reference" />
+        <attr name="backgroundColor" />
         <attr name="android:paddingTop" format="dimension" />
         <attr name="android:paddingBottom" format="dimension" />
         <attr name="android:paddingLeft" format="dimension" />
@@ -73,27 +76,57 @@
         <attr name="android:padding" format="dimension" />
         <attr name="customTheme" />
 
-        <attr name="imageColor1" format="color" />
-        <attr name="enableColorFilter1" format="boolean" />
-        <attr name="src1" format="color|reference" />
-        <attr name="marginImage1" format="dimension" />
-        <attr name="marginTopImage1" format="dimension" />
-        <attr name="marginBottomImage1" format="dimension" />
-        <attr name="marginLeftImage1" format="dimension" />
-        <attr name="marginRightImage1" format="dimension" />
-        <attr name="translationZImage1" format="dimension" />
-        <attr name="gravityImage1" format="string" />
+        <attr name="imageColorPrimary" format="color" />
+        <attr name="enableColorFilterPrimary" format="boolean" />
+        <attr name="srcPrimary" format="color|reference" />
+        <attr name="marginImagePrimary" format="dimension" />
+        <attr name="marginTopImagePrimary" format="dimension" />
+        <attr name="marginBottomImagePrimary" format="dimension" />
+        <attr name="marginLeftImagePrimary" format="dimension" />
+        <attr name="marginRightImagePrimary" format="dimension" />
+        <attr name="translationZImagePrimary" format="dimension" />
+        <attr name="gravityImagePrimary" format="string" />
+        <attr name="scaleTypePrimary" format="enum">
+            <enum name="fitXY" value="1" />
+            <enum name="fitStart" value="2" />
+            <enum name="fitCenter" value="3" />
+            <enum name="fitEnd" value="4" />
+            <enum name="center" value="5" />
+            <enum name="centerCrop" value="6" />
+            <enum name="centerInside" value="7" />
+        </attr>
 
-        <attr name="imageColor2" format="color" />
-        <attr name="enableColorFilter2" format="boolean" />
-        <attr name="src2" format="color|reference" />
-        <attr name="marginImage2" format="dimension" />
-        <attr name="marginTopImage2" format="dimension" />
-        <attr name="marginBottomImage2" format="dimension" />
-        <attr name="marginLeftImage2" format="dimension" />
-        <attr name="marginRightImage2" format="dimension" />
-        <attr name="translationZImage2" format="dimension" />
-        <attr name="gravityImage2" format="string"/>
+        <attr name="imageColorSecondary" format="color" />
+        <attr name="enableColorFilterSecondary" format="boolean" />
+        <attr name="srcSecondary" format="color|reference" />
+        <attr name="marginImageSecondary" format="dimension" />
+        <attr name="marginTopImageSecondary" format="dimension" />
+        <attr name="marginBottomImageSecondary" format="dimension" />
+        <attr name="marginLeftImageSecondary" format="dimension" />
+        <attr name="marginRightImageSecondary" format="dimension" />
+        <attr name="translationZImageSecondary" format="dimension" />
+        <attr name="gravityImageSecondary" format="string"/>
+        <attr name="scaleTypeSecondary" format="enum">
+            <enum name="fitXY" value="1" />
+            <enum name="fitStart" value="2" />
+            <enum name="fitCenter" value="3" />
+            <enum name="fitEnd" value="4" />
+            <enum name="center" value="5" />
+            <enum name="centerCrop" value="6" />
+            <enum name="centerInside" value="7" />
+        </attr>
     </declare-styleable>
+
+    <declare-styleable name="BobbleCircleImageView">
+        <attr name="backgroundColor"/>
+        <attr name="borderWidth" format="dimension"/>
+        <attr name="borderColor"/>
+    </declare-styleable>
+
+    <declare-styleable name="BobbleTextView">
+        <attr name="minTextSize" format="dimension"/>
+        <attr name="maxTextSize" format="dimension"/>
+    </declare-styleable>
+
 
 </resources>

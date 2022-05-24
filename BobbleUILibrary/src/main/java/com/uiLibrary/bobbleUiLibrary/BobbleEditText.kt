@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
-import androidx.annotation.ColorInt
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 import androidx.core.view.setPadding
@@ -14,9 +13,6 @@ class BobbleEditText @JvmOverloads constructor
     (context: Context, attrs: AttributeSet? = null) :
     AppCompatEditText(context, attrs) {
 
-    companion object {
-        private const val DEFAULT_PADDING = 16f
-    }
 
     //attrs
     private var textColor: Int
@@ -41,23 +37,26 @@ class BobbleEditText @JvmOverloads constructor
 
         cPaddingLeft = typedArray.getDimension(
             R.styleable.BobbleEditText_android_paddingLeft,
-            dpToPx(context, DEFAULT_PADDING)
+            resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._10sdp).toFloat()
         )
         cPaddingTop = typedArray.getDimension(
             R.styleable.BobbleEditText_android_paddingTop,
-            dpToPx(context, DEFAULT_PADDING)
+            resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._10sdp).toFloat()
         )
         cPaddingRight = typedArray.getDimension(
             R.styleable.BobbleEditText_android_paddingRight,
-            dpToPx(context, DEFAULT_PADDING)
+            resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._10sdp).toFloat()
         )
         cPaddingBottom = typedArray.getDimension(
             R.styleable.BobbleEditText_android_paddingBottom,
-            dpToPx(context, DEFAULT_PADDING)
+            resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._10sdp).toFloat()
         )
 
         cornerRadius =
-            typedArray.getDimension(R.styleable.BobbleEditText_corner_radius, dpToPx(context, 30f))
+            typedArray.getDimension(
+                R.styleable.BobbleEditText_corner_radius,
+                resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._30sdp).toFloat()
+            )
 
 
         customTheme = typedArray.getString(R.styleable.BobbleEditText_customTheme)
@@ -82,7 +81,10 @@ class BobbleEditText @JvmOverloads constructor
             )
 
         borderWidth =
-            typedArray.getDimension(R.styleable.BobbleEditText_borderWidth, dpToPx(context, 1f))
+            typedArray.getDimension(
+                R.styleable.BobbleEditText_borderWidth,
+                resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._1sdp).toFloat()
+            )
 
         setTheme(customTheme)
 
@@ -106,9 +108,9 @@ class BobbleEditText @JvmOverloads constructor
     }
 
     fun setRadius(radius: Float) {
-        if (cornerRadius!= radius){
+        if (cornerRadius != radius) {
             cornerRadius = radius
-            background = getShapeBackground(radius,textBoxColor,borderWidth,borderColor)
+            background = getShapeBackground(radius, textBoxColor, borderWidth, borderColor)
         }
 
     }
@@ -116,7 +118,7 @@ class BobbleEditText @JvmOverloads constructor
     fun setBorderWidth(radius: Float) {
         if (borderWidth != radius) {
             borderWidth = radius
-            background = getShapeBackground(cornerRadius,textBoxColor,radius,borderColor)
+            background = getShapeBackground(cornerRadius, textBoxColor, radius, borderColor)
         }
 
     }
@@ -124,14 +126,14 @@ class BobbleEditText @JvmOverloads constructor
     fun setBorderColor(color: Int) {
         if (borderColor != color) {
             borderColor = color
-            background = getShapeBackground(cornerRadius,textBoxColor,borderWidth,color)
+            background = getShapeBackground(cornerRadius, textBoxColor, borderWidth, color)
         }
     }
 
     fun setTextBoxColor(color: Int) {
         if (textBoxColor != color) {
             textBoxColor = color
-            background = getShapeBackground(cornerRadius,color,borderWidth,borderColor)
+            background = getShapeBackground(cornerRadius, color, borderWidth, borderColor)
         }
     }
 
@@ -149,6 +151,7 @@ class BobbleEditText @JvmOverloads constructor
         border: Float,
         color: Int
     ): Drawable {
+
         val shape = GradientDrawable()
 
         shape.shape = GradientDrawable.RECTANGLE

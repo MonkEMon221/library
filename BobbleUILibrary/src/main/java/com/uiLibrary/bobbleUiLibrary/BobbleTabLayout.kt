@@ -2,14 +2,18 @@ package com.uiLibrary.bobbleUiLibrary
 
 import android.content.Context
 import android.graphics.Typeface
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.google.android.material.tabs.TabLayout
+
 
 // TabLayout Library
 class BobbleTabLayout @JvmOverloads constructor(
@@ -22,6 +26,9 @@ class BobbleTabLayout @JvmOverloads constructor(
     private var tabText: Int
     private var tabSelectedText: Int
     private var tabIndicatorColor: Int
+    private var tabIndicatorHeight: Float
+    private var tabIndicatorMargin: Float
+    private var tabIndicatorRadius: Float
     private var boldText: Boolean
     private var selectedTabBold: Boolean
     private val textSize: Float
@@ -55,7 +62,27 @@ class BobbleTabLayout @JvmOverloads constructor(
                 R.styleable.BobbleTabLayout_tabIndicatorColor,
                 ContextCompat.getColor(getContext(), R.color.indicatorColor)
             )
-        setSelectedTabIndicatorColor(tabIndicatorColor)
+
+        tabIndicatorHeight =
+            typedArray.getDimension(
+                R.styleable.BobbleTabLayout_indicatorHeight, resources.getDimensionPixelSize(
+                    com.intuit.sdp.R.dimen._5sdp
+                ).toFloat()
+            )
+
+        tabIndicatorMargin =
+            typedArray.getDimension(
+                R.styleable.BobbleTabLayout_tabIndicatorMargin, resources.getDimensionPixelSize(
+                    com.intuit.sdp.R.dimen._25sdp
+                ).toFloat()
+            )
+
+        tabIndicatorRadius =
+            typedArray.getDimension(
+                R.styleable.BobbleTabLayout_tabIndicatorRadius, resources.getDimensionPixelSize(
+                    com.intuit.sdp.R.dimen._15sdp
+                ).toFloat()
+            )
 
         //set tab text as bold
         boldText =
@@ -94,6 +121,9 @@ class BobbleTabLayout @JvmOverloads constructor(
         text.textSize = textSize
         if (boldText)
             text.setTypeface(text.typeface, Typeface.BOLD)
+
+        wrapTabIndicatorToTitle(this, tabIndicatorMargin.toInt(), tabIndicatorMargin.toInt())
+        setSelectedTabIndicator(indicator(tabIndicatorHeight.toInt()))
         tab.customView = layout
     }
 
@@ -116,8 +146,8 @@ class BobbleTabLayout @JvmOverloads constructor(
     }
 
     override fun onTabReselected(tab: Tab?) {
-
     }
+
 
     fun setTextColor(color: Int) {
         if (tabText != color) {
@@ -150,7 +180,78 @@ class BobbleTabLayout @JvmOverloads constructor(
         }
     }
 
+    fun setIndicatorHeight(height: Float) {
+        if (tabIndicatorHeight != height) {
+            tabIndicatorHeight = height
+        }
+    }
+
+    fun setIndicatorMargin(margin: Float) {
+        if (tabIndicatorMargin != margin) {
+            tabIndicatorMargin = margin
+        }
+    }
+
+    fun setIndicatorRadius(radius: Float) {
+        if (tabIndicatorRadius != radius) {
+            tabIndicatorRadius = radius
+        }
+    }
+
     fun setTheme(theme: String?) {
         return applyTheme(theme)
+    }
+
+    private fun indicator(height: Int): Drawable {
+        val shape = GradientDrawable()
+        shape.shape = GradientDrawable.RECTANGLE
+        shape.cornerRadius = tabIndicatorRadius
+        shape.setColor(tabIndicatorColor)
+        shape.setSize(0, height)
+        return shape
+    }
+
+    private fun wrapTabIndicatorToTitle(
+        tabLayout: TabLayout,
+        externalMargin: Int,
+        internalMargin: Int
+    ) {
+        val tabStrip = tabLayout.getChildAt(0)
+        if (tabStrip is ViewGroup) {
+            val childCount = tabStrip.childCount
+            for (i in 0 until childCount) {
+                val tabView = tabStrip.getChildAt(i)
+                //set minimum width to 0 for instead for small texts, indicator is not wrapped as expected
+                tabView.minimumWidth = 0
+                // set padding to 0 for wrapping indicator as title
+                tabView.setPadding(0, tabView.paddingTop, 0, tabView.paddingBottom)
+                // setting custom margin between tabs
+                if (tabView.layoutParams is MarginLayoutParams) {
+                    val layoutParams = tabView.layoutParams as MarginLayoutParams
+                    when (i) {
+                        0 -> {
+                            // left
+                            settingMargin(layoutParams, externalMargin, internalMargin)
+                        }
+                        childCount - 1 -> {
+                            // right
+                            settingMargin(layoutParams, internalMargin, externalMargin)
+                        }
+                        else -> {
+                            // internal
+                            settingMargin(layoutParams, internalMargin, internalMargin)
+                        }
+                    }
+                }
+            }
+            tabLayout.requestLayout()
+        }
+    }
+
+    private fun settingMargin(layoutParams: MarginLayoutParams, start: Int, end: Int) {
+        layoutParams.marginStart = start
+        layoutParams.marginEnd = end
+        layoutParams.leftMargin = start
+        layoutParams.rightMargin = end
     }
 }

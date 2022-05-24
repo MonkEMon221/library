@@ -3,26 +3,18 @@ package com.uiLibrary.bobbleUiLibrary
 import android.content.Context
 import android.util.AttributeSet
 
+
 class BobbleUILibrary @JvmOverloads constructor
     (context: Context, attrs: AttributeSet? = null) {
 
-    //initializing variables for different bobble Ui Library components
+    /**initializing variables for different bobble Ui Library components*/
+    var bobbleButton: BobbleButton = BobbleButton(context, attrs)
+    val bobbleFab: BobbleFab = BobbleFab(context, attrs)
+    val bobbleCardView: BobbleCardView = BobbleCardView(context, attrs)
+    val bobbleImageButton: BobbleImageButton = BobbleImageButton(context, attrs)
+    val bobbleEditText: BobbleEditText = BobbleEditText(context, attrs)
+    val bobbleTabLayout: BobbleTabLayout = BobbleTabLayout(context, attrs)
+    val bobbleImageView: BobbleImageView = BobbleImageView(context, attrs)
+    val bobbleCircleImageView: BobbleCircleImageView = BobbleCircleImageView(context, attrs)
 
-    val bobbleButton: BobbleButton
-    val bobbleFab: BobbleFab
-    val bobbleCardView: BobbleCardView
-    val bobbleImageButton: BobbleImageButton
-    val bobbleEditText: BobbleEditText
-    val bobbleTabLayout: BobbleTabLayout
-    val bobbleImageView: BobbleImageView
-
-    init {
-        bobbleButton = BobbleButton(context, attrs)    //Extending class BobbleButton
-        bobbleFab = BobbleFab(context, attrs)    //Extending class BobbleFab
-        bobbleCardView = BobbleCardView(context, attrs)    //Extending class BobbleCardView
-        bobbleImageButton = BobbleImageButton(context, attrs)    //Extending class BobbleImageButton
-        bobbleEditText = BobbleEditText(context, attrs)    //Extending class BobbleEditText
-        bobbleTabLayout = BobbleTabLayout(context, attrs)    //Extending class BobbleTabLayout
-        bobbleImageView = BobbleImageView(context, attrs)    //Extending class BobbleImageView
-    }
 }

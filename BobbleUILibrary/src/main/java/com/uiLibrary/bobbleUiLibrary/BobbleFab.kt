@@ -15,7 +15,7 @@ class BobbleFab @JvmOverloads constructor
     //attrs
     private val fabCustomSize: Float
     private val maxImageSize: Float
-    private var borderBackgroundColor: Int
+    private var borderBackgroundColor: ColorStateList?
     private var fabIcon: Drawable?
     private var customTheme: String?
     private val typedArray: TypedArray =
@@ -26,25 +26,27 @@ class BobbleFab @JvmOverloads constructor
         isClickable = true
         isFocusable = true
 
-        val size = dpToPx(context, 75f)
-        val iconSize = dpToPx(context, 40f)
+        val size = resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._75sdp)
+        val iconSize = resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._40sdp)
 
         //preDefined fab size
-        fabCustomSize = typedArray.getDimension(R.styleable.BobbleFab_fabCustomSize, size)
+        fabCustomSize = typedArray.getDimension(R.styleable.BobbleFab_fabCustomSize, size.toFloat())
         fabCustomSize(fabCustomSize)
 
         //preDefined fab image size
-        maxImageSize = typedArray.getDimension(R.styleable.BobbleFab_maxImageSize, iconSize)
+        maxImageSize = typedArray.getDimension(R.styleable.BobbleFab_maxImageSize,
+            iconSize.toFloat()
+        )
         maxImageSize(maxImageSize)
 
         //setting up different border color for different theme
         customTheme = typedArray.getString(R.styleable.BobbleFab_customTheme)
 
-        borderBackgroundColor = typedArray.getColor(
-            R.styleable.BobbleFab_backgroundTint,
-            ContextCompat.getColor(context, R.color.borderBackground)
-        )
-        backgroundTintList = ColorStateList.valueOf(borderBackgroundColor)
+        borderBackgroundColor =
+            typedArray.getColorStateList(
+                R.styleable.BobbleFab_backgroundTint
+            )
+        fabBackgroundColor(borderBackgroundColor)
 
         //preDefined fab image
         fabIcon = typedArray.getDrawable(R.styleable.BobbleFab_android_src)
@@ -55,6 +57,12 @@ class BobbleFab @JvmOverloads constructor
 
     fun maxImageSize(size: Float) {
         setMaxImageSize(size.toInt())
+    }
+
+    fun fabBackgroundColor(tintList: ColorStateList?) {
+        borderBackgroundColor =
+            tintList ?: ContextCompat.getColorStateList(context, R.color.indicatorColor)
+        backgroundTintList = borderBackgroundColor
     }
 
     fun fabCustomSize(size: Float) {

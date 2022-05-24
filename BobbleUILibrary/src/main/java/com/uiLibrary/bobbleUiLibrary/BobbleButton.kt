@@ -26,7 +26,12 @@ class BobbleButton @JvmOverloads constructor
     private val paddingLeft: Float
     private val paddingRight: Float
     private val typedArray: TypedArray =
-        context.theme.obtainStyledAttributes(attrs, R.styleable.BobbleButton, 0, 0)
+        context.theme.obtainStyledAttributes(
+            attrs,
+            R.styleable.BobbleButton,
+            0,
+            0
+        )
 
     init {
         customTheme = typedArray.getString(R.styleable.BobbleButton_customTheme)
@@ -43,7 +48,11 @@ class BobbleButton @JvmOverloads constructor
         buttonTextColor(text)
 
         radius =
-            typedArray.getDimension(R.styleable.BobbleButton_cornerRadius, dpToPx(context, 30f))
+            typedArray.getDimension(
+                R.styleable.BobbleButton_cornerRadius, resources.getDimensionPixelSize(
+                    com.intuit.sdp.R.dimen._30sdp
+                ).toFloat()
+            )
         buttonCornerRadius(radius)
 
         padding =
@@ -52,22 +61,30 @@ class BobbleButton @JvmOverloads constructor
         paddingTop =
             typedArray.getDimension(
                 R.styleable.BobbleButton_android_paddingTop,
-                dpToPx(context, 8f)
+                resources.getDimensionPixelSize(
+                    com.intuit.sdp.R.dimen._8sdp
+                ).toFloat()
             )
         paddingBottom =
             typedArray.getDimension(
                 R.styleable.BobbleButton_android_paddingBottom,
-                dpToPx(context, 8f)
+                resources.getDimensionPixelSize(
+                    com.intuit.sdp.R.dimen._8sdp
+                ).toFloat()
             )
         paddingLeft =
             typedArray.getDimension(
                 R.styleable.BobbleButton_android_paddingLeft,
-                dpToPx(context, 24f)
+                resources.getDimensionPixelSize(
+                    com.intuit.sdp.R.dimen._24sdp
+                ).toFloat()
             )
         paddingRight =
             typedArray.getDimension(
                 R.styleable.BobbleButton_android_paddingRight,
-                dpToPx(context, 24f)
+                resources.getDimensionPixelSize(
+                    com.intuit.sdp.R.dimen._24sdp
+                ).toFloat()
             )
 
         //preDefined padding
@@ -82,6 +99,7 @@ class BobbleButton @JvmOverloads constructor
             )
         }
         setTheme(customTheme)
+
         typedArray.recycle()
     }
 
@@ -99,7 +117,8 @@ class BobbleButton @JvmOverloads constructor
     }
 
     fun backgroundColor(tintList: ColorStateList?) {
-        backgroundTint = tintList ?: ContextCompat.getColorStateList(context, R.color.button_background)
+        backgroundTint =
+            tintList ?: ContextCompat.getColorStateList(context, R.color.button_background)
         backgroundTintList = backgroundTint
     }
 
