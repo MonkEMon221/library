@@ -87,6 +87,21 @@ Libraries -:
 | app:tabIndicatorMargin  |  25sdp | 10dp | set indicator margins |
 | app:customTheme  | "default"  | "dark"/"light" | set theme for BobbleTabLayout |
 
+8. BobbleCircleImageView
+
+| Attribute Name  | Default Value | Example Value | Description |
+| ------------- | ------------- | ------------ | ------------- |
+| app:backgroundColor  | #00FFFFFF | @color/colorAccent | background Color of CircleImage |
+| app:borderColor  | #000000  | @color/colorAccent | set border Color of Circle Image |
+| app:borderWidth  | 0  | 5dp | set border width |
+
+9. BobbleTextView
+
+| Attribute Name  | Default Value | Example Value | Description |
+| ------------- | ------------- | ------------ | ------------- |
+| app:minTextSize  | 8sdp |12sp| set min Text Size |
+| app:maxTextSize  | text.textsize  |22sp| set max Text Size |
+
 
 # Initializing Programatically
 
