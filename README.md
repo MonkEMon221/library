@@ -80,6 +80,9 @@ Libraries -:
 | app:tabIndicatorColor  | #03DAC5(Light) #018786(Dark) | @color/colorAccent | set color of selected tab indicator |
 | app:boldText  |false | true | set if tab text should be bold |
 | app:selectedTabBoldText  |  false | true | set if selected tab text should be bold |
+| app:indicatorHeight  |  5sdp | 10dp | set indicator height |
+| app:tabIndicatorRadius  |  15sdp | 10dp | set indicator radius |
+| app:tabIndicatorMargin  |  25sdp | 10dp | set indicator margins |
 | app:customTheme  | "default"  | "dark"/"light" | set theme for BobbleTabLayout |
 
 
@@ -152,6 +155,9 @@ Libraries -:
             binding.tabLayout.setIndicatorColor(Color.parseColor("#FFA726"))   //set tab indicator color
             binding.tabLayout.setTabTextBold(true)   //set tab text as bold
             binding.tabLayout.setSelectedTabTextBold(true)    //set selected tab text as bold
+	    binding.tabLayout.indicatorHeight(10dp)    //set indicator height
+	    binding.tabLayout.tabIndicatorRadius(10dp)   //set indicator radius
+	    binding.tabLayout.tabIndicatorMargin(10dp)  //set indicator margin
             binding.tabLayout.setTheme("dark")   //Set Theme
         }.attach()
 ```
@@ -230,6 +236,9 @@ Libraries -:
         tab.bobbleTabLayout.setIndicatorColor(Color.parseColor("#def56a"))    //Set tab indicator color
         tab.bobbleTabLayout.setTabTextBold(true)   //Set tab text as bold
         tab.bobbleTabLayout.setSelectedTabTextBold(true)   //set selected tab text as bold
+	tab.bobbleTabLayout.indicatorHeight(10dp)    //set indicator height
+	tab.bobbleTabLayout.tabIndicatorRadius(10dp)   //set indicator radius
+	tab.bobbleTabLayout.tabIndicatorMargin(10dp)  //set indicator margin
         tab.bobbleTabLayout.setTheme("default")   //Set theme
 ```
 
