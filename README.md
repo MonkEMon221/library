@@ -128,7 +128,9 @@ Libraries -:
 	binding.image.settranslationZImagePrimary(2f)    //set elevation to top for first image in imageView
 	binding.image.settranslationZImageSecondary(2f)    //set elevation to top for second image in imageView
 	binding.enableColorFilterPrimary(false)   //enable/disable filling color for image 1 
-	binding.enableColorFilterSecondary(false)   //enable/disable filling color for image 2 
+	binding.enableColorFilterSecondary(false)   //enable/disable filling color for image 2
+	binding.setPrimaryImageWithGlide(context,imagePath,placeholder,error_image)   //set image 1 with glide
+	binding.setSecondaryImageWithGlide(context,imagePath,placeholder,error_image)   //set image 2 with glide
         binding.image.setTheme("dark")   //Set Theme
 ```
 ## Floating Action Button
