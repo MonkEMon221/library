@@ -181,6 +181,13 @@ Libraries -:
         }.attach()
 ```
 
+## CircleImageView
+```bash
+        binding.img.setCircleBackgroundColor("#000000")  //set image background color
+        binding.img.setBorderColor("#000000")   //Set border color
+        binding.img.setBorderWidth(5f)  //set border width
+```
+
 # Creating Components Programatically
 
 ## Button
@@ -261,6 +268,14 @@ Libraries -:
 	tab.bobbleTabLayout.tabIndicatorRadius(10f)   //set indicator radius
 	tab.bobbleTabLayout.tabIndicatorMargin(10f)  //set indicator margin
         tab.bobbleTabLayout.setTheme("default")   //Set theme
+```
+
+## CircleImageView
+```bash
+        val img = BobbleUILibrary(this)
+        img.bobbleCircleImageView.setCircleBackgroundColor("#000000")  //set image background color
+        img.bobbleCircleImageView.setBorderColor("#000000")   //Set border color
+        img.bobbleCircleImageView.setBorderWidth(5f)  //set border width
 ```
 
 
