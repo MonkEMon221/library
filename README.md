@@ -14,7 +14,7 @@ Libraries -:
 | ------------- | ------------- | ------------ | ------------- |
 | app:backgroundTint  |Enabled :- #018786(Light) #E0E0E0(Dark) <br />  <br /> On Pressed :- #636363(Light) #636363(Dark) <br />  <br />  Disabled :- #E0E0E0(Light) #9E9E9E(Dark)  | @color/colorAccent | Color of Button |
 | android:textColor  | Enabled :- #FFFFFF(Light) #636363(Dark) <br /> <br />  On Pressed :- #FFFFFF(Light) #FFFFFF(Dark) <br /> <br />  Disabled :- #636363(Light) #9E9E9E(Dark)  | @color/colorAccent | Color of Button Text |
-| app:cornerRadius  | 30dp  | 35dp | adjust radius of button |
+| app:cornerRadius  | 30sdp  | 35dp | adjust radius of button |
 | app:customTheme  | "default"  | "dark"/"light" | set theme for button |
 
 2. BobbleImage
@@ -28,10 +28,12 @@ Libraries -:
 | app:srcSecondary  | | @drawable/your_image |set image resource of second image in imageView
 | app:gravityImagePrimary  |"top"| "center" |set image gravity of first image in imageView
 | app:gravityImageSecondary  |"top"| "center" |set image gravity of second image in imageView
-| app:translationZImagePrimary  | "0dp" | "2dp" |set elevation to top for first image in imageView
-| app:translationZImageSecondary  | "0dp" | "2dp" |set elevation to top for second image in imageView
-| app:marginImagePrimary  | "0dp" | "8dp" |set margin of first image in imageView
-| app:marginImageSecondary  | "0dp" | "8dp" |set margin of second image in imageView
+| app:scaleTypePrimary  |"fitCenter"| "center" |set image scaleType of first image in imageView
+| app:scaleTypeSecondary  |"firCenter"| "center" |set image scaleType of second image in imageView
+| app:translationZImagePrimary  | "0sdp" | "2dp" |set elevation to top for first image in imageView
+| app:translationZImageSecondary  | "0sdp" | "2dp" |set elevation to top for second image in imageView
+| app:marginImagePrimary  | "0sdp" | "8dp" |set margin of first image in imageView
+| app:marginImageSecondary  | "0sdp" | "8dp" |set margin of second image in imageView
 | app:enableColorFilterPrimary  | true | false |enable/disable filling color for image 1 
 | app:enableColorFilterSecondary  | true | false |enable/disable filling color for image 2 
 | app:customTheme  | "default"  | "dark"/"light" | set theme for ImageView |
@@ -41,8 +43,8 @@ Libraries -:
 | Attribute Name  | Default Value | Example Value | Description |
 | ------------- | ------------- | ------------ | ------------- |
 | app:backgroundTint  | #FFFFFF(Light) #636363(Dark) | @color/colorAccent | Color of fab |
-| app:maxImageSize | 40dp  | 35dp | set ImageSize of fab symbol |
-| app:fabCustomSize  | 75dp  | 35dp | set size of fab |
+| app:maxImageSize | 40sdp  | 35dp | set ImageSize of fab symbol |
+| app:fabCustomSize  | 75sdp  | 35dp | set size of fab |
 | app:customTheme  | "default"  | "dark"/"light" | set theme for fab |
 
 4. BobbleCardView
@@ -50,7 +52,7 @@ Libraries -:
 | Attribute Name  | Default Value | Example Value | Description |
 | ------------- | ------------- | ------------ | ------------- |
 | app:cardBackgroundColor  | #E0F7FA(Light) #212121(Dark) | @color/colorAccent | background Color of CardView |
-| app:cardCornerRadius  | 30dp  | 35dp | adjust radius of CardView |
+| app:cardCornerRadius  | 30sdp  | 35dp | adjust radius of CardView |
 | app:customTheme  | "default"  | "dark"/"light" | set theme for CardView |
 
 5. BobbleEditText
@@ -59,9 +61,9 @@ Libraries -:
 | ------------- | ------------- | ------------ | ------------- |
 | android:textColor | #9E9E9E(Light) #FFFFFF(Dark) | @color/colorAccent | text Color of RoundCorner Edittext |
 | app:textBoxColor | #FFFFFF(Light) #636363(Dark) | @color/colorAccent | background Color of RoundCorner Edittext |
-| app:corner_radius| 30dp  | 35dp | adjust radius of RoundCorner EditText |
+| app:corner_radius| 30sdp  | 35dp | adjust radius of RoundCorner EditText |
 | app:borderColor  | #000000(Light) #FFFFFF(Dark) | @color/colorAccent | border color of RoundCorner Edittext |
-| app:borderWidth  | 3dp  | 5dp | set borderWidth for RoundCorner Edittext |
+| app:borderWidth  | 1sdp  | 5dp | set borderWidth for RoundCorner Edittext |
 | app:customTheme  | "default"  | "dark"/"light" | set theme for RoundCorner Edittext |
 
 6. BobbleImageButton
@@ -100,16 +102,18 @@ Libraries -:
 ## ImageView
 ```bash
         binding.image.setBackgroundColor(Color.parseColor("#FFA726"))   //Change Image Background
-	binding.image.setColorImage1(R.color.gray,PorterDuff.Mode.SRC_ATOP)    //Change Color of first image
-	binding.image.setColorImage2(R.color.gray,PorterDuff.Mode.SRC_ATOP)    //Change Color of second image
-	binding.image.setDrawableImage1(ContextCompat.getDrawable(context, R.drawable.your_image))   //set first image resource
-	binding.image.setDrawableImage2(ContextCompat.getDrawable(context, R.drawable.your_image))   //set second image resource
-	binding.image.setGravityImage1("center")   //set gravity of first image 
-	binding.image.setGravityImage2("center")   //set gravity of second image
-	binding.image.settranslationZImage1(2f)    //set elevation to top for first image in imageView
-	binding.image.settranslationZImage2(2f)    //set elevation to top for second image in imageView
-	binding.enableColorFilter1(false)   //enable/disable filling color for image 1 
-	binding.enableColorFilter2(false)   //enable/disable filling color for image 2 
+	binding.image.setColorImagePrimary(R.color.gray,PorterDuff.Mode.SRC_ATOP)    //Change Color of first image
+	binding.image.setColorImageSecondary(R.color.gray,PorterDuff.Mode.SRC_ATOP)    //Change Color of second image
+	binding.image.setDrawableImagePrimary(ContextCompat.getDrawable(context, R.drawable.your_image))   //set first image resource
+	binding.image.setDrawableImageSecondary(ContextCompat.getDrawable(context, R.drawable.your_image))   //set second image resource
+	binding.image.setGravityImagePrimary("center")   //set gravity of first image 
+	binding.image.setGravityImageSecondary("center")   //set gravity of second image
+	binding.image.setScaleTypeImagePrimary("center")   //set scaleType of first image 
+	binding.image.setScaleTypeImageSecondary("center")   //set scaleType of second image
+	binding.image.settranslationZImagePrimary(2f)    //set elevation to top for first image in imageView
+	binding.image.settranslationZImageSecondary(2f)    //set elevation to top for second image in imageView
+	binding.enableColorFilterPrimary(false)   //enable/disable filling color for image 1 
+	binding.enableColorFilterSecondary(false)   //enable/disable filling color for image 2 
         binding.image.setTheme("dark")   //Set Theme
 ```
 ## Floating Action Button
@@ -179,16 +183,18 @@ Libraries -:
 ```bash
         val img = BobbleUILibrary(this)
 	img.bobbleImageView.backgroundColor(Color.parseColor("#3ffaaa"))    //Set image background color
-        img.bobbleImageView.setDrawableImage1(ContextCompat.getDrawable(this, R.drawable.your_image))    //Set first Image Resource
-        img.bobbleImageView.setDrawableImage2(ContextCompat.getDrawable(this, R.drawable.your_image))    //set second Image Resource
-        img.bobbleImageView.setColorImage1(R.color.your_color, PorterDuff.Mode.SRC_ATOP)    //Set first image color
-        img.bobbleImageView.setColorImage2(R.color.your_color,PorterDuff.Mode.SRC_ATOP)     //Set second image color
-        img.bobbleImageView.setGravityImage2("center")     //set second image gravity
-        img.bobbleImageView.setGravityImage1("center")     //set first image gravity
-        img.bobbleImageView.setTranslationZImage2(4f)      //set elevation to top for second image in imageView
-        img.bobbleImageView.setTranslationZImage1(3f)      //set elevation to top for first image in imageView
-        img.bobbleImageView.enableColorFilter1(true)      //enable/disable filling color for image 1  
-        img.bobbleImageView.enableColorFilter2(true)     //enable/disable filling color for image 2 
+        img.bobbleImageView.setDrawableImagePrimary(ContextCompat.getDrawable(this, R.drawable.your_image))    //Set first Image Resource
+        img.bobbleImageView.setDrawableImageSecondary(ContextCompat.getDrawable(this, R.drawable.your_image))    //set second Image Resource
+        img.bobbleImageView.setColorImagePrimary(R.color.your_color, PorterDuff.Mode.SRC_ATOP)    //Set first image color
+        img.bobbleImageView.setColorImageSecondary(R.color.your_color,PorterDuff.Mode.SRC_ATOP)     //Set second image color
+        img.bobbleImageView.setGravityImageSecondary("center")     //set second image gravity
+        img.bobbleImageView.setGravityImagePrimary("center")     //set first image gravity
+	img.bobbleImageView.setScaleTypeImagePrimary("center")   //set scaleType of first image 
+	img.bobbleImageView.setScaleTypeImageSecondary("center")   //set scaleType of second image
+        img.bobbleImageView.setTranslationZSecondary(4f)      //set elevation to top for second image in imageView
+        img.bobbleImageView.setTranslationZImagePrimary(3f)      //set elevation to top for first image in imageView
+        img.bobbleImageView.enableColorFilterPrimary(true)      //enable/disable filling color for image 1  
+        img.bobbleImageView.enableColorFilterSecondary(true)     //enable/disable filling color for image 2 
         img.bobbleImageView.setTheme("default")    //Set theme
 ```
 
